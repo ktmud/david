@@ -1,0 +1,25 @@
+{
+  "name": "tongdawei",
+  "version": "0.0.1",
+  "description": "official site of tongdawei.cc",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "dependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-stylus": "~0.5.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-cssmin": "~0.6.0",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt-includes": "~0.2.0",
+    "grunt-hashmap": "~0.1.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@bitbucket.org/ktmud/tongdawei.git"
+  },
+  "author": "ktmud <kissmud@gmail.com>",
+  "license": "BSD"
+}
