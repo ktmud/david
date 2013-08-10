@@ -15,10 +15,10 @@ module.exports = function(grunt) {
   var hash_cache = {};
   var dist_hash_cache = {};
   try {
-    hash_cache = grunt.file.readJSON('static/source_hash.json');
-    dist_hash_cache = grunt.file.readJSON('static/hash.json');
+    hash_cache = grunt.file.readJSON('./source_hash.json');
+    dist_hash_cache = grunt.file.readJSON('./hash.json');
     for (var k in dist_hash_cache) {
-      if (!grunt.file.exists('static/dist/' + k)) {
+      if (!grunt.file.exists('./dist/' + k)) {
         grunt.log.writeln('!! Missing ' + k.cyan);
         delete dist_hash_cache[k];
       }
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 
 
   function hash_check(f) {
-    f = f.replace('static/dist/', '');
+    f = f.replace('./dist/', '');
     // old hash !== new hash
     if (f in dist_hash_cache && hash_cache[f] == getHash(f)) {
       grunt.log.writeln('Skipping ' + f.cyan + ' ..');
@@ -41,11 +41,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     meta: {
-      src: 'static',
-      dest: 'static/dist',
+      src: './',
+      dest: './dist',
       oz: {
-        baseUrl: 'static/js/',
-        distUrl: 'static/dist/js/'
+        baseUrl: './js/',
+        distUrl: './dist/js/'
       },
       banner: '/*! Tongdawei.cc - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -63,10 +63,10 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'static/dist/js/',
+            cwd: './dist/js/',
             // filename wish under dash will be ignored
             src: ['**/*.js', '!**/*_*.js'],
-            dest: 'tmp/static/js/',
+            dest: 'tmp/js/',
             filter: hash_check,
           }
         ]
@@ -78,14 +78,14 @@ module.exports = function(grunt) {
         duplicates: false,
       },
       js: {
-        cwd: 'static/js/',
+        cwd: './js/',
         src: '**/*.js',
-        dest: 'static/dist/js/'
+        dest: './dist/js/'
       },
       css: {
-        cwd: 'static/css/',
+        cwd: './css/',
         src: '**/*.css',
-        dest: 'static/dist/css/'
+        dest: './dist/css/'
       }
     },
     wrapper: {
@@ -94,15 +94,15 @@ module.exports = function(grunt) {
         wrap: 'module.exports',
       },
       js: {
-        cwd: 'static/dist/js/',
+        cwd: './dist/js/',
         src: ['**/*.js', '!**/*_*.js'],
-        dest: 'static/dist/js/'
+        dest: './dist/js/'
       },
     },
     stylus: {
       compile: {
         options: {
-          paths: ['static/css'],
+          paths: ['./css'],
           urlfunc: 'embedurl',
           import: [
             'base/feel',
@@ -111,9 +111,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'static/css/',
+            cwd: './css/',
             src: ['base.styl'],
-            dest: 'static/dist/css/',
+            dest: './dist/css/',
             ext: '.css'
           }
         ]
@@ -124,9 +124,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'static/dist/css/',
+            cwd: './dist/css/',
             src: ['**/*.css', '!**/*_*.css'],
-            dest: 'tmp/static/css/',
+            dest: 'tmp/css/',
             filter: hash_check,
           }
         ]
@@ -134,52 +134,52 @@ module.exports = function(grunt) {
     },
     hashmap: {
       options: {
-        output: 'static/hash.json',
+        output: './hash.json',
         merge: true,
       },
       source_hash: {
         options: {
-          output: 'static/source_hash.json',
+          output: './source_hash.json',
           encoding: 'utf-8',
           rename: false,
           merge: false,
         },
-        cwd: 'static/dist/',
+        cwd: './dist/',
         src: ['**/*.js', '!**/*_*.js', '**/*.css', '!**/*_*.css'],
       },
       js: {
-        cwd: 'tmp/static/',
+        cwd: 'tmp/',
         src: ['js/**/*.js'],
-        dest: 'static/dist/',
+        dest: './dist/',
       },
       css: {
-        cwd: 'tmp/static/',
+        cwd: 'tmp/',
         src: ['css/**/*.css'],
-        dest: 'static/dist/',
+        dest: './dist/',
       }
     },
     watch: {
       js: {
-        files: ['static/js/**/*.js'],
+        files: ['./js/**/*.js'],
         tasks: ['dist_js']
       }, 
       css: {
-        files: ['static/css/**/*.styl', 'static/css/**/*.css'],
+        files: ['./css/**/*.styl', './css/**/*.css'],
         tasks: ['dist_css']
       }
     },
     clean: {
       tmp: {
-        src: ['tmp/static/js', 'tmp/static/css']
+        src: ['tmp/./js', 'tmp/./css']
       },
       hash: {
-        src: ['static/source_hash.json', 'static/hash.json']
+        src: ['./source_hash.json', './hash.json']
       },
       js: {
-        src: ['static/dist/js/']
+        src: ['./dist/js/']
       },
       css: {
-        src: ['static/dist/css/']
+        src: ['./dist/css/']
       }
     },
   });

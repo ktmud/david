@@ -6,11 +6,6 @@ import struct
 from functools import wraps
 from warnings import warn
 
-from redis import StrictRedis
-from config import REDIS_HOST, REDIS_PORT, REDIS_DB
-
-redisc = StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB)
-
 
 def gen_key(key_pattern, arg_names, defaults, *a, **kw):
     return gen_key_factory(key_pattern, arg_names, defaults)(*a, **kw)
@@ -29,6 +24,8 @@ def gen_key_factory(key_pattern, arg_names, defaults):
             key = format(key_pattern, *[aa[n] for n in arg_names], **aa)
         return key and key.replace(' ','_'), aa
     return gen_key
+
+
 
 def cache(key_pattern, mc, expire=0, max_retry=0):
     def deco(f):
@@ -200,7 +197,6 @@ def cache_in_obj(key, mc, expire=0):
     
 def create_decorators(mc):
     # 因为cache的调用有太多对expire参数的非关键字调用，因此没法用partial方式生成函数
-
     def _cache(key_pattern, expire=0, mc=mc, max_retry=0):
         return cache(key_pattern, mc, expire=expire, max_retry=max_retry)
     
@@ -223,6 +219,3 @@ def create_decorators(mc):
                 pcache2=_pcache2, listcache=_listcache,
                 cache_in_obj=_cache_in_obj,
                 delete_cache=_delete_cache)
-
-
-globals().update(create_decorators(redisc))

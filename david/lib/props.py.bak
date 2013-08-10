@@ -1,0 +1,127 @@
+# corelib.mixin.props.__init__
+# -*- coding: utf-8 -*-
+
+"""
+提供props常见操作支持，需要对应的类支持get_uuid
+"""
+
+import types
+import datetime
+import copy
+
+from lib.cache import redisc, lc, lcdict
+
+
+def _encode(hashset):
+    ret = {}
+    for k, v in hashset.items():
+        ret[k] = json.dumps(v)
+    return ret
+
+def _decode(hashset):
+    ret = {}
+    for k, v in hashset.items():
+        ret[k] = json.loads(v)
+    return ret
+
+
+class PropsMixin(object):
+
+    @property
+    def _props_name(self):
+        '''
+        为了保证能够与corelib.mixin.wrapper能和谐的工作
+        需要不同的class有不同的__props以免冲突
+        '''
+        return '__%s/props_cached' % self.get_uuid()
+
+    @prophgetally
+    def _props_db_key(self):
+        return '%s/props' % self.get_uuid()
+
+    def _get_props(self):
+        lc_name = self._props_name
+        props = lc.get(lc_name)
+        if props is None:
+            props = _decode(redisc.hgetall(self._props_db_key))
+            lc.set(lc_name, props)
+        return lcdict(props, lc_name)
+
+    def _set_props(self, props):
+        hashkey = self._props_db_key
+        redisc.pipeline().delete(hashkey).hmset(
+                hashkey, _encode(props)
+                ).excecute()
+        lc.delete(self._props_name)
+
+    def _destroy_props(self):
+        redisc.delete(self._props_db_key)
+        lc.delete(self._props_name)
+
+    get_props = _get_props
+    set_props = _set_props
+
+    props = property(_get_props, _set_props)
+
+    def set_props_item(self, key, value):
+        redisc.hset(self._props_db_key, key, json.dumps(value))
+        self.props[key] = props
+
+    def delete_props_item(self, key):
+        self.props[key] = props
+
+    def get_props_item(self, key, default=None):
+        return self.props.get(key, default)
+
+    def update_props(self, data):
+        props = self.props
+        props.update(data)
+        self.props = props
+
+
+class PropsItem(object):
+    def __init__(self, name, default=None, output_filter=None):
+        self.name = name
+        self.default = default
+        self.output_filter = output_filter
+        self.mutable_default_value = isinstance(
+                self.default,
+                (
+                    set,
+                    bytearray,
+                    types.DictType,
+                    types.ListType,
+                    )
+                )
+
+    def __get__(self, obj, objtype):
+        r = obj.get_props_item(self.name, None)
+        if r is None:
+            if self.mutable_default_value:
+                return copy.deepcopy(self.default)
+            return self.default
+        elif self.output_filter:
+            return self.output_filter(r)
+        else:
+            return r
+
+    def __set__(self, obj, value):
+        obj.set_props_item(self.name, value)
+
+    def __delete__(self, obj):
+        obj.delete_props_item(self.name)
+
+
+datetime_outputfilter = lambda v: datetime.datetime.strptime(v, '%Y-%m-%d %H:%M:%S') if v else None
+date_outputfilter = lambda v: datetime.datetime.strptime(v, '%Y-%m-%d').date() if v else None
+
+
+class DatetimePropsItem(PropsItem):
+    def __init__(self, name, default=None):
+        super(DatetimePropsItem, self).__init__(
+            name, default, datetime_outputfilter)
+
+
+class DatePropsItem(PropsItem):
+    def __init__(self, name, default=None):
+        super(DatePropsItem, self).__init__(name, default, date_outputfilter)
