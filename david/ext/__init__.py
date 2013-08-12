@@ -23,6 +23,7 @@ def init_app(app):
     mail.init_app(app)
     cache.init_app(app)
 
+    setup_accounts_manager(app)
     admin.name = app.config.get('SITE_NAME')
     admin.init_app(app)
 

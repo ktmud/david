@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 DEVELOP_MODE = False
 DEBUG = False
-DEBUG_TB_INTERCEPT_REDIRECTS = True
+DEBUG_TB_INTERCEPT_REDIRECTS = False
 
 SECRET_KEY = 'keyboardcat'
 
@@ -24,10 +24,20 @@ SECURITY_EMAIL_SUBJECT_CONFIRM = '请确认你的登录邮箱(%s)' % (SITE_DOMAI
 MODULES = ['gallery', 'news']
 
 #TODO: move this to database or something
+HEADER_MENU = [
+    ('/', '首页'),
+    ('/star', '明星'),
+    #('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '活动'),
+    ('/news/', '新闻'),
+    ('/works/', '作品'),
+    ('/magazine/', '杂志'),
+    ('/photos/', '图片'),
+    ('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '论坛'),
+]
 FOOTER_MENU = [
-  ('/about', u'关于佟大为官网'),
-  ('/contact', u'联系方式'),
-  ('/jobs', u'加入我们')
+    ('/about', '关于佟大为官网'),
+    ('/contact', '联系方式'),
+    ('/jobs', '加入我们')
 ]
 
 try:

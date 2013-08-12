@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import url_for
 
-from david.config import FOOTER_MENU, STATIC_ROOT, DEBUG
+from david.config import HEADER_MENU, FOOTER_MENU, STATIC_ROOT, DEBUG
 
 from .errorhandler import setup_errorhandler
 from .menu import Menu
@@ -22,7 +22,7 @@ def static_url(filename):
 
 
 # menu can `add_item` and `get_item`
-header_menu = Menu([('/', u'首页')])
+header_menu = Menu(HEADER_MENU)
 footer_menu = Menu(FOOTER_MENU)
 
 # app level template context globals
