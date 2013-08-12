@@ -1,8 +1,9 @@
 # coding: utf-8
 from flask.ext.security import UserMixin, RoleMixin
 
-from david.ext.sql import db
+from david.core.db import db
 from david.lib.props import PropsMixin, PropsItem
+from flask.ext.security import SQLAlchemyUserDatastore
 
 # Define models
 roles_users = db.Table(
@@ -24,8 +25,12 @@ class User(db.Model, UserMixin, PropsMixin):
     confirmed_at = db.Column(db.DateTime())
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
+
     last_login_at = PropsItem('ll')
     current_login_at = PropsItem('cl')
     last_login_ip = PropsItem('llip')
     current_login_ip = PropsItem('clip')
     login_count = PropsItem('lc')
+    name = PropsItem('name')
+
+user_datastore = SQLAlchemyUserDatastore(db, User, Role)

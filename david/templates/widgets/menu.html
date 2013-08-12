@@ -1,0 +1,16 @@
+{%- macro hmenu(menu) -%}
+  {{ pure_menu(menu, cls='pure-menu-open pure-menu-horizontal') }}
+{%- endmacro -%}
+
+
+{%- macro pure_menu(menu, cls='', item_cls='') -%}
+{% if menu %}
+<ul class="pure-menu {{ cls }}">
+  {% for item in menu.items() %}
+  <li class="{{ item_cls }} {{ 'pure-menu-selected' if item.is_current else '' }}">
+    <a href="{{ item.path }}">{{ item.text }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+{%- endmacro -%}

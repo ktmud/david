@@ -8,8 +8,10 @@ import types
 import datetime
 import copy
 
-from .cache import redisc, lc, lcdict
+from .cache import get_redis_cache, lc, lcdict
 
+
+mc = get_redis_cache()
 
 class PropsMixin(object):
 
@@ -28,16 +30,16 @@ class PropsMixin(object):
         lc_name = self._props_name
         props = lc.get(lc_name)
         if props is None:
-            props = redisc.get(self._props_db_key, {})
+            props = mc.get(self._props_db_key, {})
             lc.set(lc_name, props)
         return lcdict(props, lc_name)
 
     def _set_props(self, props):
-        redisc.set(self._props_db_key, props)
+        mc.set(self._props_db_key, props)
         lc.delete(self._props_name, props)
 
     def _destory_props(self):
-        redisc.delete(self._props_db_key)
+        mc.delete(self._props_db_key)
         lc.delete(self._props_name)
 
     get_props = _get_props

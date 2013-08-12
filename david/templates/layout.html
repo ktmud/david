@@ -2,15 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>
+    {% block pagetitle %}
+    {{ title or config.SITE_NAME }}
+    {% endblock %}
+  </title>
+  {% block head %}
+    <link media="all" rel="stylesheet" href="{{ static("css/base.css") }}" type="text/css" />
+  {% endblock %}
 </head>
 <body>
-  {% block body %}
-    {% block header %}
+  <div class="pure-g-r">
+    {% block body %}
+      {% block header %}
+          {% include "common/header.html" %}
+      {% endblock %}
+
+      {% block main %}
+      {% endblock %}
+
+      {% block footer %}
+          {% include "common/footer.html" %}
+      {% endblock %}
     {% endblock %}
-    {% block main %}
-    {% endblock %}
-  {% endblock %}
+  </div>
 </body>
 </html>
-{# vim: set ft=jinja: #}

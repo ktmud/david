@@ -1,12 +1,14 @@
 # coding: utf-8
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8') # use utf-8 by default
+
 from flask import Flask
 
-from .ext import setup_logging, init_app, load_modules, register_views
-
-import config
+from .ext import init_app
+from . import config
 
 app = Flask(__name__)
 app.config.from_object(config)
 
-setup_logging(app)
 init_app(app)

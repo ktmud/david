@@ -154,7 +154,7 @@ def listcache(key_pattern, mc, expire=0, fmt='I'):
             else:
                 r = f(*a, **kw)
                 if isinstance(r, (list, tuple)):
-                    mc.set(key, struct.pack(fmt*len(r), *r), expire, compress=False)
+                    mc.set(key, struct.pack(fmt*len(r), *r), expire)
                 else:
                     warn("func %s (%s) should return list or tuple" % (f.__name__, key))
             return r
