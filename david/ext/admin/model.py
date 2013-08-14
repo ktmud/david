@@ -10,6 +10,8 @@ from flask import redirect, flash, url_for, Response
 
 class Roled(object):
 
+    roles_accepted = ['admin', 'editor']
+
     def is_accessible(self):
 
         roles = getattr(self, 'roles_accepted', None)

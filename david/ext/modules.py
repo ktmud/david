@@ -1,4 +1,6 @@
 # coding: utf-8
+import os
+import types
 from importlib import import_module
 
 from .views import register_views
@@ -8,7 +10,7 @@ def load_module(app, name):
     package = 'david.modules.%s' % name
     mod = import_module(package)
 
-    register_views(mod)
+    register_views(app, mod)
 
     try:
         m_admin = import_module('admin', package)
@@ -19,5 +21,10 @@ def load_module(app, name):
 
 def load_modules(app):
     names = app.config.get('MODULES')
+    m = import_module('david.modules')
+    if not names:
+        modules_folder = import_module('david.modules').__path__[0]
+        names = [x for x in os.listdir(modules_folder) if
+                '__init__' not in x]
     for m in names:
         load_module(app, m)

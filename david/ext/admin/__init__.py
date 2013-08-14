@@ -4,4 +4,4 @@ from flask import Blueprint, abort
 
 from .model import Roled, ModelAdmin, AdminIndex
 
-admin = Admin(index_view=AdminIndex(name='Home'))
+admin = Admin(index_view=AdminIndex(name='首页'))

@@ -16,7 +16,7 @@ module.exports = function(grunt) {
   var dist_hash_cache = {};
   try {
     hash_cache = grunt.file.readJSON('./source_hash.json');
-    dist_hash_cache = grunt.file.readJSON('./hash.json');
+    dist_hash_cache = grunt.file.readJSON('./dist/hash.json');
     for (var k in dist_hash_cache) {
       if (!grunt.file.exists('./dist/' + k)) {
         grunt.log.writeln('!! Missing ' + k.cyan);
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
     },
     includes: {
       options: {
-        includeRegexp: /^\s*(?:\/\/|\/\*)?\s*[\@\#]*(?:include|import)\s+[\"\'\(]*([^\"\'\)]+)[\"\'\)]*\s*(?:\*\/)?$/,
+        includeRegexp: /^\s*(?:\/\/|\/\*)?\s*[\@\#]*(?:include|import)\s+[\"\'\(]*([^\"\'\)]+)[\"\'\)]*\;?\s*(?:\*\/)?$/,
         duplicates: false,
       },
       js: {
@@ -102,7 +102,7 @@ module.exports = function(grunt) {
     stylus: {
       compile: {
         options: {
-          paths: ['./css'],
+          paths: ['./styl', './'],
           urlfunc: 'embedurl',
           import: [
             'base/feel',
@@ -111,7 +111,7 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: './css/',
+            cwd: './styl/',
             src: ['base.styl'],
             dest: './dist/css/',
             ext: '.css'
@@ -134,7 +134,7 @@ module.exports = function(grunt) {
     },
     hashmap: {
       options: {
-        output: './hash.json',
+        output: './dist/hash.json',
         merge: true,
       },
       source_hash: {
@@ -164,7 +164,7 @@ module.exports = function(grunt) {
         tasks: ['dist_js']
       }, 
       css: {
-        files: ['./css/**/*.styl', './css/**/*.css'],
+        files: ['./styl/**/*.styl', './css/**/*.css'],
         tasks: ['dist_css']
       }
     },
@@ -173,7 +173,7 @@ module.exports = function(grunt) {
         src: ['tmp/./js', 'tmp/./css']
       },
       hash: {
-        src: ['./source_hash.json', './hash.json']
+        src: ['./source_hash.json', './dist/hash.json']
       },
       js: {
         src: ['./dist/js/']
@@ -186,7 +186,7 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('dist_js', ['includes:js', 'wrapper:js']);
-  grunt.registerTask('dist_css', ['includes:css', 'stylus']);
+  grunt.registerTask('dist_css', ['stylus', 'includes:css']);
 
   //grunt.registerTask('deps', ['copy:deps']);
 
