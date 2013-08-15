@@ -1,4 +1,5 @@
 # coding: utf-8
+import sys
 import os
 import types
 from importlib import import_module
@@ -8,16 +9,14 @@ from .admin import admin
 
 def load_module(app, name):
     package = 'david.modules.%s' % name
-    mod = import_module(package)
+    mod = __import__(package, fromlist=['admin', 'bp', 'setup'])
 
+    # register module bp and setup
     register_views(app, mod)
 
-    try:
-        m_admin = import_module('admin', package)
-        for v in m_admin.views:
-            admin.add_view(v)
-    except ImportError, e:
-        pass
+    # register admin view
+    if hasattr(mod, 'admin'):
+        admin_views = [admin.add_view(v) for v in mod.admin.views]
 
 def load_modules(app):
     names = app.config.get('MODULES')

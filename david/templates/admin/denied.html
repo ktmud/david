@@ -1,6 +1,16 @@
 {% extends "layout.message.html" %}
 
 {% block message %}
-  抱歉，你没有权限访问这个页面
+  <div class="alert alert-danger">
+    <p>
+    抱歉，你没有权限访问这个页面
+    </p>
+    <p>
+    你可以：
+    <a href="{{ url_for('security.logout', next=url_for('admin')) }}">重新登录</a>
+    &nbsp;
+    <a href="/login">返回首页</a>
+    </p>
+  </div>
 {% endblock %}
 

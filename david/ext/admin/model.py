@@ -1,6 +1,8 @@
 # coding: utf-8
+from david.core.db import db
+
 from flask.ext.admin import AdminIndexView
-from flask.ext.admin.contrib.mongoengine import ModelView
+from flask.ext.admin.contrib.sqla import ModelView
 from flask.ext.admin.actions import action
 from flask.ext.security import current_user
 from flask.ext.security.utils import url_for_security
@@ -29,6 +31,14 @@ class Roled(object):
 
 
 class ModelAdmin(Roled, ModelView):
+
+    def __init__(self, model, name=None, endpoint=None, url=None, **kwargs):
+        if url is None:
+            url = model.__name__.lower().replace('view', '')
+        if endpoint is None and url:
+            endpoint = url + '.admin'
+        super(ModelAdmin, self).__init__(model, db.session, name=name,
+                endpoint=endpoint, url=url, **kwargs)
 
     def get_instance(self, i):
         try:

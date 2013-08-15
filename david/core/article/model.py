@@ -1,5 +1,5 @@
 # coding: utf-8
-from david.ext.sql import db
+from david.core.db import db
 from david.lib.props import PropsMixin, PropsItem
 
 tags = db.Table('article_tags',

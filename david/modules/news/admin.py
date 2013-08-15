@@ -1,7 +1,11 @@
 # coding: utf-8
-from david.core.admin import ModelAdmin
+from david.ext.admin import ModelAdmin
+
+from .model import News
 
 class NewsAdmin(ModelAdmin):
     pass
 
-views = [NewsAdmin(name='新闻', endpoint='news.admin')]
+views = [
+  NewsAdmin(News, name='新闻')
+]

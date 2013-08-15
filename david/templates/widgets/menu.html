@@ -8,7 +8,8 @@
 <ul class="pure-menu {{ cls }}">
   {% for item in menu.items() %}
   <li class="{{ item_cls }} {{ 'pure-menu-selected' if item.is_current else '' }}">
-    <a href="{{ item.path }}">{{ item.text }}</a>
+  {% set target = 'target="_blank"' if item.path.startswith('http') else '' %}
+  <a href="{{ item.path }}"{{ target }}>{{ item.text }}</a>
   </li>
   {% endfor %}
 </ul>

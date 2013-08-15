@@ -19,17 +19,19 @@ def add_test_users():
         # send a fake request, so `current_app` can be the app
         rv = c.get('/')
 
-        role_admin = user_datastore.find_or_create_role('admin', name='admin')
-        role_editor = user_datastore.find_or_create_role('editor', name='editor')
+        role_admin = user_datastore.find_or_create_role('admin',
+                description='Site Admin')
+        role_editor = user_datastore.find_or_create_role('editor',
+                description='Content Editor')
 
-        for i in range(1, 10):
+        for i in range(1, 5):
             u = user_datastore.create_user(email='test%s@localhost' % i,
                     password=encrypt_password('test'))
 
-        u = user_datastore.create_user(email='admin@localhost' % i,
+        u = user_datastore.create_user(email='admin@localhost',
                 password=encrypt_password('test'))
         user_datastore.add_role_to_user(u, role_admin)
-        u = user_datastore.create_user(email='editor@localhost' % i,
+        u = user_datastore.create_user(email='editor@localhost',
                 password=encrypt_password('test'))
         user_datastore.add_role_to_user(u, role_editor)
 

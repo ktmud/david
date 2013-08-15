@@ -2,6 +2,6 @@
 from david.core.article import Article
 from david.lib.props import PropsItem
 
-class NewsArticle(Article):
+class News(Article):
     pass
 
