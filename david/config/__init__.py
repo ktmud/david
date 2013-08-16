@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+from .security import *
+from .database import *
+
 DEVELOP_MODE = False
 DEBUG = False
 DEBUG_TB_INTERCEPT_REDIRECTS = False
@@ -7,13 +10,16 @@ SECRET_KEY = 'keyboardcat'
 
 HOST = 'localhost'
 PORT = 19838
+
+
+BABEL_ACCEPT_LANGUAGE = ['zh', 'zh_tw', 'en']
+BABEL_DEFAULT_LOCALE = 'zh'
+BABEL_DEFAULT_TIMEZONE = 'Asia/Shanghai'
+
 SITE_DOMAIN = 'tongdawei.cc'
 SITE_ROOT = 'http://www.tongdawei.cc'
 STATIC_ROOT = '//img.tongdawei.cc' # cdn path
 SITE_NAME = '佟大为官网'
-
-from .security import *
-from .database import *
 
 SECURITY_EMAIL_SUBJECT_REGISTER = '欢迎加入%s(%s)' % (SITE_NAME, SITE_DOMAIN)
 SECURITY_EMAIL_SUBJECT_PASSWORDLESS = '你在%s的登录信息' % SITE_NAME

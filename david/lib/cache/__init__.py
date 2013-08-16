@@ -11,7 +11,7 @@ lc = SimpleCache(threshold=10000)
 
 class CacheDict(dict):
 
-    def __init__(props, name, lc):
+    def __init__(self, props, name, lc):
         self._raw = props
         self._name = name
         self._lc = lc
@@ -27,7 +27,7 @@ class CacheDict(dict):
         return getattr(self._raw, name)
 
 def lcdict(item, name, lc=lc):
-    return LcDict(item, name, lc)
+    return CacheDict(item, name, lc)
 
 
 

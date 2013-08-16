@@ -8,7 +8,7 @@ import types
 import datetime
 import copy
 
-from .cache import get_redis_cache, lc, lcdict
+from david.lib.cache import get_redis_cache, lc, lcdict
 
 
 mc = get_redis_cache()
@@ -30,7 +30,7 @@ class PropsMixin(object):
         lc_name = self._props_name
         props = lc.get(lc_name)
         if props is None:
-            props = mc.get(self._props_db_key, {})
+            props = mc.get(self._props_db_key) or {}
             lc.set(lc_name, props)
         return lcdict(props, lc_name)
 

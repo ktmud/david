@@ -1,9 +1,9 @@
 # coding: utf-8
-from david.ext.admin import ModelAdmin
+from david.core.article.admin import ArticleAdmin
 
 from .model import News
 
-class NewsAdmin(ModelAdmin):
+class NewsAdmin(ArticleAdmin):
     pass
 
 views = [

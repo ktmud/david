@@ -1,8 +1,10 @@
 # coding: utf-8
 from flask.ext.security import UserMixin, RoleMixin
 
+from david.config import BABEL_DEFAULT_LOCALE, BABEL_DEFAULT_TIMEZONE
+
 from david.core.db import db
-from david.lib.props import PropsMixin, PropsItem
+from david.lib.mixins.props import PropsMixin, PropsItem
 from flask.ext.security import SQLAlchemyUserDatastore
 
 # Define models
@@ -32,5 +34,9 @@ class User(db.Model, UserMixin, PropsMixin):
     current_login_ip = PropsItem('clip')
     login_count = PropsItem('lc')
     name = PropsItem('name')
+    locale = PropsItem('locale', BABEL_DEFAULT_LOCALE)
+    timezone = PropsItem('timezone', BABEL_DEFAULT_TIMEZONE)
+
+Account = User
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)

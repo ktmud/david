@@ -1,5 +1,6 @@
 # coding: utf-8
 from david.core.db import db
+from david.ext.babel import gettext
 
 from flask.ext.admin import AdminIndexView
 from flask.ext.admin.contrib.sqla import ModelView
@@ -7,6 +8,29 @@ from flask.ext.admin.actions import action
 from flask.ext.security import current_user
 from flask.ext.security.utils import url_for_security
 from flask import redirect, flash, url_for, Response
+
+from wtforms import fields, validators
+
+
+# to admin models with PropsMixin
+class Proped(object):
+
+    extra_props = ()
+
+    def scaffold_form(self):
+        form_class = super(Proped, self).scaffold_form()
+        for e in self.extra_props:
+            if isinstance(e, str):
+                name = e
+            else:
+                name = e[0]
+                field = e[1]
+            label = self.column_labels.get(name, e.capitalize())
+            # default extra props to a text fields
+            if not field:
+                field = TextField(label)
+            form_class[name] = field
+        return form_class
 
 
 
@@ -46,7 +70,7 @@ class ModelAdmin(Roled, ModelView):
         except self.model.DoesNotExist:
             flash(gettext("Item not found %(i)s", i=i), "error")
 
-    @action('export_to_json', 'Export as json')
+    @action('export_to_json', gettext('Export as json'))
     def export_to_json(self, ids):
         qs = self.model.objects(id__in=ids)
 
@@ -59,7 +83,7 @@ class ModelAdmin(Roled, ModelView):
             }
         )
 
-    @action('export_to_csv', 'Export as csv')
+    @action('export_to_csv', gettext('Export as csv'))
     def export_to_csv(self, ids):
         qs = json.loads(self.model.objects(id__in=ids).to_json())
 
@@ -76,6 +100,7 @@ class ModelAdmin(Roled, ModelView):
                 "attachment;filename=%s.csv" % self.model.__name__.lower()
             }
         )
+
 
 
 class AdminIndex(Roled, AdminIndexView):

@@ -1,3 +1,3 @@
 # coding: utf-8
-from .model import Article, Tag
+from .article import Article, Tag, add_type
 
