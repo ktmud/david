@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """ admin view for article model """
-from david.ext.admin import ModelAdmin, Proped, admin
+from david.ext.admin import ModelAdmin, Proped, CatFiltered, admin
 from david.ext.babel import lazy_gettext as _
 from .tag import Tag
 
-class ArticleAdmin(Proped, ModelAdmin):
+class ArticleAdmin(CatFiltered, Proped, ModelAdmin):
 
     column_labels = dict(
             title=_('Title'),

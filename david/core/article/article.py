@@ -1,30 +1,53 @@
 # coding: utf-8
 from datetime import datetime
 
-from david.ext.babel import gettext
+from david.ext.babel import lazy_gettext
+from david.ext.attachment.picture import PictureMixin
 from david.core.db import db, orm, func
 from david.core.accounts import User
 from david.lib.mixins.props import PropsMixin, PropsItem
 from david.lib.utils import truncate, striptags
 
+from david.config import ARTICLE_DEFAULT_PIC
+
 from .tag import tags_table, Tag
 
-class Article(db.Model, PropsMixin):
+
+
+C_COMMON = 0
+
+class Article(db.Model, PropsMixin, PictureMixin):
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.Integer)
-    type_name = gettext('article')
-    slug = db.Column(db.String(120), index=True, unique=True, nullable=True)
-    title = db.Column(db.Text(200))
+    _cat_id = db.Column('cat', db.Integer, index=True, nullable=False)
+    title = db.Column(db.Text(200), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
+    slug = db.Column(db.String(120), index=True, unique=True)
     summary = db.Column(db.Text(400), default='')
-    content = db.Column(db.Text())
+    content = db.Column(db.Text(), default='')
     create_at = db.Column(db.DateTime, default=func.now())
     update_at = db.Column(db.DateTime, default=func.now(), onupdate=func.utc_timestamp())
-    owner_id = db.Column(db.Integer, db.ForeignKey(User.id))
     tags = db.relationship('Tag', secondary=tags_table,
                     backref=db.backref('articles', lazy='dynamic'))
 
+    attachments = PropsItem('attachments', [])
+    _DEFAULT_PIC = ARTICLE_DEFAULT_PIC
+
+    cat_id = C_COMMON
+    cat_name = 'article'
+
+    @property
+    def catname(self):
+        return lazy_gettext(self.cat_name)
+
     def abstract(self):
         return truncate(self.summary.strip() or striptags(self.content).strip(), 255)
+
+    @property
+    def uid(self):
+        return str(self.slug or self.id)
+
+    def url(self):
+        return '/article/%s' + self.uid
 
     @orm.reconstructor
     def init_on_load(self, *kwargs):
@@ -32,14 +55,12 @@ class Article(db.Model, PropsMixin):
         pass
 
 
-TYPE_COMMON = 0
-
-# article types, later
-TYPES = {
-    TYPE_COMMON: Article
+# article cats, will be extended later
+CATS = {
+    str(C_COMMON): Article
 }
 
-def add_type(type_id, cls):
-    if type_id in TYPES:
-        raise Exception('Type id %s already in use' % type_id)
-    TYPES[type_id] = cls
+def add_cat(cat_id, cls):
+    if cat_id in CATS:
+        raise Exception('cat id %s already in use' % cat_id)
+    CATS[str(cat_id)] = cls

@@ -6,38 +6,35 @@ body
   margin: 20px auto;
 
 .pure-menu.pure-menu-open
-  background: #000;
+  background: bg_color;
   margin: 0;
   li
     border-right: 1px dotted #eee;
     padding-right: 5px;
-    background: #000;
+    background: bg_color;
     a
-      color: #fff;
+      color: text_color;
       padding: 3px 25px;
       line-height: 1;
     a:hover, a:active,
     &.pure-menu-selected a
-      background: #1192dd
+      background: active_color
       color: #222;
   li:last-child
     border-right: 0;
 
 .header-nav
-  background: #000;
+  background: bg_color;
   padding: 6px 10px;
   margin: 20px 0 30px;
   font-size: 17px;
 
-#main
-  margin: 40px 20px;
-
 #footer
-  background: #000;
+  background: bg_color;
   text-align: center;
   font-size: 13px;
   padding: 5px;
-  color: #fff;
+  color: text_color;
   .pure-menu
     display: inline;
     margin-right: 60px;

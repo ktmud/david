@@ -16,10 +16,17 @@ BABEL_ACCEPT_LANGUAGE = ['zh_CN', 'zh_TW', 'en']
 BABEL_DEFAULT_LOCALE = 'zh_CN'
 BABEL_DEFAULT_TIMEZONE = 'Asia/Shanghai'
 
-SITE_DOMAIN = 'tongdawei.cc'
-SITE_ROOT = 'http://www.tongdawei.cc'
-STATIC_ROOT = '//img.tongdawei.cc' # cdn path
 SITE_NAME = '佟大为官网'
+SITE_DOMAIN = 'tongdawei.cc'
+SITE_ORIGIN = 'localhost:5000'
+SITE_ROOT = 'http://' + SITE_ORIGIN
+STATIC_ROOT = SITE_ROOT + '/static'
+
+UPLOADS_DEFAULT_DEST = '/var/uploads'
+UPLOADS_DEFAULT_URL = None
+#UPLOADS_DEFAULT_URL = STATIC_ROOT + '/'
+
+ARTICLE_DEFAULT_PIC = ''
 
 SECURITY_EMAIL_SUBJECT_REGISTER = '欢迎加入%s(%s)' % (SITE_NAME, SITE_DOMAIN)
 SECURITY_EMAIL_SUBJECT_PASSWORDLESS = '你在%s的登录信息' % SITE_NAME
