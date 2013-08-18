@@ -1,0 +1,156 @@
+# English translations for PROJECT.
+# Copyright (C) 2013 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2013-08-18 15:39+0800\n"
+"PO-Revision-Date: 2013-08-18 08:17+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:10
+msgid "Title"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:11
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:27
+msgid "Slug"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:12
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:28
+msgid "ID"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:13
+msgid "Tags"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:14
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:29
+msgid "Create at"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:15
+msgid "Update at"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:16
+msgid "Summary"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:17
+msgid "Content"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:26
+msgid "Name"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:30
+msgid "Description"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:34
+msgid "Tag"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/core/article/article.py:15
+msgid "article"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:71
+#, python-format
+msgid "Item not found %(i)s"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:73
+msgid "Export as json"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:86
+msgid "Export as csv"
+msgstr ""
+
+#~ msgid "With selected"
+#~ msgstr ""
+
+#~ msgid "Submit"
+#~ msgstr ""
+
+#~ msgid "Cancel"
+#~ msgstr ""
+
+#~ msgid "You are editing %(path)s"
+#~ msgstr ""
+
+#~ msgid "Root"
+#~ msgstr ""
+
+#~ msgid "Are you sure you want to delete \\'%(name)s\\' recursively?"
+#~ msgstr ""
+
+#~ msgid "Are you sure you want to delete \\'%(name)s\\'?"
+#~ msgstr ""
+
+#~ msgid "Upload File"
+#~ msgstr ""
+
+#~ msgid "Create Directory"
+#~ msgstr ""
+
+#~ msgid "Please select at least one file."
+#~ msgstr ""
+
+#~ msgid "Please provide new name for %(name)s"
+#~ msgstr ""
+
+#~ msgid "Save and Add"
+#~ msgstr ""
+
+#~ msgid "List"
+#~ msgstr ""
+
+#~ msgid "Create"
+#~ msgstr ""
+
+#~ msgid "Save and Continue"
+#~ msgstr ""
+
+#~ msgid "Delete?"
+#~ msgstr ""
+
+#~ msgid "Add"
+#~ msgstr ""
+
+#~ msgid "Add Filter"
+#~ msgstr ""
+
+#~ msgid "Apply"
+#~ msgstr ""
+
+#~ msgid "Reset Filters"
+#~ msgstr ""
+
+#~ msgid "Remove Filter"
+#~ msgstr ""
+
+#~ msgid "Search"
+#~ msgstr ""
+
+#~ msgid "You sure you want to delete this item?"
+#~ msgstr ""
+
+#~ msgid "Please select at least one model."
+#~ msgstr ""
+

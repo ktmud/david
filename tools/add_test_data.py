@@ -11,9 +11,9 @@ def add_test_users():
         rv = c.get('/')
 
         role_admin = user_datastore.find_or_create_role('admin',
-                description='Site Admin')
+                desc='Site Admin')
         role_editor = user_datastore.find_or_create_role('editor',
-                description='Content Editor')
+                desc='Content Editor')
 
         for i in range(1, 5):
             u = user_datastore.create_user(email='test%s@localhost' % i,

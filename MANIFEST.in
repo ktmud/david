@@ -1,0 +1,7 @@
+include README.md
+include CHANGELOG.md
+include LICENSE
+include Makefile
+include requirements.txt
+recursive-include david/static/dist *
+recursive-include david/templates *.html

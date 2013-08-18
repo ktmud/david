@@ -1,6 +1,6 @@
 # coding: utf-8
 from david.core.db import db
-from david.ext.babel import gettext
+from david.ext.babel import lazy_gettext as _
 
 from flask.ext.admin import AdminIndexView
 from flask.ext.admin.contrib.sqla import ModelView
@@ -68,9 +68,9 @@ class ModelAdmin(Roled, ModelView):
         try:
             return self.model.objects.get(id=i)
         except self.model.DoesNotExist:
-            flash(gettext("Item not found %(i)s", i=i), "error")
+            flash(_("Item not found %(i)s", i=i), "error")
 
-    @action('export_to_json', gettext('Export as json'))
+    @action('export_to_json', _('Export as json'))
     def export_to_json(self, ids):
         qs = self.model.objects(id__in=ids)
 
@@ -83,7 +83,7 @@ class ModelAdmin(Roled, ModelView):
             }
         )
 
-    @action('export_to_csv', gettext('Export as csv'))
+    @action('export_to_csv', _('Export as csv'))
     def export_to_csv(self, ids):
         qs = json.loads(self.model.objects(id__in=ids).to_json())
 

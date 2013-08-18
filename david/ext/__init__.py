@@ -10,7 +10,7 @@ from flask.ext.mail import Mail
 
 from david.core.db import db
 from .admin import admin
-from .babel import babel
+from .babel import init_babel
 
 # in case we need some references via `from david.ext import mail`
 mail = Mail()
@@ -23,7 +23,7 @@ def init_app(app):
     db.init_app(app)
     mail.init_app(app)
     cache.init_app(app)
-    babel.init_app(app)
+    init_babel(app)
 
     setup_accounts_manager(app)
     admin.name = app.config.get('SITE_NAME')

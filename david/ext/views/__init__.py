@@ -3,6 +3,7 @@ import jinja2
 from flask.ext.login import current_user
 
 from david.config import HEADER_MENU, FOOTER_MENU, STATIC_ROOT, DEBUG
+from david.ext.babel import admin_gettext
 
 from .static import static_url, inline_static
 from .errorhandler import setup_errorhandler
@@ -28,6 +29,7 @@ footer_menu = Menu(FOOTER_MENU)
 
 # app level template context globals
 context_globals = {
+    '_a': admin_gettext,
     'user': current_user,
     'context': get_context,
     'header_menu': header_menu,

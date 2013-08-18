@@ -12,8 +12,8 @@ HOST = 'localhost'
 PORT = 19838
 
 
-BABEL_ACCEPT_LANGUAGE = ['zh', 'zh_tw', 'en']
-BABEL_DEFAULT_LOCALE = 'zh'
+BABEL_ACCEPT_LANGUAGE = ['zh_CN', 'zh_TW', 'en']
+BABEL_DEFAULT_LOCALE = 'zh_CN'
 BABEL_DEFAULT_TIMEZONE = 'Asia/Shanghai'
 
 SITE_DOMAIN = 'tongdawei.cc'
