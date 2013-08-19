@@ -1,5 +1,6 @@
 {% extends 'admin/master.html' %}
 {% import 'admin/lib.html' as lib with context %}
+{% import 'modules/qiniu/form.html' as qiniu with context %}
 
 {% macro extra() %}
   <input name="_continue_editing" type="submit" class="btn btn-large" value="{{ _a('Save and Continue') }}" />
@@ -12,6 +13,9 @@
 {% endblock %}
 
 {% block body %}
+    {% if model.attachments is iterable %}
+      {{ qiniu.attachment_form(model) }}
+    {% endif %}
     {% call lib.form_tag(form) %}
         {{ lib.render_form_fields(form, widget_args=form_widget_args) }}
         {{ lib.render_form_buttons(return_url, extra()) }}

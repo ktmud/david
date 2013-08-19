@@ -1,0 +1,78 @@
+{%- macro custom_fields(fields) -%}
+  {% for k, v in fields.items() %}
+    <input name="x:{{ k }} " type="hidden" value="{{ v }}">
+  {% endfor %}
+{%- endmacro -%}
+
+
+{%- macro upload_form_tag(form) -%}
+  <form class="attachment-form" method="post" action="/api/qiniu/upload/" enctype="multipart/form-data">
+    {{ caller () }}
+  </form>
+{%- endmacro -%}
+
+{%- macro attachment_form(model) -%}
+  {% call upload_form_tag() %}
+    {{ uploaded_items(model.attachment_objs) }}
+    {{ custom_fields({ 'owner_id': model.id, 'owner_kind': model.kind }) }}
+    {{ upload_buttons() }}
+  {% endcall %}
+{%- endmacro -%}
+
+{%- macro form_fields(form) -%}
+    {{ custom_fields(form.extra) }}
+{%- endmacro -%}
+
+
+{%- macro uploaded_items(items) -%}
+{% if items %}
+  {% for fileobj in items %}
+  <div class="row">
+    <div class="col col-4 thumb">
+      {% if fileobj.is_image %}
+        <img class="img-rounded" src="{{ fileobj.url }}" alt="" />
+      {% endif %}
+      <div class="title">
+        {{ fileobj.title or fileobj.key }}
+      </div>
+    </div>
+    <div class="col-8 detail">
+      <textarea id="" name="file-{{ fileobj.id }}-desc" rows="10" cols="30">{{ fileobj.desc }}</textarea>
+    </div>
+  </div>
+  {% endfor %}
+{% else %}
+  <div class="alert">
+    {{ _('No files uploaded yet.') }}
+  </div>
+{% endif %}
+{%- endmacro -%}
+
+
+{%- macro upload_buttons() -%}
+<div class="control-group">
+  <!-- The fileinput-button span is used to style the file input field as button -->
+  <span class="btn btn-success fileinput-button">
+    <i class="icon-plus icon-white"></i>
+    <span>{{ _('Add files...') }}</span>
+    <input type="file" name="files[]" multiple>
+  </span>
+  <button type="submit" class="btn btn-primary start">
+    <i class="icon-upload icon-white"></i>
+    <span>{{ _('Start upload') }}</span>
+  </button>
+  <button type="reset" class="btn btn-warning cancel">
+    <i class="icon-ban-circle icon-white"></i>
+    <span>{{ _('Cancel upload') }}</span>
+  </button>
+  <button type="button" class="btn btn-danger delete">
+    <i class="icon-trash icon-white"></i>
+    <span>{{ _('Delete') }}</span>
+  </button>
+  <input type="checkbox" class="toggle">
+  <!-- The loading indicator is shown during file processing -->
+  <span class="fileupload-loading"></span>
+</div>
+{%- endmacro -%}
+
+

@@ -60,7 +60,7 @@ class PropsMixin(object):
     def get_props_item(self, key, default=None):
         return self.props.get(key, default)
 
-    def update_props(self, data):
+    def update_props(self, **data):
         props = self.props
         props.update(data)
         self.props = props

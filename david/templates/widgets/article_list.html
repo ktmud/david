@@ -1,0 +1,14 @@
+{%- macro article_list(items, cls='', item_cls='') -%}
+{% if items %}
+<ul class="{{ cls }}">
+  {% for item in items %}
+  <li class="{{ item_cls }}">
+    <a class="pic" class="{{ item.url() }}>
+      <img src="{{ item.picture_url() }}" alt="" />
+    </a>
+    <h3><a href="{{ item.url() }}">{{ item.text }}</a></h3>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+{%- endmacro -%}

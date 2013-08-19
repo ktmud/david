@@ -1,0 +1,20 @@
+
+{%- macro filefields(form) -%}
+    
+{%- endmacro -%}
+
+
+{%- macro form_fields(form) -%}
+{%- endmacro -%}
+
+
+{%- macro form_buttons() -%}
+{%- endmacro -%}
+
+
+{%- macro uploader(model) -%}
+    <form action="" method="POST" class="form-horizontal" enctype="multipart/form-data">
+        {{ caller() }}
+    </form>
+{%- endmacro -%}
+

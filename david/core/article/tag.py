@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from david.core.db import db, orm, func
 
+K_TAG = 2
+
 tags_table = db.Table('article_tags',
     db.Column('tag_id', db.Integer, db.ForeignKey('tag.id')),
     db.Column('article_id', db.Integer, db.ForeignKey('article.id'))

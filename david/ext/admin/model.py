@@ -54,7 +54,6 @@ class Roled(object):
             return self.render("admin/denied.html")
 
 
-
 class CatFiltered(object):
     """ This view's get_list will be filter by model's cat_id attribute """
 

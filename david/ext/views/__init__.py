@@ -6,8 +6,22 @@ from david.config import HEADER_MENU, FOOTER_MENU, STATIC_ROOT, DEBUG
 from david.ext.babel import admin_gettext
 
 from .static import static_url, inline_static
-from .errorhandler import setup_errorhandler
 from .menu import Menu
+from .errorhandler import setup_errorhandler
+from .accounts import setup_accounts_manager
+
+
+def setup(app):
+    setup_accounts_manager(app)
+    setup_errorhandler(app)
+
+    @app.context_processor
+    def inject_app_contexts():
+        return context_globals
+
+    for k, v in template_filters.items():
+        app.jinja_env.filters[k] = v
+
 
 
 def register_views(app, *view_modules):

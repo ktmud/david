@@ -2,7 +2,7 @@
 venv
 npm-debug.log
 node_modules
-*/static/dist/
-*/static/bower_componnents/
+*/static/dist
+*/static/bower_components
 *hash.json
 *.bak
