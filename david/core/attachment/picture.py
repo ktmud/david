@@ -17,10 +17,9 @@ class PictureMixin(AttachmentMixin):
             return Attachment.get(self.picture_id)
 
     def picture_url(self, default=True, category='small'):
-        if self.attachments:
-            pic = self.picture
-            if pic:
-                return pic.url(category)
+        pic = self.picture
+        if pic:
+            return pic.url(category)
         if not default or not self._DEFAULT_PIC:
             return None
         if '%s' in self._DEFAULT_PIC:

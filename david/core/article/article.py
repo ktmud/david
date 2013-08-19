@@ -46,7 +46,7 @@ class Article(db.Model, PictureMixin):
         return str(self.slug or self.id)
 
     def url(self):
-        return '/article/%s' + self.uid
+        return '/%s/%s' % (self.cat_name, self.uid)
 
     @orm.reconstructor
     def init_on_load(self, *kwargs):
