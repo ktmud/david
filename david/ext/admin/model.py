@@ -1,5 +1,5 @@
 # coding: utf-8
-from david.core.db import db, func
+from david.core.db import db, func, sql
 from david.ext.babel import lazy_gettext as _
 
 from flask.ext.admin import AdminIndexView
@@ -54,19 +54,6 @@ class Roled(object):
             return self.render("admin/denied.html")
 
 
-class CatFiltered(object):
-    """ This view's get_list will be filter by model's cat_id attribute """
-
-    def get_query(self):
-        return self.session.query(self.model)\
-                           .filter(self.model.cat_id == self.model._cat_id)
-
-    def get_count_query(self):
-        return self.session.query(func.count('*'))\
-                           .select_from(self.model)\
-                           .filter(self.model.cat_id == self.model._cat_id)
-
-
 
 def bind_hidden_field(form, name, value):
     field = fields.HiddenField()
@@ -83,6 +70,14 @@ class ModelAdmin(Roled, ModelView):
             endpoint = url + '.admin'
         super(ModelAdmin, self).__init__(model, db.session, name=name,
                 endpoint=endpoint, url=url, **kwargs)
+
+
+    def get_query(self):
+        return self.model.query
+
+    def get_count_query(self):
+        col = sql.func.count(sql.literal_column('*'))
+        return self.model.query.from_self(col)
 
     def create_model(self, form):
         # override the create to add `cat_id` and `owner_id` field field value

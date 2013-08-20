@@ -2,7 +2,7 @@
 from datetime import datetime
 
 from david.ext.babel import lazy_gettext
-from david.core.db import db, orm, func
+from david.core.db import db, orm, func, CatLimitedQuery
 from david.core.accounts import User
 from david.core.attachment.picture import PictureMixin
 from david.lib.utils import truncate, striptags
@@ -16,9 +16,9 @@ K_ARTICLE = 1
 C_COMMON = 0
 
 class Article(db.Model, PictureMixin):
-    kind = K_ARTICLE,
+    kind = K_ARTICLE
     id = db.Column(db.Integer, primary_key=True)
-    _cat_id = db.Column('cat', db.Integer, index=True, nullable=False)
+    _cat_id = db.Column('cat', db.SmallInteger, index=True, nullable=False)
     title = db.Column(db.Text(200), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
     slug = db.Column(db.String(120), index=True, unique=True)
@@ -26,13 +26,20 @@ class Article(db.Model, PictureMixin):
     content = db.Column(db.Text(), default='')
     create_at = db.Column(db.DateTime, default=func.now())
     update_at = db.Column(db.DateTime, default=func.now(), onupdate=func.utc_timestamp())
+    deleted = db.Column(db.Boolean, default=False)
+    sticking = db.Column(db.Boolean, default=False)
     tags = db.relationship('Tag', secondary=tags_table,
                     backref=db.backref('articles', lazy='dynamic'))
 
     _DEFAULT_PIC = ARTICLE_DEFAULT_PIC
 
-    cat_id = C_COMMON
+    @property
+    def cat_id(self):
+        return self._cat_id
+
     cat_name = 'article'
+
+    query_class = CatLimitedQuery
 
     @property
     def catname(self):
