@@ -71,13 +71,14 @@ class ModelAdmin(Roled, ModelView):
         super(ModelAdmin, self).__init__(model, db.session, name=name,
                 endpoint=endpoint, url=url, **kwargs)
 
-
     def get_query(self):
         return self.model.query
 
     def get_count_query(self):
-        col = sql.func.count(sql.literal_column('*'))
-        return self.model.query.from_self(col)
+        query = self.session.query(func.count('*')).select_from(self.model)
+        if self.model.cat_id:
+            query = query.filter(self.model.cat_id == self.model._cat_id)
+        return query
 
     def create_model(self, form):
         # override the create to add `cat_id` and `owner_id` field field value

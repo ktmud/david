@@ -6,7 +6,7 @@
 {% block main %}
 <div class="mod sinked">
   <h2>News</h2>
-  {{ piced_list(news_entries) }}
+  {{ piced_list(news_entries, 'news-list') }}
   {{ pagination(start, limit, total) }}
 </div>
 {% endblock %}

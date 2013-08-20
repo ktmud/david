@@ -6,10 +6,12 @@
     <a class="pic" href="{{ item.url() }}"">
       <img src="{{ item.picture_url() }}" alt="" />
     </a>
-    <h3><a href="{{ item.url() }}">{{ item.title }}</a></h3>
-    <p class="summary">
-      {{ item.abstract() }}
-    </p>
+    <div class="detail">
+      <h3><a href="{{ item.url() }}">{{ item.title }}</a></h3>
+      <p class="summary">
+        {{ item.abstract() }}
+      </p>
+    </div>
   </li>
   {% endfor %}
 </ul>

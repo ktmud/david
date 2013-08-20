@@ -105,6 +105,7 @@ module.exports = function(grunt) {
           paths: ['./styl', './'],
           urlfunc: 'embedurl',
           import: [
+            'nib',
             'base/feel',
           ],
         },

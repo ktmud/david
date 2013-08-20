@@ -7,7 +7,7 @@ dpyc:
 init_db:
 	@python tools/init_db.py
 
-add_test_data: init_db
+fillup: init_db
 	@python tools/add_test_data.py
 
 g:

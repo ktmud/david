@@ -45,8 +45,8 @@ class Article(db.Model, PictureMixin):
     def catname(self):
         return lazy_gettext(self.cat_name)
 
-    def abstract(self):
-        return truncate(self.summary.strip() or striptags(self.content).strip(), 255)
+    def abstract(self, limit=140):
+        return truncate(self.summary.strip() or striptags(self.content).strip(), limit)
 
     @property
     def uid(self):

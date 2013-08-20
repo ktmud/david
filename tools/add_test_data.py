@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import os
+
 from david.core.db import db
 from david.core.accounts import user_datastore, User
 from david.core.article import CATS
@@ -6,7 +8,10 @@ from david import app
 
 from flask.ext.security.utils import encrypt_password
 
+TOOLS_FOLER = os.path.dirname(__file__)
+
 def add_test_users():
+    print 'Init users...'
     with app.test_client() as c:
         # send a fake request, so `current_app` can be the app
         rv = c.get('/')
@@ -28,21 +33,28 @@ def add_test_users():
         user_datastore.add_role_to_user(u, role_editor)
 
         db.session.commit()
+    print 'Done.'
+    print
 
 def add_test_articles():
+    print 'Creating articles...'
     with app.test_client() as c:
         # send a fake request, so `current_app` can be the app
         rv = c.get('/')
 
+        lorem = open(TOOLS_FOLER + '/data/loremipsum.txt').read()
+
         for cat, model in CATS.items():
             for i in range(5):
                 article = model()
-                article._cat_id = article.cat_id
+                article._cat_id = cat
                 article.title = '%s 测试文章 - %s' % (article.cat_name, i + 1)
-                article.content = '这段文字很难搞呢'
+                article.content = lorem
                 article.owner_id = User.query.first().id
                 db.session.add(article)
         db.session.commit()
+    print 'Done.'
+    print
 
 
 if __name__ == '__main__':
