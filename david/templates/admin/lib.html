@@ -77,8 +77,8 @@
 {# ---------------------- Forms -------------------------- #}
 {% macro render_field(form, field, set_focus=False, kwargs={}) %}
   {% set direct_error = h.is_field_error(field.errors) %}
-  <div class="control-group{{ ' error' if direct_error else '' }}">
-    <div class="control-label">
+  <div class="form-group{{ ' error' if direct_error else '' }}">
+    <div class="col-lg-2 control-label">
       {{ field.label.text }}
       {% if h.is_required_form_field(field) %}
         <strong style="color: red">&#42;</strong>
@@ -86,12 +86,12 @@
         &nbsp;
       {% endif %}
     </div>
-    <div class="controls">
+    <div class="col-lg-10">
     <div>
       {% if set_focus %}
-      {{ field(autofocus='autofocus', **kwargs)|safe }}
+      {{ field(autofocus='autofocus', class="form-control", **kwargs)|safe }}
       {% else %}
-      {{ field(**kwargs)|safe }}
+      {{ field(class="form-control", **kwargs)|safe }}
       {% endif %}
     </div>
     {% if field.description %}
@@ -132,8 +132,9 @@
 {% endmacro %}
 
 {% macro render_form_buttons(cancel_url, extra=None) %}
-    <div class="control-group">
-      <div class="controls">
+    <div class="form-group">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-10">
         <input type="submit" class="btn btn-primary btn-large" value="{{ _a('Submit') }}" />
         {% if extra %}
         {{ extra }}

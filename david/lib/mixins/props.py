@@ -16,7 +16,7 @@ mc = get_redis_cache()
 class PropsMixin(object):
 
     def get_uuid(self):
-        return '%s:%s' % (self.__class__.__name__, self.id)
+        return '%s:%s' % (self.__tablename__, self.id)
 
     @property
     def _props_name(self):
@@ -82,6 +82,8 @@ class PropsItem(object):
                 )
 
     def __get__(self, obj, objtype):
+        if obj is None:
+            return
         r = obj.get_props_item(self.name, None)
         if r is None:
             if self.mutable_default_value:

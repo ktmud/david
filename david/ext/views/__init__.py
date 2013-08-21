@@ -44,6 +44,7 @@ footer_menu = Menu(FOOTER_MENU)
 # app level template context globals
 context_globals = {
     '_a': admin_gettext,
+    'dir': dir,
     'user': current_user,
     'context': get_context,
     'header_menu': header_menu,

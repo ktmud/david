@@ -9,13 +9,16 @@ from .admin import admin
 
 def load_module(app, name):
     package = 'david.modules.%s' % name
-    mod = __import__(package, fromlist=['admin', 'bp', 'setup'])
+    mod = __import__(package, fromlist=['admin', 'bp', 'setup', 'view'])
 
     # register module bp and setup
     register_views(app, mod)
 
+    if hasattr(mod, 'view'):
+        register_views(app, mod.view)
+
     # register admin view
-    if hasattr(mod, 'admin'):
+    if hasattr(mod, 'admin') and hasattr(mod.admin, 'views'):
         admin_views = [admin.add_view(v) for v in mod.admin.views]
 
 def load_modules(app):

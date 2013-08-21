@@ -5,6 +5,5 @@ from .article import add_cat, CATS
 
 from david.core.mapper import add_kind
 
-
 add_kind(K_ARTICLE, Article)
 add_kind(K_TAG, Tag)

@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% from 'modules/works/widgets/work_list.html' import poster_list %}
+
+
+{% block main %}
+<div class="mod sinked">
+  <div class="hd">
+    <h2>电影作品</h2>
+    <ul class="nav-tabs">
+    </ul>
+  </div>
+  <div class="bd">
+    {{ poster_list(items) }}
+  </div>
+</div>
+{% endblock %}
+
+
+

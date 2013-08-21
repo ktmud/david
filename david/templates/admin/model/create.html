@@ -23,10 +23,15 @@
 
   {% call lib.form_tag(form) %}
       {{ lib.render_form_fields(form, widget_args=form_widget_args) }}
-      {% if admin_view.model.attachments is iterable %}
-        <div class="alert">
-          {{ _('Add attachments after created.') }}
+      {% if admin_view.has_attachments() %}
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-10">
+          <div class="alert alert-info">
+            {{ _('Add attachments after created.') }}
+          </div>
         </div>
+      </div>
       {% endif %}
       {{ lib.render_form_buttons(return_url, extra()) }}
   {% endcall %}

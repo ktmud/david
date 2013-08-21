@@ -9,8 +9,8 @@ class CatLimitedQuery(BaseQuery):
         super(CatLimitedQuery, self).__init__(*args, **kwargs)
         cls = self._entities[0].type
         # only apply filter to cat_id defined
-        if cls.cat_id:
-            filtered = self.filter(cls._cat_id==cls.cat_id)
+        if hasattr(cls, 'cat'):
+            filtered = self.filter(cls.cat==cls.cat_id)
             self._criterion = filtered._criterion
 
 db = SQLAlchemy()

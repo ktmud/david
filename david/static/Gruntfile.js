@@ -74,7 +74,7 @@ module.exports = function(grunt) {
     },
     includes: {
       options: {
-        includeRegexp: /^\s*(?:\/\/|\/\*)?\s*[\@\#]*(?:include|import)\s+[\"\'\(]*([^\"\'\)]+)[\"\'\)]*\;?\s*(?:\*\/)?$/,
+        includeRegexp: /^\s*(?:\/\/|\/\*)?\s*[\@\#]*(?:include|import)\s+[\"\'\(]*([^\"\'\)]+?)[\"\'\)]*\;?\s*(?:\*\/)?$/,
         duplicates: false,
       },
       js: {

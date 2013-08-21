@@ -37,6 +37,10 @@ class User(db.Model, UserMixin, PropsMixin):
     locale = PropsItem('locale', BABEL_DEFAULT_LOCALE)
     timezone = PropsItem('timezone', BABEL_DEFAULT_TIMEZONE)
 
+    @property
+    def display_name(self):
+        return self.name or self.id
+
 Account = User
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)

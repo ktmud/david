@@ -7,7 +7,7 @@ from david.core.accounts import User
 from david.core.attachment.picture import PictureMixin
 from david.lib.utils import truncate, striptags
 
-from david.config import ARTICLE_DEFAULT_PIC
+from david.config import ARTICLE_DEFAULT_PIC, SITE_ROOT
 
 from .tag import tags_table, Tag
 
@@ -18,11 +18,11 @@ C_COMMON = 0
 class Article(db.Model, PictureMixin):
     kind = K_ARTICLE
     id = db.Column(db.Integer, primary_key=True)
-    _cat_id = db.Column('cat', db.SmallInteger, index=True, nullable=False)
-    title = db.Column(db.Text(200), nullable=False)
+    cat = db.Column('cat', db.SmallInteger, index=True, nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
-    slug = db.Column(db.String(120), index=True, unique=True)
-    summary = db.Column(db.Text(400), default='')
+    title = db.Column(db.String(255), nullable=False)
+    slug = db.Column(db.String(255), index=True, unique=True)
+    summary = db.Column(db.String(800), default='')
     content = db.Column(db.Text(), default='')
     create_at = db.Column(db.DateTime, default=func.now())
     update_at = db.Column(db.DateTime, default=func.now(), onupdate=func.utc_timestamp())
@@ -35,7 +35,7 @@ class Article(db.Model, PictureMixin):
 
     @property
     def cat_id(self):
-        return self._cat_id
+        return self.cat
 
     cat_name = 'article'
 
@@ -53,7 +53,7 @@ class Article(db.Model, PictureMixin):
         return str(self.slug or self.id)
 
     def url(self):
-        return '/%s/%s' % (self.cat_name, self.uid)
+        return '%s%s/%s' % (SITE_ROOT, self.cat_name, self.uid)
 
     @orm.reconstructor
     def init_on_load(self, *kwargs):

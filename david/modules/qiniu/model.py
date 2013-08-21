@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-import qiniu
+import qiniu.conf
+import qiniu.rs
+import qiniu.io
 
 from david.ext.filestore import FileStore 
 from david.config import QINIU_AK, QINIU_SK, QINIU_BUCKET, QINIU_ROOT
@@ -13,7 +15,7 @@ qiniu.conf.ACCESS_KEY = QINIU_AK
 qiniu.conf.SECRET_KEY = QINIU_SK
 
 
-class QiniuPutPolicy(qiniu.rs.PutPolicy)
+class QiniuPutPolicy(qiniu.rs.PutPolicy):
     callbackUrl = SITE_ROOT + '/api/qiniu/callback'
     callbackBody = 'owner_type=$(x:owner_type)&owner_id=$(x:owner_id)&key=$(etag)&size=$(fsize)&uid=$(endUser)'
 

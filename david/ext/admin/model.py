@@ -71,19 +71,23 @@ class ModelAdmin(Roled, ModelView):
         super(ModelAdmin, self).__init__(model, db.session, name=name,
                 endpoint=endpoint, url=url, **kwargs)
 
+    
+    def has_attachments(self):
+        return hasattr(self.model, 'attachments')
+
     def get_query(self):
         return self.model.query
 
     def get_count_query(self):
         query = self.session.query(func.count('*')).select_from(self.model)
-        if self.model.cat_id:
-            query = query.filter(self.model.cat_id == self.model._cat_id)
+        if hasattr(self.model, 'cat_id'):
+            query = query.filter(self.model.cat_id == self.model.cat)
         return query
 
     def create_model(self, form):
         # override the create to add `cat_id` and `owner_id` field field value
         if hasattr(self.model, 'cat_id') and isinstance(self.model.cat_id, int):
-            bind_hidden_field(form, '_cat_id', self.model.cat_id)
+            bind_hidden_field(form, 'cat', self.model.cat_id)
         if hasattr(self.model, 'owner_id'):
             bind_hidden_field(form, 'owner_id', current_user.id)
         return super(ModelAdmin, self).create_model(form)

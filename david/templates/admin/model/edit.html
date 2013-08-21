@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block body %}
-    {% if model.attachments is iterable %}
+    {% if model.attachments is defined %}
       {{ qiniu.attachment_form(model) }}
     {% endif %}
     {% call lib.form_tag(form) %}
