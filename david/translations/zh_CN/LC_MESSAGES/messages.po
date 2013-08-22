@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-08-18 15:39+0800\n"
+"POT-Creation-Date: 2013-08-22 08:58+0800\n"
 "PO-Revision-Date: 2013-08-18 14:32+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgstr "创建日期"
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:15
 msgid "Update at"
-msgstr "创建日期"
+msgstr "最近更新"
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:16
 msgid "Summary"
@@ -58,27 +58,59 @@ msgid "Name"
 msgstr "名称"
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:30
+#: /Users/jesse/projects/tongdawei/david/core/attachment/admin.py:9
 msgid "Description"
 msgstr "描述"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:34
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:35
 msgid "Tag"
 msgstr "标签"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/article.py:15
-msgid "article"
-msgstr "文章"
+#: /Users/jesse/projects/tongdawei/david/core/attachment/admin.py:8
+msgid "Choose File"
+msgstr ""
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:71
+#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:104
 #, python-format
 msgid "Item not found %(i)s"
 msgstr ""
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:73
+#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:106
 msgid "Export as json"
 msgstr "输出为json"
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:86
+#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:119
 msgid "Export as csv"
 msgstr "输出为csv"
+
+#: /Users/jesse/projects/tongdawei/david/templates/admin/model/create.html:31
+msgid "Add attachments after created."
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:46
+msgid "No files uploaded yet."
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:57
+msgid "Add files..."
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:62
+msgid "Start upload"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:66
+msgid "Cancel upload"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:70
+msgid "Delete"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/security/login_user.html:10
+msgid "Login"
+msgstr ""
+
+#~ msgid "article"
+#~ msgstr "文章"
 

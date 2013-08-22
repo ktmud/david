@@ -31,7 +31,7 @@ QINIU_SK = ''
 QINIU_BUCKET = 'david'
 QINIU_ROOT = 'http://%s.qiniu.com/' % QINIU_BUCKET
 
-ARTICLE_DEFAULT_PIC = STATIC_ROOT + 'pics/default_article.png'
+ARTICLE_DEFAULT_PIC = STATIC_ROOT + 'img/default_article.png'
 
 SECURITY_EMAIL_SUBJECT_REGISTER = '欢迎加入%s(%s)' % (SITE_NAME, SITE_DOMAIN)
 SECURITY_EMAIL_SUBJECT_PASSWORDLESS = '你在%s的登录信息' % SITE_NAME

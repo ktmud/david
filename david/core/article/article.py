@@ -2,7 +2,7 @@
 from datetime import datetime
 
 from david.ext.babel import lazy_gettext
-from david.core.db import db, orm, func, CatLimitedQuery
+from david.core.db import db, orm, func, CatLimitedQuery, UidMixin
 from david.core.accounts import User
 from david.core.attachment.picture import PictureMixin
 from david.lib.utils import truncate, striptags
@@ -15,7 +15,7 @@ from .tag import tags_table, Tag
 K_ARTICLE = 1
 C_COMMON = 0
 
-class Article(db.Model, PictureMixin):
+class Article(db.Model, UidMixin, PictureMixin):
     kind = K_ARTICLE
     id = db.Column(db.Integer, primary_key=True)
     cat = db.Column('cat', db.SmallInteger, index=True, nullable=False)

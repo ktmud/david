@@ -61,7 +61,8 @@ def bind_hidden_field(form, name, value):
     field.data = value
     form._fields[name] = field
 
-class ModelAdmin(Roled, ModelView):
+
+class ModelAdmin(Proped, Roled, ModelView):
 
     def __init__(self, model, name=None, endpoint=None, url=None, **kwargs):
         if url is None:
@@ -77,11 +78,16 @@ class ModelAdmin(Roled, ModelView):
 
     def get_query(self):
         return self.model.query
+        #query = self.session.query(self.model)
+        #if hasattr(self.model, 'cat_id'):
+            #query = query.filter(self.model.cat_id == self.model.cat)
+        #return query
 
     def get_count_query(self):
-        query = self.session.query(func.count('*')).select_from(self.model)
-        if hasattr(self.model, 'cat_id'):
-            query = query.filter(self.model.cat_id == self.model.cat)
+        model = self.model
+        query = self.session.query(func.count('*')).select_from(model)
+        if hasattr(model, 'cat') and isinstance(model.cat_id, int):
+            query = query.filter(model.cat_id == model.cat)
         return query
 
     def create_model(self, form):

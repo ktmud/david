@@ -1,4 +1,4 @@
-{% extends 'admin/master.html' %}
+{% extends 'admin/layout.asided.html' %}
 {% import 'admin/lib.html' as lib with context %}
 
 {% macro extra() %}
@@ -11,7 +11,7 @@
     <link href="{{ url_for('admin.static', filename='datepicker/bootstrap-datepicker.css') }}" rel="stylesheet">
 {% endblock %}
 
-{% block body %}
+{% block navtabs %}
   <ul class="nav nav-tabs">
       <li>
           <a href="{{ return_url }}">{{ _a('List') }}</a>
@@ -20,7 +20,10 @@
           <a href="javascript:void(0)">{{ _a('Create') }}</a>
       </li>
 	</ul>
+{% endblock %}
 
+
+{% block article %}
   {% call lib.form_tag(form) %}
       {{ lib.render_form_fields(form, widget_args=form_widget_args) }}
       {% if admin_view.has_attachments() %}

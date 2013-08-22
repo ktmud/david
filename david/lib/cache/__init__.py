@@ -24,7 +24,12 @@ class CacheDict(dict):
         self._lc.set(name, self._raw)
 
     def __getattr__(self, name):
-        return getattr(self._raw, name)
+        if hasattr(self, '_raw'):
+            return getattr(self._raw, name)
+        raise AttributeError('No such attribute: %s' % name)
+
+    def __getstate__(self):
+        return self._raw
 
 def lcdict(item, name, lc=lc):
     return CacheDict(item, name, lc)
@@ -33,7 +38,26 @@ def lcdict(item, name, lc=lc):
 
 redis_client =  redis.StrictRedis(**REDIS_SERVER)
 
+
+class StrictRedisCache(RedisCache):
+
+    def set(self, key, value, timeout=None):
+        if timeout is None:
+            timeout = self.default_timeout
+        dump = self.dump_object(value)
+        if timeout:
+            self._client.setex(self.key_prefix + key, timeout, dump)
+        else:
+            self._client.set(self.key_prefix + key, dump)
+
+
+
 def get_redis_cache(*args, **kwargs):
-    return RedisCache(host=redis_client, key_prefix=REDIS_KEY_PREFIX)
+    kwargs['key_prefix'] = kwargs.get('key_prefix', REDIS_KEY_PREFIX)
+    # redis cache doesn't support strict client
+    kwargs['host'] = kwargs.get('host', redis_client)
+    return StrictRedisCache(**kwargs)
+
+
 
 globals().update(create_decorators(redis_client))

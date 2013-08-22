@@ -3,6 +3,9 @@ from flask.ext.sqlalchemy import SQLAlchemy, BaseQuery
 from sqlalchemy import orm, func, sql
 
 
+db = SQLAlchemy()
+
+
 class CatLimitedQuery(BaseQuery):
 
     def __init__(self, *args, **kwargs):
@@ -13,4 +16,25 @@ class CatLimitedQuery(BaseQuery):
             filtered = self.filter(cls.cat==cls.cat_id)
             self._criterion = filtered._criterion
 
-db = SQLAlchemy()
+
+
+class UidMixin(object):
+
+    uid = db.Column('uid', db.String(60), index=True, unique=True)
+
+    @property
+    def slug(self):
+        return self.uid or self.id
+    
+    @classmethod
+    def get(cls, ident):
+        ident = str(ident)
+        if ident.isdigit():
+            return cls.query.filter(cls.id == int(ident)).one()
+        else:
+            return cls.query.filter(cls.uid == ident).one()
+
+    @classmethod
+    def gets(cls, idents):
+        return [cls.get(i) for i in idents]
+

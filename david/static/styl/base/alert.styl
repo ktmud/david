@@ -7,13 +7,17 @@ alert_mixin(base_color)
     color: darken(base_color, 5%)
     font-weight: 600
 
-
 .alert
   border: 1px solid;
   padding: 20px;
-  border-radius: 2px;
+  border-radius(3px);
   alert_mixin(color_alert)
 
-.alert-danger
+.alert-danger, .alert-error
   alert_mixin(color_danger)
+
+.alert-small
+  padding: 5px
+  p
+    margin: 0.5em
 

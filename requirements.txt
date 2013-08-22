@@ -17,7 +17,7 @@ Flask-Testing
 Flask-Cache
 Flask-DebugToolbar
 Flask-Uploads
-##https://github.com/mrjoes/flask-admin/tarball/master
+https://github.com/mrjoes/flask-admin/tarball/master
 ##https://github.com/mrjoes/flask-babelex/tarball/master
 WTForms
 passlib

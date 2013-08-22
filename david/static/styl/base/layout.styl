@@ -2,7 +2,7 @@ html, body
   height: 100%
 
 body
-  background: #fbfbfb url(../img/bg-main.jpg) no-repeat 50% 0
+  //background: #fbfbfb url(../img/bg-main.jpg) no-repeat 50% 0
   max-height: 1235px
   overflow: hidden
   background-size(cover)
@@ -72,7 +72,29 @@ body
 
 #main
   min-height: 200px
+  margin-bottom: 20px
 
+.article
+  padding-right: 30px;
+
+.mod
+  background: bg_color
+  color: text_color
+  padding: mod_padding
+  font-family: font_serif
+  h2
+    font-size: 20px
+    font-weight: normal
+    font-style: italic
+    margin: 0 0 20px
+    padding: 5px 5px 6px
+    border-bottom: 1px solid color_primary
+.light-mod
+  background: light_bg_color
+  padding: mod_padding
+.sinked
+  margin: 220px 0 20px auto
+  max-width: 560px
 
 .big-alert
   margin: 100px 0 100px auto
@@ -85,18 +107,8 @@ body
   color: #fff
 
 
-.mod
-  background: bg_color
-  color: text_color
-  padding: 15px
-  font-family: font_serif
-  h2
-    font-size: 20px
-    font-weight: normal
-    font-style: italic
-    margin: 0 0 20px
-    padding: 5px 5px 6px
-    border-bottom: 1px solid color_primary
-.sinked
-  margin: 250px 0 20px auto
-  max-width: 560px
+.no-result
+  padding: 40px
+  color: light_color
+  font-style: italic
+

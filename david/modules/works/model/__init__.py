@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from david.core.mapper import add_kind
 
-from .work import K_WORK, BaseWork
+from .work import K_WORK, Work as BaseWork
 from .movie import C_MOVIE, Movie
 from .tv import C_TV, TV
 from .music import C_MUSIC, Music

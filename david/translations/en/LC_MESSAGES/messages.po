@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-08-18 15:39+0800\n"
+"POT-Creation-Date: 2013-08-22 08:58+0800\n"
 "PO-Revision-Date: 2013-08-18 08:17+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: en <LL@li.org>\n"
@@ -58,28 +58,57 @@ msgid "Name"
 msgstr ""
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:30
+#: /Users/jesse/projects/tongdawei/david/core/attachment/admin.py:9
 msgid "Description"
 msgstr ""
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:34
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:35
 msgid "Tag"
 msgstr ""
 
-#: /Users/jesse/projects/tongdawei/david/core/article/article.py:15
-msgid "article"
+#: /Users/jesse/projects/tongdawei/david/core/attachment/admin.py:8
+msgid "Choose File"
 msgstr ""
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:71
+#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:104
 #, python-format
 msgid "Item not found %(i)s"
 msgstr ""
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:73
+#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:106
 msgid "Export as json"
 msgstr ""
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:86
+#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:119
 msgid "Export as csv"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/admin/model/create.html:31
+msgid "Add attachments after created."
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:46
+msgid "No files uploaded yet."
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:57
+msgid "Add files..."
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:62
+msgid "Start upload"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:66
+msgid "Cancel upload"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:70
+msgid "Delete"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/security/login_user.html:10
+msgid "Login"
 msgstr ""
 
 #~ msgid "With selected"
@@ -152,5 +181,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Please select at least one model."
+#~ msgstr ""
+
+#~ msgid "article"
 #~ msgstr ""
 

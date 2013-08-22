@@ -1,8 +1,7 @@
 {# ---------------------- Pager -------------------------- #}
 {% macro pager(page, pages, generator) -%}
 {% if pages > 1 %}
-<div class="pagination">
-    <ul>
+<ul class="pagination">
     {% set min = page - 3 %}
     {% set max = page + 3 + 1 %}
 
@@ -20,22 +19,13 @@
         {% set max = pages %}
     {% endif %}
 
-    {% if min > 0 %}
+    {% if page > 0 %}
     <li>
-        <a href="{{ generator(0) }}">&laquo;</a>
+        <a href="{{ generator(page-1) }}">&laquo;</a>
     </li>
     {% else %}
     <li class="disabled">
         <a href="javascript:void(0)">&laquo;</a>
-    </li>
-    {% endif %}
-    {% if page > 0 %}
-    <li>
-        <a href="{{ generator(page-1) }}">&lt;</a>
-    </li>
-    {% else %}
-    <li class="disabled">
-        <a href="javascript:void(0)">&lt;</a>
     </li>
     {% endif %}
 
@@ -53,24 +43,14 @@
 
     {% if page + 1 < pages %}
     <li>
-        <a href="{{ generator(page + 1) }}">&gt;</a>
+        <a href="{{ generator(page + 1) }}">&raquo;</a>
     </li>
     {% else %}
-    <li class="disabled">
-        <a href="javascript:void(0)">&gt;</a>
-    </li>
+      <li class="disabled">
+          <a href="javascript:void(0)">&raquo;</a>
+      </li>
     {% endif %}
-    {% if max < pages %}
-    <li>
-        <a href="{{ generator(pages - 1) }}">&raquo;</a>
-    </li>
-    {% else %}
-    <li class="disabled">
-        <a href="javascript:void(0)">&raquo;</a>
-    </li>
-    {% endif %}
-    </ul>
-</div>
+</ul>
 {% endif %}
 {%- endmacro %}
 
@@ -88,10 +68,12 @@
     </div>
     <div class="col-lg-10">
     <div>
+      {% set field_cls = 'form-control' if field else '' %}
+      
       {% if set_focus %}
-      {{ field(autofocus='autofocus', class="form-control", **kwargs)|safe }}
+      {{ field(autofocus='autofocus', class=field_cls, **kwargs)|safe }}
       {% else %}
-      {{ field(class="form-control", **kwargs)|safe }}
+      {{ field(class=field_cls, **kwargs)|safe }}
       {% endif %}
     </div>
     {% if field.description %}

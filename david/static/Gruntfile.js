@@ -113,7 +113,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: './styl/',
-            src: ['base.styl'],
+            src: ['base.styl', 'admin.styl'],
             dest: './dist/css/',
             ext: '.css'
           }

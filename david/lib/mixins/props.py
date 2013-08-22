@@ -8,14 +8,17 @@ import types
 import datetime
 import copy
 
-from david.lib.cache import get_redis_cache, lc, lcdict
+from david.lib.cache import get_redis_cache, lc
 
 
-mc = get_redis_cache()
+mc = get_redis_cache(key_prefix='david.props/')
+mc.default_timeout = 0
 
 class PropsMixin(object):
 
     def get_uuid(self):
+        if not self.id:
+            raise RuntimeError('PropsMixin must have an id')
         return '%s:%s' % (self.__tablename__, self.id)
 
     @property
@@ -32,11 +35,11 @@ class PropsMixin(object):
         if props is None:
             props = mc.get(self._props_db_key) or {}
             lc.set(lc_name, props)
-        return lcdict(props, lc_name)
+        return props
 
     def _set_props(self, props):
         mc.set(self._props_db_key, props)
-        lc.delete(self._props_name, props)
+        lc.delete(self._props_name)
 
     def _destory_props(self):
         mc.delete(self._props_db_key)

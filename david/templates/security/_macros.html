@@ -1,16 +1,19 @@
 {% macro render_field_with_errors(field) %}
-  <p>
-    {{ field.label }} {{ field(**kwargs)|safe }}
+  <div class="pure-control-group">
+    {{ field.label }}
+    {{ field(**kwargs)|safe }}
     {% if field.errors %}
-      <ul>
-      {% for error in field.errors %}
-        <li>{{ error }}</li>
-      {% endfor %}
-      </ul>
+    <div class="pure-controls">
+      <div class="alert alert-small alert-danger">
+        {% for error in field.errors %}
+          <p>{{ _(error) }}</p>
+        {% endfor %}
+      </div>
+    </div>
     {% endif %}
-  </p>
+  </div>
 {% endmacro %}
 
-{% macro render_field(field) %}
-  <p>{{ field(**kwargs)|safe }}</p>
+{% macro render_field(field, class='') %}
+  <p>{{ field(class=class, **kwargs)|safe }}</p>
 {% endmacro %}
