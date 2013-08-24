@@ -94,7 +94,6 @@ def add_test_works():
                 for i in range(3):
                     pubdate -= one_month
                     obj = Work()
-                    print model.__name__
                     obj.title = '%s作品%s' % (model.__name__, i + 1)
                     obj.cat = cat
                     obj.pubdate = pubdate

@@ -3,6 +3,7 @@ from flask.ext.security import UserMixin, RoleMixin
 
 from david.config import BABEL_DEFAULT_LOCALE, BABEL_DEFAULT_TIMEZONE
 
+from david.core.mapper import add_kind
 from david.core.db import db
 from david.lib.mixins.props import PropsMixin, PropsItem
 from flask.ext.security import SQLAlchemyUserDatastore
@@ -19,7 +20,13 @@ class Role(db.Model, RoleMixin):
     name = db.Column(db.String(80), unique=True)
     desc = db.Column(db.String(255))
 
+
+
+K_USER = 100
+
 class User(db.Model, UserMixin, PropsMixin):
+    kind = K_USER
+    kins_name = 'user'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255))
@@ -44,3 +51,5 @@ class User(db.Model, UserMixin, PropsMixin):
 Account = User
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+
+add_kind(K_USER, User)

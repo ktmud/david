@@ -11,6 +11,8 @@ SECRET_KEY = 'keyboardcat'
 HOST = 'localhost'
 PORT = 19838
 
+SENTRY_DSN = None
+SENTRY_USER_ATTRS = ['name', 'email']
 
 BABEL_ACCEPT_LANGUAGE = ['zh_CN', 'zh_TW', 'en']
 BABEL_DEFAULT_LOCALE = 'zh_CN'
@@ -29,7 +31,7 @@ UPLOADS_DEFAULT_URL = None
 QINIU_AK = ''
 QINIU_SK = ''
 QINIU_BUCKET = 'david'
-QINIU_ROOT = 'http://%s.qiniu.com/' % QINIU_BUCKET
+QINIU_ROOT = 'http://%s.qiniudn.com/' % QINIU_BUCKET
 
 ARTICLE_DEFAULT_PIC = STATIC_ROOT + 'img/default_article.png'
 
@@ -42,6 +44,7 @@ SECURITY_EMAIL_SUBJECT_CONFIRM = '请确认你的登录邮箱(%s)' % (SITE_DOMAI
 #TODO: move this to database or something
 HEADER_MENU = [
     ('/', '首页'),
+    ('/admin', '登录'),
     ('/star', '明星'),
     #('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '活动'),
     ('/news/', '新闻'),

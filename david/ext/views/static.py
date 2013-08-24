@@ -11,6 +11,15 @@ def static_url(filename):
     return config['STATIC_ROOT'] + _hashed_filename(filename)
 
 
+def urlmap(*filenames):
+    ret = {}
+    for f in filenames:
+        fname = f
+        if not f.endswith('.js') and not f.endswith('.css'):
+            fname = 'js/' + f + '.js'
+        ret[f] = static_url(fname)
+    return ret
+
 def inline_static(filename):
     pass
 

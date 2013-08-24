@@ -1,3 +1,5 @@
+{% from 'modules/qiniu/list.html' import uploaded_items %}
+
 {%- macro custom_fields(fields) -%}
   {% for k, v in fields.items() %}
     <input name="x:{{ k }} " type="hidden" value="{{ v }}">
@@ -6,14 +8,26 @@
 
 
 {%- macro upload_form_tag(form) -%}
-  <form class="attachment-form" method="post" action="/api/qiniu/upload/" enctype="multipart/form-data">
+  <form class="attachment-form qiniu-upload" method="post" action="/api/qiniu/upload/" enctype="multipart/form-data">
     {{ caller () }}
   </form>
 {%- endmacro -%}
 
+{%- macro fileupload_js() -%}
+  <script type="text/javascript" src="{{ static('js/lib/jquery.fileupload.js') }}"></script>
+  <script type="text/javascript">
+    $('.qiniu-upload').fileupload({
+      dataType: 'json',
+      done: function(e, data) {
+      }
+    });
+  </script>
+{%- endmacro -%}
+
+
 {%- macro attachment_form(model) -%}
   {% call upload_form_tag() %}
-    {{ uploaded_items(model.attachment_objs) }}
+    {{ uploaded_items(model.attachment_items) }}
     {{ custom_fields({ 'owner_id': model.id, 'owner_kind': model.kind }) }}
     {{ upload_buttons() }}
   {% endcall %}
@@ -21,31 +35,6 @@
 
 {%- macro form_fields(form) -%}
     {{ custom_fields(form.extra) }}
-{%- endmacro -%}
-
-
-{%- macro uploaded_items(items) -%}
-{% if items %}
-  {% for fileobj in items %}
-  <div class="row">
-    <div class="col col-4 thumb">
-      {% if fileobj.is_image %}
-        <img class="img-rounded" src="{{ fileobj.url }}" alt="" />
-      {% endif %}
-      <div class="title">
-        {{ fileobj.title or fileobj.key }}
-      </div>
-    </div>
-    <div class="col-8 detail">
-      <textarea id="" name="file-{{ fileobj.id }}-desc" rows="10" cols="30">{{ fileobj.desc }}</textarea>
-    </div>
-  </div>
-  {% endfor %}
-{% else %}
-  <div class="alert alert-info">
-    {{ _('No files uploaded yet.') }}
-  </div>
-{% endif %}
 {%- endmacro -%}
 
 

@@ -23,3 +23,43 @@ form.icon {
   box-sizing: content-box;
 }
 
+
+.uploaded-item
+  margin-bottom: 20px
+  img
+    width: 100%
+    min-height: 40px
+  .detail
+    position: relative
+    padding-right: 30px
+  .save
+    absolute: right 0 bottom 3px
+    display: none
+  .form-control:focus + .save
+    display: inline-block
+  .remove-item
+    absolute: right 10px top 5px
+
+
+
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  filter('alpha(opacity=0)');
+  transform(translate(-300px, 0) scale(4))
+  font-size: 23px;
+  direction: ltr;
+  cursor: pointer;
+}
+
+.inline-uploader
+  .title
+    margin-bottom: 15px

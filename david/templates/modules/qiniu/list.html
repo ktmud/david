@@ -1,0 +1,18 @@
+
+{% macro uploaded_item() %}
+{% endmacro %}
+
+
+{%- macro uploaded_items(items, show_noresult=False) -%}
+{% if items %}
+  {% for item in items %}
+  {{ uploaded_item(item) }}
+  {% endfor %}
+{% elif show_noresult %}
+  <div class="alert alert-info">
+    {{ _('No files uploaded yet.') }}
+  </div>
+{% endif %}
+{%- endmacro -%}
+
+

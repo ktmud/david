@@ -13,17 +13,14 @@ class Work(BaseWork):
     def get(cls, ident):
         item = BaseWork.get(ident)
         if item:
-            return item.extended_self()
-
-    def extended_self(self):
-        return cat2type[self.cat_id](self)
+            return cat2type[item.cat_id](item)
 
 
 # Export Work kind
 add_kind(K_WORK, Work)
 
 cat2type = {
-    str(C_MOVIE): Movie,
-    str(C_TV): TV,
-    str(C_MUSIC): Music,
+    C_MOVIE: Movie,
+    C_TV: TV,
+    C_MUSIC: Music,
 }

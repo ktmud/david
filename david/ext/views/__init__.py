@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 import jinja2
+from flask import jsonify
+from flask import json
 from flask.ext.login import current_user
 
 from david.config import HEADER_MENU, FOOTER_MENU, STATIC_ROOT, DEBUG
 from david.ext.babel import admin_gettext
 
-from .static import static_url, inline_static
+from .static import static_url, inline_static, urlmap
 from .menu import Menu
 from .errorhandler import setup_errorhandler
 from .accounts import setup_accounts_manager
@@ -19,8 +21,7 @@ def setup(app):
     def inject_app_contexts():
         return context_globals
 
-    for k, v in template_filters.items():
-        app.jinja_env.filters[k] = v
+    app.jinja_env.filters.update(template_filters)
 
 
 
@@ -45,12 +46,16 @@ footer_menu = Menu(FOOTER_MENU)
 context_globals = {
     '_a': admin_gettext,
     'dir': dir,
+    'jsonify': json.htmlsafe_dumps,
     'user': current_user,
     'context': get_context,
     'header_menu': header_menu,
     'footer_menu': footer_menu,
     'static': static_url,
+    'urlmap': urlmap,
     'istatic': inline_static,
 }
-template_filters = {}
+template_filters = {
+    'json': json.htmlsafe_dumps
+}
 

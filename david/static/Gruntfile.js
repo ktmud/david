@@ -79,7 +79,7 @@ module.exports = function(grunt) {
       },
       js: {
         cwd: './js/',
-        src: '**/*.js',
+        src: ['**/*.js'],
         dest: './dist/js/'
       },
       css: {
@@ -136,6 +136,7 @@ module.exports = function(grunt) {
     hashmap: {
       options: {
         output: './dist/hash.json',
+        rename: false,
         merge: true,
       },
       source_hash: {
@@ -161,7 +162,7 @@ module.exports = function(grunt) {
     },
     watch: {
       js: {
-        files: ['./js/**/*.js'],
+        files: ['./js/**/*.js', './bower_components/**/*.js'],
         tasks: ['dist_js']
       }, 
       css: {
@@ -212,7 +213,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('wrapper', 'Wrap things up.', function() {
     var opts = this.options({
       head: 'require.register("<%= path %>", function(exports, require, module) {\n',
-      nowrap: /(\@\@nowrap|require\.register)/,
+      nowrap: /(\@nowrap|require\.register)/,
       wrap: null,
       tail: '\n}); require.alias("<%= path %>", "<%= filename %>");'
     });
@@ -239,7 +240,7 @@ module.exports = function(grunt) {
 
         p = cwd ? path.join(cwd, p) : p;
 
-        var data = { path: save_name, fullpath: p, filename: path.basename(p) };
+        var data = { path: save_name, fullpath: p, filename: path.basename(p, '.js') };
         grunt.file.write(dest_file, wrap(p, opts, data));
         //grunt.log.oklns('Saved ' + dest_file);
       });
@@ -257,15 +258,20 @@ module.exports = function(grunt) {
 
       // 先看有没有表示可以 wrap 为 CommonJS 模块的标识
       if (opts.wrap && contents.search(opts.wrap) == -1) {
-        grunt.log.writeln('Wont\'t wrap "' + p + '"');
+        grunt.log.warn('skip ' + p.yellow);
         return contents;
       }
-      // 即使有标识，但是明确声明了不 wrap ，那也跳过
-      if (contents.search(opts.nowrap) !== -1) return contents;
+      // 即使有标识，但是文件里明确声明了不 wrap ，那也跳过
+      if (contents.search(opts.nowrap) !== -1) {
+        grunt.log.warn('skip ' + p.yellow);
+        return contents;
+      }
 
       var tmpl_opt = { data: data };
       var head = grunt.template.process(opts.head, tmpl_opt);
       var tail = grunt.template.process(opts.tail, tmpl_opt);
+
+      grunt.log.oklns(p.green);
 
       return head + contents + tail;
 

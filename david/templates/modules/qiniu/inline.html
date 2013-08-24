@@ -1,0 +1,70 @@
+{% from 'modules/qiniu/list.html' import uploaded_item %}
+
+
+{%- macro uploader_inline(model) -%}
+<div class="form-group inline-uploader"
+  data-owner_id="{{ model.id }}"
+  data-owner_kind="{{ model.kind }}"
+  data-uploaded="{{ jsonify(model.attachments_info) }}"
+>
+    <div class="col-lg-2 control-label">
+      {{ _('Attachments') }}
+    </div>
+    <div class="col-lg-10">
+      <div class="uploaded"></div>
+      <div class="progressall progress progress-striped active hidden">
+        <div class="progress-bar progressbar-success"></div>
+      </div>
+      <span class="btn btn-default fileinput-button">
+        <i class="icon-plus icon-white"></i>
+        <span>{{ _('Add files...') }}</span>
+        <input name="file" type="file" multiple accept="image/*" />
+      </span>
+    </div>
+  </div>
+{%- endmacro -%}
+
+
+{%- macro uploader_inline_js() -%}
+<script type="text/javascript">
+  Do.urls({{ urlmap('lib/jquery.fileupload', 'modules/qiniu/inline')|json|safe }})
+</script>
+<script type="text/template" id="tmpl-uploaded-item">
+  <div class="row uploaded-item" data-id="<%= id %>">
+    <% if (typeof failure != 'undefined') { %>
+      <div class="col col-12 col-lg-12">
+        <div class="alert alert-danger">
+        <a href="#" data-dismiss="alert" class="close">&times;</a>
+        上传<strong><%= filename %></strong>失败
+        </div>
+      </div>
+    <% } else { %>
+      <div class="col col-4 col-lg-3">
+        <div class="thumb">
+          <img class="img-thumbnail" src="<%= thumb_url %>" alt="" />
+        </div>
+      </div>
+      <div class="col col-8 col-lg-9">
+        <div class="detail">
+          <div class="title">
+            <input name="file-<%= id %>-title" type="text" class="form-control"
+            placeholder="{{ _('attachment title') }}" value="<%= title %>" />
+          </div>
+          <textarea class="form-control" name="file-<%= id %>-desc" rows="4"
+            cols="30" placeholder="{{ _('attachment description') }}"><%= desc %></textarea>
+            <a href="#" class="btn btn-success btn-xs icon save">
+              <span class="icon-ok"></span>
+            </a>
+          <a href="#" class="close remove-item">&times;</a>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</script>
+<script type="text/javascript">
+  Do('lodash', 'lib/jquery.fileupload', 'modules/qiniu/inline', function() {
+    var qiniu_inline = require('modules/qiniu/inline');
+    qiniu_inline($('.inline-uploader'));
+  });
+</script>
+{%- endmacro -%}

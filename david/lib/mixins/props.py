@@ -8,11 +8,9 @@ import types
 import datetime
 import copy
 
-from david.lib.cache import get_redis_cache, lc
+from david.lib.cache import lc
+from david.lib.store import redis_store as db
 
-
-mc = get_redis_cache(key_prefix='david.props/')
-mc.default_timeout = 0
 
 class PropsMixin(object):
 
@@ -33,16 +31,16 @@ class PropsMixin(object):
         lc_name = self._props_name
         props = lc.get(lc_name)
         if props is None:
-            props = mc.get(self._props_db_key) or {}
+            props = db.get(self._props_db_key) or {}
             lc.set(lc_name, props)
         return props
 
     def _set_props(self, props):
-        mc.set(self._props_db_key, props)
+        db.set(self._props_db_key, props)
         lc.delete(self._props_name)
 
     def _destory_props(self):
-        mc.delete(self._props_db_key)
+        db.delete(self._props_db_key)
         lc.delete(self._props_name)
 
     get_props = _get_props

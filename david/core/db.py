@@ -20,19 +20,19 @@ class CatLimitedQuery(BaseQuery):
 
 class UidMixin(object):
 
-    uid = db.Column('uid', db.String(60), index=True, unique=True)
+    uid = db.Column('uid', db.String(255), index=True, unique=True)
 
     @property
     def slug(self):
-        return self.uid or self.id
+        return str(self.uid or self.id)
     
     @classmethod
     def get(cls, ident):
         ident = str(ident)
         if ident.isdigit():
-            return cls.query.filter(cls.id == int(ident)).one()
+            return cls.query.get(int(ident))
         else:
-            return cls.query.filter(cls.uid == ident).one()
+            return cls.query.filter(cls.uid == ident).first()
 
     @classmethod
     def gets(cls, idents):

@@ -4,7 +4,7 @@ from datetime import datetime
 from david.ext.babel import lazy_gettext
 from david.core.db import db, orm, func, CatLimitedQuery, UidMixin
 from david.core.accounts import User
-from david.core.attachment.picture import PictureMixin
+from david.core.attachment import PictureMixin
 from david.lib.utils import truncate, striptags
 
 from david.config import ARTICLE_DEFAULT_PIC, SITE_ROOT
@@ -12,18 +12,18 @@ from david.config import ARTICLE_DEFAULT_PIC, SITE_ROOT
 from .tag import tags_table, Tag
 
 
-K_ARTICLE = 1
+K_ARTICLE = 200
 C_COMMON = 0
 
 class Article(db.Model, UidMixin, PictureMixin):
     kind = K_ARTICLE
+    kind_name = 'article'
     id = db.Column(db.Integer, primary_key=True)
-    cat = db.Column('cat', db.SmallInteger, index=True, nullable=False)
+    cat = db.Column(db.SmallInteger, index=True, nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
     title = db.Column(db.String(255), nullable=False)
-    slug = db.Column(db.String(255), index=True, unique=True)
-    summary = db.Column(db.String(800), default='')
-    content = db.Column(db.Text(), default='')
+    summary = db.Column(db.String(800))
+    content = db.Column(db.Text())
     create_at = db.Column(db.DateTime, default=func.now())
     update_at = db.Column(db.DateTime, default=func.now(), onupdate=func.utc_timestamp())
     deleted = db.Column(db.Boolean, default=False)
@@ -46,14 +46,10 @@ class Article(db.Model, UidMixin, PictureMixin):
         return lazy_gettext(self.cat_name)
 
     def abstract(self, limit=140):
-        return truncate(self.summary.strip() or striptags(self.content).strip(), limit)
-
-    @property
-    def uid(self):
-        return str(self.slug or self.id)
+        return truncate((self.summary or '').strip() or striptags(self.content or '').strip(), limit)
 
     def url(self):
-        return '%s%s/%s' % (SITE_ROOT, self.cat_name, self.uid)
+        return '%s%s/%s' % (SITE_ROOT, self.cat_name, self.slug)
 
     @orm.reconstructor
     def init_on_load(self, *kwargs):

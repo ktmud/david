@@ -5,11 +5,15 @@ Store uploaded file to somewhere.
 import os
 from flask.ext.uploads import UploadSet, secure_filename, IMAGES as EXT_IMAGES
 
+from david.config import STATIC_ROOT
+
 class FileStore(UploadSet):
 
     def save(self, storage, name=None):
         key = self.get_file_key(storage, name)
-        storage.save(target)
+        path = os.path.join(self.config.destination, key)
+        storage.save(path)
+        return key
     
     def get_file_key(self, storage, name=None, folder=None):
         key = name or storage.filename
@@ -21,8 +25,7 @@ class FileStore(UploadSet):
         return key
 
     def exists(self, key):
-        path = os.path.join(self.config.destination, key)
-        return os.path.exists(path)
+        return os.path.exists(self.path(key))
 
     def resolve_conflict(self, key):
         name, ext = key.rsplit('.', 1)
@@ -32,6 +35,18 @@ class FileStore(UploadSet):
             newname = '%s_%d.%s' % (name, count, ext)
             if not self.exists(newname):
                 return newname
+
+    def path(self, key):
+        return os.path.join(self.config.destination, key)
+
+    def remove(self, key):
+        return os.unlink(self.path(key))
+
+    def url(self, key):
+        return STATIC_ROOT + 'storage/' + key
+
+    def stat(self, key):
+        return os.stat(self.path(key))
 
 
 def lowercase_ext(filename):

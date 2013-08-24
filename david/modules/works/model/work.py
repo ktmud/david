@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
 from david.core.db import db, orm, func, CatLimitedQuery, UidMixin
 from david.core.accounts import User
-from david.core.attachment.picture import PictureMixin
+from david.core.attachment import PictureMixin
 from david.lib.utils import truncate, striptags
 
 from david.modules.artist.model import Artist
 
 
-K_WORK = 100
+K_WORK = 210
 WORK_DEFAULT_PIC = ''
 
 
 class Work(db.Model, UidMixin, PictureMixin):
     kind = K_WORK
+    kind_name = 'work'
     id = db.Column(db.Integer, primary_key=True)
     cat = db.Column('cat', db.SmallInteger, index=True, nullable=False)
     title = db.Column(db.String(255), nullable=False)

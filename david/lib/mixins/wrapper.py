@@ -14,6 +14,9 @@ class WrapperMixin(object):
     # stub for unpickle, or fail
     _impl = None
 
+    def __init__(self, impl):
+        self._impl = impl
+
     def __getattr__(self, attr):
         if hasattr(self._impl, attr):
             attr_value = getattr(self._impl, attr)

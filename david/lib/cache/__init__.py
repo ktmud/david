@@ -1,9 +1,8 @@
 # coding: utf-8
-import redis
 from werkzeug.contrib.cache import SimpleCache, RedisCache
 
-from david.config import REDIS_SERVER, REDIS_KEY_PREFIX
-
+from david.config import REDIS_KEY_PREFIX
+from david.lib.rc import redis_client
 from .decorators import create_decorators
 
 
@@ -36,16 +35,13 @@ def lcdict(item, name, lc=lc):
 
 
 
-redis_client =  redis.StrictRedis(**REDIS_SERVER)
-
-
 class StrictRedisCache(RedisCache):
 
     def set(self, key, value, timeout=None):
         if timeout is None:
             timeout = self.default_timeout
         dump = self.dump_object(value)
-        if timeout:
+        if timeout is not None:
             self._client.setex(self.key_prefix + key, timeout, dump)
         else:
             self._client.set(self.key_prefix + key, dump)
