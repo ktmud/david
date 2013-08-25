@@ -1,4 +1,4 @@
-{%- macro poster_list(items) -%}
+{%- macro poster_list(items, cls='poster-list', item_cls='') -%}
 {% if items %}
 <ul class="{{ cls }}">
   {% for item in items %}

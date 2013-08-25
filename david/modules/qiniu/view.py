@@ -28,7 +28,7 @@ def qiniu_upload():
                         name=prefix + fp.filename,
                         mime=fp.mimetype,
                         owner_id=owner_id, owner_kind=owner_kind)
-                ret.append(item.info())
+                ret.append(item.serialize())
             except QiniuUploadFail, e:
                 ret.append({ 'failure': 'saving', 'filename': fp.filename })
                 continue

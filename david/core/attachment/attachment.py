@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import abort
 
-from david.core.db import db
+from david.core.db import db, SerializeMixin
 from david.core.mapper import get_obj
 from david.lib.mixins.props import PropsMixin, PropsItem
 from david.ext.filestore import FileStore, EXT_IMAGES
@@ -13,7 +13,7 @@ default_uploader = FileStore('default')
 
 
 
-class Attachment(PropsMixin):
+class Attachment(PropsMixin, SerializeMixin):
 
     manager = default_uploader
 
@@ -59,7 +59,7 @@ class Attachment(PropsMixin):
     def is_image(self):
         return self.file_ext in EXT_IMAGES
 
-    def info(self):
+    def serialize(self):
         return dict(
                 id=self.id,
                 title=self.title or self.key,

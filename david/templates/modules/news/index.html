@@ -1,13 +1,17 @@
 {% extends "base.html" %}
-{% from 'widgets/article_list.html' import piced_list, pagination %}
+{% from 'widgets/article_list.html' import piced_list, render_pagination %}
 
 
 
-{% block main %}
-<div class="mod sinked">
-  <h2>News</h2>
-  {{ piced_list(news_entries, 'news-list') }}
-  {{ pagination(start, limit, total) }}
+{% block main_content %}
+<div class="mod">
+  <h2>
+    <em>
+    News
+    </em>
+  </h2>
+  {{ piced_list(items, 'news-list') }}
+  {{ render_pagination(pagi, 'news.list') }}
 </div>
 {% endblock %}
 

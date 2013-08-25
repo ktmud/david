@@ -1,4 +1,5 @@
 # coding: utf-8
+from flask import json
 from david.core.db import db, func, sql
 from david.ext.babel import lazy_gettext as _
 
@@ -73,6 +74,9 @@ class ModelAdmin(Proped, Roled, ModelView):
                 endpoint=endpoint, url=url, **kwargs)
 
     
+    richtext_columns = ('desc', 'content')
+
+
     def has_attachments(self):
         return hasattr(self.model, 'attachments')
 
@@ -97,44 +101,6 @@ class ModelAdmin(Proped, Roled, ModelView):
         if hasattr(self.model, 'owner_id'):
             bind_hidden_field(form, 'owner_id', current_user.id)
         return super(ModelAdmin, self).create_model(form)
-
-
-    def get_instance(self, i):
-        try:
-            return self.model.objects.get(id=i)
-        except self.model.DoesNotExist:
-            flash(_("Item not found %(i)s", i=i), "error")
-
-    @action('export_to_json', _('Export as json'))
-    def export_to_json(self, ids):
-        qs = self.model.objects(id__in=ids)
-
-        return Response(
-            qs.to_json(),
-            mimetype="text/json",
-            headers={
-                "Content-Disposition":
-                "attachment;filename=%s.json" % self.model.__name__.lower()
-            }
-        )
-
-    @action('export_to_csv', _('Export as csv'))
-    def export_to_csv(self, ids):
-        qs = json.loads(self.model.objects(id__in=ids).to_json())
-
-        def generate():
-            yield ','.join(list(qs[0].keys())) + '\n'
-            for item in qs:
-                yield ','.join([str(i) for i in list(item.values())]) + '\n'
-
-        return Response(
-            generate(),
-            mimetype="text/csv",
-            headers={
-                "Content-Disposition":
-                "attachment;filename=%s.csv" % self.model.__name__.lower()
-            }
-        )
 
 
 

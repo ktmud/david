@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% from 'modules/artist/helpers.html' import artist_menu %}
+
+
+{% block main_content %}
+  {% block article %}
+    <div class="mod">
+      <div class="hd">
+        {{ artist_menu(cls='pure-menu pure-menu-open pure-menu-horizontal ') }}
+        <h2>
+          {% block cat_title %}
+            作品
+          {% endblock %}
+        </h2>
+      </div>
+      {% block article_content %}
+      {% endblock %}
+    </div>
+  {% endblock %}
+  {% block article_extra %}
+  {% endblock %}
+{% endblock %}
+
+

@@ -20,7 +20,7 @@ class AttachmentMixin(PropsMixin):
 
     @property
     def attachments_info(self):
-        return [item.info() for item in self.attachment_items]
+        return [item.serialize() for item in self.attachment_items]
 
     def add_attachments(self, items):
         items = _get_ids(items)
@@ -64,12 +64,13 @@ class PictureMixin(AttachmentMixin):
         if hasattr(self, 'picture_id'):
             return Attachment.get(self.picture_id)
 
-    def picture_url(self, default=True, category='small'):
+    def picture_url(self, category='small', default=True):
         pic = self.picture
         if pic:
             return pic.url(category)
-        if not default or not self._DEFAULT_PIC:
+        if not default:
             return None
-        if '%s' in self._DEFAULT_PIC:
-            return self._DEFAULT_PIC % category
+        dft = self._DEFAULT_PIC.replace('%25s', '%s', 1)
+        if '%s' in dft:
+            return dft % category
         return self._DEFAULT_PIC

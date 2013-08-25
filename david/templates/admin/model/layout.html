@@ -14,7 +14,7 @@
 {% macro filter_form() %}
     <form id="filter_form" method="GET" action="{{ return_url }}">
         <div class="pull-right">
-            <button type="submit" class="btn btn-primary" style="display: none">{{ _a('Apply') }}</button>
+            <button type="submit" class="btn btn-sm btn-primary" style="display: none">{{ _a('Apply') }}</button>
             {% if active_filters %}
             <a href="{{ clear_search_url }}" class="btn">{{ _a('Reset Filters') }}</a>
             {% endif %}
@@ -26,7 +26,7 @@
                 {% set filter = admin_view._filters[flt[0]] %}
                 <td>
                     <a href="javascript:void(0)" class="btn remove-filter" title="{{ _a('Remove Filter') }}">
-                        <span class="close-icon">&times;</span>&nbsp;{{ filters[flt[0]] }}
+                        <span class="close-icon">&times;</span>&nbsp;{{ filters[flt[0]].name }}
                     </a>
                 </td>
                 <td>
@@ -55,7 +55,7 @@
     <div class="clearfix"></div>
 {% endmacro %}
 
-{% macro search_form(input_class="span2") %}
+{% macro search_form(input_class="") %}
 <form method="GET" action="{{ return_url }}" class="search-form">
     {% if sort_column is not none %}
     <input type="hidden" name="sort" value="{{ sort_column }}"></input>

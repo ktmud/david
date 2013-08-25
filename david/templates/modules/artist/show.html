@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<div class="mod intro">
+  <h2>
+    {{ artist.name }}
+  </h2>
+  <div class="branding-pic">
+    <img src="{{ artist.picture_url('large') }}" alt="" />
+  </div>
+  <div class="short">
+    <p>
+      {{ artist.abstract(limit=340) |n2br|safe }}
+      <a class="pull-right" href="#detail" data-toggle="modal">
+        More <span class="more">&gt;&gt;</span>
+      </a>
+    </p>
+  </div>
+</div>
+{% endblock %}
+
+{% block tail %}
+  <div id="detail" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <div class="branding-pic">
+          <img src="{{ artist.picture_url('large') }}" alt="" />
+        </div>
+        <div class="modal-body">
+          {{ artist.desc|safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

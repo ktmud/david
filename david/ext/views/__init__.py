@@ -4,10 +4,11 @@ from flask import jsonify
 from flask import json
 from flask.ext.login import current_user
 
-from david.config import HEADER_MENU, FOOTER_MENU, STATIC_ROOT, DEBUG
+from david.config import HEADER_MENU, FOOTER_MENU
+from david.config import STATIC_ROOT, DEBUG
 from david.ext.babel import admin_gettext
 
-from .static import static_url, inline_static, urlmap
+from .static import static_url, inline_static, urlmap, admin_static_url
 from .menu import Menu
 from .errorhandler import setup_errorhandler
 from .accounts import setup_accounts_manager
@@ -52,10 +53,12 @@ context_globals = {
     'header_menu': header_menu,
     'footer_menu': footer_menu,
     'static': static_url,
+    'admin_static': admin_static_url,
     'urlmap': urlmap,
     'istatic': inline_static,
 }
 template_filters = {
-    'json': json.htmlsafe_dumps
+    'json': json.htmlsafe_dumps,
+    'n2br': lambda x: x.replace('\n', '<br />'),
 }
 

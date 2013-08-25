@@ -31,6 +31,10 @@
         {% endblock %}
         <div id="main">
           {% block main %}
+            <div class="sinked">
+              {% block main_content %}
+              {% endblock %}
+            </div>
           {% endblock %}
         </div>
         {% block footer %}
@@ -39,5 +43,8 @@
       {% endblock %}
     </div>
   </div>
+  {% block tail %}
+    
+  {% endblock %}
 </body>
 </html>

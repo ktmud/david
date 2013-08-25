@@ -3,10 +3,20 @@ from flask import g, request
 
 class MenuItem(object):
 
-    def __init__(self, path, text, name):
+    def __init__(self, path, text, name, submenu=[]):
         self.name = name
         self.path = path
         self.text = text
+        self._sub = submenu
+
+    @property
+    def has_submenu(self):
+        return self._sub and len(self._sub) > 1
+
+    @property
+    def submenu(self):
+        return Menu(self._sub)
+
 
     @property
     def is_current(self):
@@ -15,9 +25,10 @@ class MenuItem(object):
 
 class Menu(object):
 
-    def __init__(self, items=None):
+    def __init__(self, items=None, submenu={}):
         self._items = {}
         self._orders = {}
+        self._subs = submenu
         if items is not None:
             for args in items:
                 self.add_item(*args)
@@ -31,26 +42,29 @@ class Menu(object):
     def __contains__(self, item):
         return item in self._items
 
-    def add_item(self, path, text, name=None, order=None):
+    def add_item(self, path, text, name=None, submenu=None, order=None):
         if name is None:
             name = path.replace('/', '_').strip('_')
         if order is None:
             order = len(self._items) * 10
         self._items[name] = (path, text)
         self._orders[name] = order
+        if submenu is not None:
+            self._subs[name] = submenu
         return self.get_item(name)
 
     def get_item(self, name):
         if name in self:
             val = self._items[name]
-            return MenuItem(val[0], val[1], name)
+            sub = self._subs.get(name)
+            return MenuItem(val[0], val[1], name, sub)
 
     def change_order(name, order):
         self._orders[name] = order
 
     def items(self):
         ret = []
-        for k, v in self._items.items():
-            ret.append(MenuItem(v[0], v[1], k))
+        for k in self._items:
+            ret.append(self.get_item(k))
         orders = self._orders
         return sorted(ret, key=lambda x: orders[x.name])

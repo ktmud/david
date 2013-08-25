@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-08-22 08:58+0800\n"
+"POT-Creation-Date: 2013-08-25 20:51+0800\n"
 "PO-Revision-Date: 2013-08-18 14:32+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
@@ -19,16 +19,22 @@ msgstr ""
 "Generated-By: Babel 1.3\n"
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:10
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:13
 msgid "Title"
 msgstr "标题"
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:11
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:27
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:35
+#: /Users/jesse/projects/tongdawei/david/modules/artist/admin.py:12
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:14
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:17
 msgid "Slug"
 msgstr "短网址"
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:12
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:28
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:36
+#: /Users/jesse/projects/tongdawei/david/modules/artist/admin.py:11
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:15
 msgid "ID"
 msgstr "ID"
 
@@ -37,11 +43,13 @@ msgid "Tags"
 msgstr "标签"
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:14
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:29
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:37
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:20
 msgid "Create at"
 msgstr "创建日期"
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:15
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:21
 msgid "Update at"
 msgstr "最近更新"
 
@@ -50,67 +58,121 @@ msgid "Summary"
 msgstr "摘要"
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:17
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:23
 msgid "Content"
 msgstr "内容"
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:26
+msgid "will abstract content body if not set"
+msgstr "如果不填会自动摘取正文"
+
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:27
+msgid "default to current time"
+msgstr "默认为当前时间"
+
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:34
+#: /Users/jesse/projects/tongdawei/david/modules/artist/admin.py:10
 msgid "Name"
 msgstr "名称"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:30
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:38
 #: /Users/jesse/projects/tongdawei/david/core/attachment/admin.py:9
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:22
 msgid "Description"
 msgstr "描述"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:35
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:43
 msgid "Tag"
 msgstr "标签"
 
 #: /Users/jesse/projects/tongdawei/david/core/attachment/admin.py:8
 msgid "Choose File"
-msgstr ""
+msgstr "选择文件"
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:104
-#, python-format
-msgid "Item not found %(i)s"
-msgstr ""
+#: /Users/jesse/projects/tongdawei/david/core/attachment/mixins.py:40
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:11
+msgid "Attachments"
+msgstr "附件"
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:106
-msgid "Export as json"
-msgstr "输出为json"
+#: /Users/jesse/projects/tongdawei/david/modules/artist/admin.py:13
+msgid "Short bio"
+msgstr "简介"
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:119
-msgid "Export as csv"
-msgstr "输出为csv"
+#: /Users/jesse/projects/tongdawei/david/modules/artist/admin.py:14
+msgid "Detail"
+msgstr "详细内容"
 
-#: /Users/jesse/projects/tongdawei/david/templates/admin/model/create.html:31
+#: /Users/jesse/projects/tongdawei/david/modules/artist/admin.py:22
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:18
+msgid "Artist"
+msgstr "明星"
+
+#: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:11
+msgid "Gallery"
+msgstr "图片"
+
+#: /Users/jesse/projects/tongdawei/david/modules/news/admin.py:11
+msgid "News"
+msgstr "新闻"
+
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:16
+msgid "Category"
+msgstr "分类"
+
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:19
+msgid "Publish date"
+msgstr "发表日期"
+
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:44
+msgid "Works"
+msgstr "作品"
+
+#: /Users/jesse/projects/tongdawei/david/templates/admin/model/create.html:34
 msgid "Add attachments after created."
-msgstr ""
+msgstr "条目创建后方可上传附件"
 
 #: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:46
-msgid "No files uploaded yet."
-msgstr ""
-
-#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:57
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:20
 msgid "Add files..."
-msgstr ""
+msgstr "添加文件..."
 
-#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:62
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:51
 msgid "Start upload"
-msgstr ""
+msgstr "开始上传"
 
-#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:66
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:55
 msgid "Cancel upload"
-msgstr ""
+msgstr "取消上传"
 
-#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:70
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:59
 msgid "Delete"
-msgstr ""
+msgstr "删除"
+
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:51
+msgid "attachment title"
+msgstr "附件标题"
+
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:54
+msgid "attachment description"
+msgstr "附件描述"
+
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/list.html:13
+msgid "No files uploaded yet."
+msgstr "还没有上传过任何文件"
 
 #: /Users/jesse/projects/tongdawei/david/templates/security/login_user.html:10
 msgid "Login"
-msgstr ""
+msgstr "登录"
 
 #~ msgid "article"
 #~ msgstr "文章"
+
+#~ msgid "Item not found %(i)s"
+#~ msgstr "找不到条目 %(i)"
+
+#~ msgid "Export as json"
+#~ msgstr "输出为json"
+
+#~ msgid "Export as csv"
+#~ msgstr "输出为csv"
 

@@ -1,0 +1,35 @@
+
+alert_mixin(base_color)
+  color: base_color
+  background: saturate(lighten(base_color, 95%), 30%)
+  border-color: lighten(base_color, 50%)
+  a
+    color: darken(base_color, 5%)
+    font-weight: 600
+
+.alert
+  border: 1px solid;
+  padding: 20px;
+  border-radius(3px);
+  alert_mixin(color_alert)
+
+.alert-danger, .alert-error
+  alert_mixin(color_danger)
+
+.alert-small
+  padding: 5px
+  p
+    margin: 0.5em
+
+
+.big-alert
+  margin: 100px 0 100px auto
+  width: 400px
+  padding: 50px
+  text-align: center
+  font-size: 1.6em
+  background: #000
+  background: rgba(0,0,0,0.9)
+  color: #fff
+
+

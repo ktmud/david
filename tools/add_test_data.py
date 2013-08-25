@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from datetime import datetime, timedelta
+import datetime
 
 from david.core.db import db
 from david.core.accounts import user_datastore, User
@@ -46,7 +46,7 @@ def add_test_articles():
         lorem = open(TOOLS_FOLER + '/data/loremipsum.txt').read()
 
         for cat, model in CATS.items():
-            for i in range(5):
+            for i in range(40):
                 article = model()
                 article.cat = cat
                 article.title = '%s 测试文章 - %s' % (article.cat_name, i + 1)
@@ -71,27 +71,27 @@ def add_test_works():
         lorem = open(TOOLS_FOLER + '/data/loremipsum.txt').read()
 
         artist = Artist()
-        artist.name = 'David Lau'
-        artist.uid = 'david'
+        artist.name = '佟大为'
+        artist.uid = 'tong'
 
         artist2 = Artist()
-        artist2.name = 'Marry Jen'
-        artist2.uid = 'marry'
+        artist2.name = '关悦'
+        artist2.uid = 'guan'
 
         db.session.add_all([artist, artist2])
         db.session.commit()
 
-        artist1, artist2 = Artist.gets(['david', 'marry'])
+        artist1, artist2 = Artist.query.all()
         artist.desc = artist2.desc = lorem
 
-        pubdate = datetime.now()
-        one_year = timedelta(days=366)
-        one_month = timedelta(days=30)
+        pubdate = datetime.date.today()
+        one_year = datetime.timedelta(days=366)
+        one_month = datetime.timedelta(days=30)
 
         for cat, model in cat2type.items():
+            pubdate -= one_year
             for i in range(10):
-                pubdate -= one_year
-                for i in range(3):
+                for i in range(6):
                     pubdate -= one_month
                     obj = Work()
                     obj.title = '%s作品%s' % (model.__name__, i + 1)

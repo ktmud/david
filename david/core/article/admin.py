@@ -18,7 +18,15 @@ class ArticleAdmin(ModelAdmin):
         )
     column_list = ('id', 'title', 'create_at', 'update_at')
     column_sortable_list = ('id', 'title')
-    form_columns = ('title', 'summary', 'content', 'tags', 'create_at')
+
+    form_columns = ('title', 'content', 'summary', 'create_at')
+    richtext_columns = ('content', )
+    form_widget_args = {
+        'summary': dict(rows='4',
+            placeholder=_('will abstract content body if not set')),
+        'create_at': dict(placeholder=_('default to current time')),
+        'content': dict(rows='12')
+    }
 
 
 class TagAdmin(ModelAdmin):

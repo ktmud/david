@@ -1,0 +1,22 @@
+.inline-list
+  font-size: 0
+  li
+    display: inline-block
+    font-size: 15px
+    vertical-align: top
+
+.poster-list
+  @extend .inline-list
+  li
+    margin: 20px
+    width: 85px
+    height: 130px
+    opacity: 0.6
+  li:hover, li.active
+    opacity(1)
+  img
+    max-width: 85px
+  a:hover
+    background: none
+
+

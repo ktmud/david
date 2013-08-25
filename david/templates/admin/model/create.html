@@ -42,6 +42,14 @@
 
 {% block tail %}
   {{ super() }}
-  <script src="{{ url_for('admin.static', filename='datepicker/bootstrap-datepicker.js') }}"></script>
-  <script src="{{ url_for('admin.static', filename='admin/js/form.js') }}"></script>
+  {% if admin_view.richtext_columns %}
+    <script type="text/javascript">
+      Do("{{ static('deps/ckeditor/ckeditor.js') }}", "{{ static('deps/ckeditor/adapters/jquery.js') }}", function() {
+          var fields = {{ admin_view.richtext_columns|json|safe }};
+          $('textarea').filter(function() {
+            return fields.indexOf(this.name) != -1;
+          }).ckeditor();
+      });
+    </script>
+  {% endif %}
 {% endblock %}

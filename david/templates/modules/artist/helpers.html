@@ -1,0 +1,13 @@
+
+{%- macro artist_menu(cls='', item_cls='', urlfunc=None) -%}
+<ul class="artist-menu {{ cls }}">
+  {% for item in artists() %}
+    <li class="{{ item_cls }}">
+    <a href="{{ urlfunc(item) if urlfunc else item.url() }}">
+    {{ item.name }}
+    </a>
+    </li>
+  {% endfor %}
+</ul>
+{%- endmacro -%}
+

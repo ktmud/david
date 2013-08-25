@@ -11,39 +11,14 @@ body
   overflow-y: scroll
   height: 100%
   position: relative
-  z-index: 0
 
 .container
   min-height: 100%
-  max-width: 1040px 
+  max-width: global-max-width
   margin: 0 auto
   position: relative
-  padding-bottom: 80px
+  padding-bottom: 70px
   box-sizing(border-box)
-
-.pure-menu.pure-menu-open
-  background: bg_color
-  margin: 0
-  li
-    border-right: 1px dotted #eee
-    padding-right: 5px
-    background: bg_color
-    a
-      color: text_color
-      padding: 3px 25px
-      line-height: 1
-    a:hover, a:active,
-    &.pure-menu-selected a
-      background: active_color
-      color: #222
-  li:last-child
-    border-right: 0
-
-.header-nav
-  background: bg_color
-  padding: 6px 10px
-  margin: 20px 0 30px
-  font-size: 17px
 
 #footer
   background: bg_color
@@ -51,14 +26,14 @@ body
   position: absolute
   bottom: 40px
   width: 100%
-  font-size: 13px
+  font-size: 12px
   padding: 5px
   color: text_color
   .pure-menu
     display: inline
     margin-right: 60px
     li
-      border-right: 1px solid #ddd
+      font-size: 12px
     li:last-child
       border-right: 0
     a
@@ -83,28 +58,25 @@ body
   padding: mod_padding
   font-family: font_serif
   h2
-    font-size: 20px
+    font-size: 17px
     font-weight: normal
-    font-style: italic
     margin: 0 0 20px
     padding: 5px 5px 6px
     border-bottom: 1px solid color_primary
+
 .light-mod
   background: light_bg_color
   padding: mod_padding
+
 .sinked
   margin: 220px 0 20px auto
-  max-width: 560px
+  max-width: 610px
 
-.big-alert
-  margin: 100px 0 100px auto
-  width: 400px
-  padding: 50px
-  text-align: center
-  font-size: 1.6em
-  background: #000
-  background: rgba(0,0,0,0.9)
-  color: #fff
+.sinked .hd
+  text-align: right
+  .pure-menu-open
+    width: auto
+    float: left
 
 
 .no-result
@@ -112,3 +84,20 @@ body
   color: light_color
   font-style: italic
 
+
+.branding-pic
+  margin-bottom: 20px
+  img
+    width: 100%
+
+
+.short
+  line-height: 1.7
+  font-size: 16px
+  padding: 20px 15px
+
+.readable
+  font-size: 16px
+  line-height: 1.7
+  p
+    margin-bottom: 1em

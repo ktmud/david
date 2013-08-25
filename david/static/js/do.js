@@ -2,6 +2,17 @@
 
 (function(win, doc) {
 
+
+String.prototype.has = function(pattern) {
+  return this.indexOf(pattern) == -1;
+};
+String.prototype.endswith = function(pattern) {
+  return this.slice(-pattern.length) === pattern;
+};
+String.prototype.startswith = function(pattern) {
+  return this.indexOf(pattern) == 0;
+};
+
 // 已加载模块, _loaded[fileURL]=true
 var _loaded = {},
 
@@ -36,17 +47,13 @@ urlmap = {},
 
 mods = _config.mods,
 
-notin = function(str, pattern) {
-  return str.indexOf(pattern) == -1;
-},
-
 _require = function(f) { return require(resolve(f)); },
 
 resolve = function(f) {
   f = f.toString();
   var mo = mods[f];
   if (mo) return mo.id || resolve(mo.path);
-  if (!notin(f, '://')) return f;
+  if (!f.has('://') || f.endswith('.js')) return f;
   return f.replace(new RegExp('^' + _config.root), '').split('.js')[0];
 },
 
@@ -60,7 +67,7 @@ realPath = function(m, type) {
 
   if (m in urlmap) return urlmap[m];
 
-  if (type === 'js' && notin(m, '.js') && notin(m, '://')) {
+  if (type === 'js' && !m.endswith('.js') && m.has('://')) {
     m = _config.root + 'js/' + m + '.js';
   }
 

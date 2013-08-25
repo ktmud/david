@@ -43,21 +43,26 @@ SECURITY_EMAIL_SUBJECT_CONFIRM = '请确认你的登录邮箱(%s)' % (SITE_DOMAI
 
 #TODO: move this to database or something
 HEADER_MENU = [
-    ('/', '首页'),
-    ('/admin', '登录'),
-    ('/star', '明星'),
-    #('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '活动'),
-    ('/news/', '新闻'),
-    ('/works/', '作品'),
-    ('/magazine/', '杂志'),
-    ('/photos/', '图片'),
-    ('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '论坛'),
-]
+        ('/', '首页', 'home'),
+        ('/admin', '登录'),
+        ('javascript:void(0);', '明星', 'artist',
+            [ ('/artist/tong', '佟大为'), ('/artist/guan', '关　悦'), ]
+        ),
+        #('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '活动'),
+        ('/news/', '新闻'),
+        ('/works/movie/', '作品', 'works',
+            [('/works/movie/', '电影'), ('/works/tv/', '电视'), ('/works/music/', '音乐')]
+        ),
+        ('/magazine/', '杂志'),
+        ('/photos/', '图片'),
+        ('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '论坛'),
+        ]
+
 FOOTER_MENU = [
-    ('/about', '关于佟大为工作室'),
-    ('/contact', '联系方式'),
-    ('/jobs', '加入我们')
-]
+        ('/about', '关于佟大为工作室'),
+        ('/contact', '联系方式'),
+        ('/jobs', '加入我们')
+        ]
 
 
 # import local config

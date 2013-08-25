@@ -1,8 +1,8 @@
 # coding: utf-8
 from datetime import datetime
 
-from david.ext.babel import lazy_gettext
-from david.core.db import db, orm, func, CatLimitedQuery, UidMixin
+from david.ext.babel import lazy_gettext as _
+from david.core.db import db, orm, func, CatLimitedQuery, UidMixin, SerializeMixin
 from david.core.accounts import User
 from david.core.attachment import PictureMixin
 from david.lib.utils import truncate, striptags
@@ -15,14 +15,14 @@ from .tag import tags_table, Tag
 K_ARTICLE = 200
 C_COMMON = 0
 
-class Article(db.Model, UidMixin, PictureMixin):
+class Article(db.Model, UidMixin, PictureMixin, SerializeMixin):
     kind = K_ARTICLE
     kind_name = 'article'
     id = db.Column(db.Integer, primary_key=True)
     cat = db.Column(db.SmallInteger, index=True, nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
     title = db.Column(db.String(255), nullable=False)
-    summary = db.Column(db.String(800))
+    summary = db.Column(db.Text())
     content = db.Column(db.Text())
     create_at = db.Column(db.DateTime, default=func.now())
     update_at = db.Column(db.DateTime, default=func.now(), onupdate=func.utc_timestamp())
@@ -38,18 +38,20 @@ class Article(db.Model, UidMixin, PictureMixin):
         return self.cat
 
     cat_name = 'article'
+    catname = property(lambda x: _(x.cat_name))
 
     query_class = CatLimitedQuery
 
-    @property
-    def catname(self):
-        return lazy_gettext(self.cat_name)
 
     def abstract(self, limit=140):
         return truncate((self.summary or '').strip() or striptags(self.content or '').strip(), limit)
 
     def url(self):
         return '%s%s/%s' % (SITE_ROOT, self.cat_name, self.slug)
+
+    def listpage_url(self):
+        page = 1
+        return '%s%s/p%s' % (SITE_ROOT, self.cat_name, page)
 
     @orm.reconstructor
     def init_on_load(self, *kwargs):

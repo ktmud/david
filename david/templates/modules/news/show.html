@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block tail %}
+<div class="modal" id="article">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <a href="{{ article.listpage_url() }}" class="close">&times;</a>
+      <div class="modal-body">
+        <h1>
+          {{ article.title }}
+        </h1>
+        <div class="readable">
+          {{ article.content|safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  Do(function() {
+    $('#article').modal('show')
+    .on('hide.bs.modal', function(e) {
+        return false;
+    });
+  });
+</script>
+{% endblock %}
+
+

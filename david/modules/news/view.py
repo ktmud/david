@@ -1,18 +1,24 @@
 # coding: utf-8
-from flask import Blueprint, request
+from flask import Blueprint, request, abort, redirect
 from david.lib.template import st
 from .model import News
 
 bp = Blueprint('news', __name__)
 
 @bp.route('/news/')
-def home():
+@bp.route('/news/p<int:page>')
+def list(page=1):
     limit = perpage = 5
-    start = request.args.get('start', '0')
-    start = int(start) if start.isdigit() else 0
-    news_entries = News.query.limit(limit).offset(start).all()
-    total = News.query.count()
+    pagi = News.query.paginate(page, perpage)
+    items = pagi.items
+    total = pagi.total
     return st('/modules/news/index.html', **locals())
+
+@bp.route('/news/<uid>')
+def single(uid):
+    article = News.get_or_404(uid)
+    return st('/modules/news/show.html', **locals())
+
 
 __all__ = [bp]
 
