@@ -4,11 +4,12 @@ from david.lib.utils import lazyget
 from david.core.mapper import add_kind
 from david.core.db import db, UidMixin
 from david.lib.mixins.props import PropsMixin, PropsItem
+from david.lib.utils import truncate, striptags
+from david.ext.views.static import lazy_static_url 
 from david.config import SITE_ROOT
 
 from david.core.attachment import PictureMixin
 
-from david.lib.utils import truncate, striptags
 
 
 
@@ -26,6 +27,8 @@ class Artist(db.Model, UidMixin, PictureMixin):
     name = db.Column(db.String(255))
     summary = db.Column(db.Text())
     desc = db.Column(db.Text())
+
+    _DEFAULT_PIC = lazy_static_url('img/artist-default-%s.png')
 
     def __str__(self):
         return self.name

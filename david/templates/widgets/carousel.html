@@ -1,0 +1,36 @@
+{%- macro render_carousel(items, id, cls='', active=0) -%}
+  <div id="{{ id }}" class="carousel slide {{ cls }}">
+    <ol class="carousel-indicators">
+      {% for item in items %}
+        <li data-target="#{{ id }}" data-slide-to="{{ loop.index0 }}"
+            {% if loop.index0 == active %}class="active"{% endif %}></li>
+      {% endfor %}
+    </ol>
+
+    <div class="carousel-inner">
+      {% for item in items %}
+      <div class="item {% if loop.index0 == active %}active{% endif %}">
+        {% if item.link %}<a href="{{ item.link }}">{% endif %}
+        {% if item.img %}
+          <img src="{{ item.img }}" alt="...">
+        {% endif %}
+        {% if item.caption %}
+          <div class="carousel-caption">
+            {{ item.caption|n2br }}
+          </div>
+        {% endif %}
+        {% if item.link %}</a>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#{{ id }}" data-slide="prev">
+      <span class="icon-prev"></span>
+    </a>
+    <a class="right carousel-control" href="#{{ id }}" data-slide="next">
+      <span class="icon-next"></span>
+    </a>
+  </div>
+{%- endmacro -%}
+

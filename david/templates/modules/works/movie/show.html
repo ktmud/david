@@ -1,6 +1,14 @@
 {% extends 'modules/works/movie/index.html' %}
+{% from 'widgets/carousel.html' import render_carousel %}
+
 
 {% block article_content %}
+{% if carousel_items %}
+  {{ render_carousel(carousel_items, 'carousel-photos', cls='work-carousel') }}
+{% endif %}
+<div class="work-detail">
+  {{ work.desc|safe }}
+</div>
 {% endblock %}
 
 

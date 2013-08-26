@@ -17,6 +17,8 @@ def home():
 def show(uid):
     work = Work.get_or_404(uid)
     cat = work.cat_name
+    carousel_items = [dict(img=a.url(), caption=a.desc)
+                     for a in work.attachment_items]
     return st('/modules/works/%s/show.html' % cat, **locals())
 
 

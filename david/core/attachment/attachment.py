@@ -35,7 +35,7 @@ class Attachment(PropsMixin, SerializeMixin):
     def get_uuid(self):
         return 'attachment:%s' % self.id
 
-    def url(self, category='default', user=None):
+    def url(self, category='large', user=None):
         return self._url or self.manager.url(self.key, category=category,
                 user=user)
 
