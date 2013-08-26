@@ -97,12 +97,12 @@ img-responsive(display=block) {
 
   // Set gradients for backgrounds
   &.left {
-    background-image: linear-gradient(left, rgba(0,0,0,.5), rgba(0,0,0,.0001))
+    background-image: linear-gradient(left, rgba(0,0,0,.2), rgba(0,0,0,.0001))
   }
   &.right {
     left: auto;
     right: 0;
-    background-image: linear-gradient(left, rgba(0,0,0,.0001), rgba(0,0,0,.5))
+    background-image: linear-gradient(left, rgba(0,0,0,.0001), rgba(0,0,0,.2))
   }
 
   // Hover/focus state
@@ -116,6 +116,8 @@ img-responsive(display=block) {
   // Toggles
   .icon-prev,
   .icon-next,
+  .icon-angle-left,
+  .icon-angle-right,
   .glyphicon-chevron-left,
   .glyphicon-chevron-right {
     position: absolute;
@@ -124,13 +126,15 @@ img-responsive(display=block) {
     z-index 5;
     display: inline-block;
   }
+  .icon-angle-left,
+  .icon-angle-right,
   .icon-prev,
   .icon-next {
     width:  20px;
     height: 20px;
     margin-top: -10px;
     margin-left: -10px;
-    font-family: serif;
+    //font-family: serif;
   }
 
   .icon-prev {
@@ -200,7 +204,7 @@ img-responsive(display=block) {
 
 
 // Scale up controls for tablets and up
-@media screen and (min-width: screen-tablet) {
+@media screen and (min-width: screen-sm) {
 
   // Scale up the controls a smidge
   .carousel-control .icon-prev,

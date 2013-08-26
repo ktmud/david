@@ -4,7 +4,9 @@
 
 {% block article_content %}
 {% if carousel_items %}
-  {{ render_carousel(carousel_items, 'carousel-photos', cls='work-carousel') }}
+  <div class="work-carousel">
+    {{ render_carousel(carousel_items, 'carousel-photos') }}
+  </div>
 {% endif %}
 <div class="work-detail">
   {{ work.desc|safe }}

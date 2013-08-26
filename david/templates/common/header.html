@@ -1,7 +1,7 @@
 {% from "widgets/menu.html" import hmenu %}
 <div id="header">
   <div class="header-brand">
-    <a href="{{ config['SITE_ROOT'] }}">{{ config['SITE_NAME'] }}</a>
+    <a class="logo" href="{{ config['SITE_ROOT'] }}">{{ config['SITE_NAME'] }}</a>
   </div>
   <div class="header-nav">
     {{ hmenu(header_menu) }}
