@@ -47,7 +47,8 @@ def deploy():
     with cd(REMOTE_APP_ROOT):
         run('source venv/bin/activate && pip install -r requirements.txt')
         run('cd ./david/static && npm install && grunt build')
-        run('make dpyc && sudo supervisorctl restart david')
+        run('make dpyc')
+    run('sudo supervisorctl restart david')
 
 
 def bootstrap():
