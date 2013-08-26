@@ -4,12 +4,11 @@ from babel import support
 
 from flask.ext.babel import Babel, gettext, ngettext, lazy_gettext, _
 from flask.ext.babel import get_locale
-from flask import g, request
+from flask import g, request, current_app
 from flask import _request_ctx_stack
 from flask.ext.login import current_user
 from david.translations import get_translations
 
-from david.config import BABEL_ACCEPT_LANGUAGE, BABEL_DEFAULT_LOCALE
 
 def init_babel(app):
     babel = Babel(app)
@@ -34,9 +33,10 @@ def _set_context_locale():
     if not current_user.is_anonymous:
         locale = current_user.locale
     else:
-        locale = request.accept_languages.best_match(BABEL_ACCEPT_LANGUAGE)
+        accepts = current_app.config.get('BABEL_ACCEPT_LANGUAGE')
+        locale = request.accept_languages.best_match(accepts)
     if locale is None:
-        locale = BABEL_DEFAULT_LOCALE
+        locale = current_app.config.get('BABEL_DEFAULT_LOCALE')
     ctx.babel_locale = locale
     # load customized translations
     ctx.babel_translations = get_translations(locale)

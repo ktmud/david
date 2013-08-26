@@ -2,9 +2,8 @@
 from .security import *
 from .database import *
 
-DEVELOP_MODE = False
-DEBUG = False
-DEBUG_TB_INTERCEPT_REDIRECTS = False
+DEVELOP_MODE = True
+DEBUG = True
 
 SECRET_KEY = 'keyboardcat'
 
@@ -33,7 +32,6 @@ QINIU_SK = ''
 QINIU_BUCKET = 'david'
 QINIU_ROOT = 'http://%s.qiniudn.com/' % QINIU_BUCKET
 
-ARTICLE_DEFAULT_PIC = STATIC_ROOT + 'img/default_article.png'
 
 SECURITY_EMAIL_SUBJECT_REGISTER = '欢迎加入%s(%s)' % (SITE_NAME, SITE_DOMAIN)
 SECURITY_EMAIL_SUBJECT_PASSWORDLESS = '你在%s的登录信息' % SITE_NAME
@@ -65,8 +63,20 @@ FOOTER_MENU = [
         ]
 
 
-# import local config
-try:
-    from config import *
-except Exception, e:
-    pass
+
+
+import os
+from flask.config import Config
+
+APP_ROOT = os.path.abspath(os.path.join(__path__[0], '../'))
+
+config = Config(APP_ROOT)
+
+# load from environment
+if 'DAVID_CONFIG_FILE' in os.environ:
+    config.from_pyfile(os.environ['DAVID_CONFIG_FILE'])
+
+# load from local config
+config.from_pyfile('local_config.py', silent=True)
+
+globals().update(config)

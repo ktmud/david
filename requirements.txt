@@ -7,7 +7,6 @@ redis==2.7.4
 raven==3.4.1
 Babel
 Jinja2
-Flask-WTF==0.8.0
 Flask-Babel
 Flask-Gravatar
 Flask-Login
@@ -17,8 +16,9 @@ Flask-Testing
 Flask-Cache
 Flask-DebugToolbar
 Flask-Uploads
-https://github.com/mrjoes/flask-admin/tarball/master
-##https://github.com/mrjoes/flask-babelex/tarball/master
+Flask-Admin
+#https://github.com/mrjoes/flask-admin/tarball/master
+#https://github.com/mrjoes/flask-babelex/tarball/master
 WTForms
 passlib
 itsdangerous

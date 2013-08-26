@@ -4,7 +4,7 @@ from __future__ import absolute_import
 from logging.config import dictConfig
 from raven.contrib.flask import Sentry
 
-from david.config import SENTRY_DSN
+from config import SENTRY_DSN
 
 sentry = Sentry()
 

@@ -6,8 +6,8 @@ import qiniu.io
 import sys
 
 from david.ext.filestore import FileStore 
-from david.config import QINIU_AK, QINIU_SK, QINIU_BUCKET, QINIU_ROOT
-from david.config import SITE_ROOT
+from config import QINIU_AK, QINIU_SK, QINIU_BUCKET, QINIU_ROOT
+from config import SITE_ROOT
 
 from david.core.attachment import Attachment, add_subclass
 

@@ -6,8 +6,9 @@ from david.core.db import db, orm, func, CatLimitedQuery, UidMixin, SerializeMix
 from david.core.accounts import User
 from david.core.attachment import PictureMixin
 from david.lib.utils import truncate, striptags
+from david.ext.views.static import lazy_static_url 
 
-from david.config import ARTICLE_DEFAULT_PIC, SITE_ROOT
+from config import SITE_ROOT
 
 from .tag import tags_table, Tag
 
@@ -31,7 +32,7 @@ class Article(db.Model, UidMixin, PictureMixin, SerializeMixin):
     tags = db.relationship('Tag', secondary=tags_table,
                     backref=db.backref('articles', lazy='dynamic'))
 
-    _DEFAULT_PIC = ARTICLE_DEFAULT_PIC
+    _DEFAULT_PIC = lazy_static_url('img/article-default-%s.png')
 
     @property
     def cat_id(self):

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from david.config import SITE_ROOT
+from config import SITE_ROOT
 from david.core.db import db, orm, func, CatLimitedQuery, UidMixin
 from david.core.accounts import User
 from david.core.attachment import PictureMixin

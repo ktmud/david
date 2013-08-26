@@ -6,7 +6,9 @@ from setuptools import setup, find_packages
 import david
 
 REQUIREMENTS = [i.strip() for i in open("requirements.txt").readlines()
-                if not i.startswith('#')]
+                if not i.startswith('#') and i.strip()]
+
+print REQUIREMENTS
 
 dependency_links = ['http://pypi.douban.com/simple/']
 

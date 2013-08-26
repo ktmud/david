@@ -5,3 +5,4 @@ include Makefile
 include requirements.txt
 recursive-include david/static/dist *
 recursive-include david/templates *.html
+recursive-include david/translations *

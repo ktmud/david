@@ -1,8 +1,13 @@
 *.pyc
+local_config.py
 venv
 npm-debug.log
 node_modules
 */static/dist
-*/static/bower_components
+*/static/bower_components/
+*/static/tmp
 *hash.json
 *.bak
+
+*.egg-info
+dist

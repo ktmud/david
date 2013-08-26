@@ -5,7 +5,7 @@ Store uploaded file to somewhere.
 import os
 from flask.ext.uploads import UploadSet, secure_filename, IMAGES as EXT_IMAGES
 
-from david.config import STATIC_ROOT
+from config import STATIC_ROOT
 
 class FileStore(UploadSet):
 

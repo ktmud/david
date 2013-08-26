@@ -17,7 +17,7 @@ sys.setdefaultencoding('utf-8') # use utf-8 str by default
 from flask import Flask
 
 from .ext import init_app
-from . import config
+import config
 
 app = Flask(__name__,
         # remap to distributed static files

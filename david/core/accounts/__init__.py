@@ -1,7 +1,7 @@
 # coding: utf-8
 from flask.ext.security import UserMixin, RoleMixin
 
-from david.config import BABEL_DEFAULT_LOCALE, BABEL_DEFAULT_TIMEZONE
+from config import BABEL_DEFAULT_LOCALE, BABEL_DEFAULT_TIMEZONE
 
 from david.core.mapper import add_kind
 from david.core.db import db

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
-from flask import url_for, current_app
+from flask import url_for, current_app, json
 
 from david.lib.cache import lc
-from david.config import STATIC_ROOT, DEBUG, SITE_ROOT
+from config import APP_ROOT, STATIC_ROOT, DEBUG, SITE_ROOT
 
 
 class LazyStatic(object):
@@ -36,21 +36,23 @@ def urlmap(*filenames):
         ret[f] = static_url(fname)
     return ret
 
-def inline_static(filename):
-    pass
-
-
-hashmap = {}
-
 def _hashed_filename(filename):
     if filename in hashmap:
         return
     return os.path.join('/', filename)
 
-def _load_hashmap():
-    fp = os.path.join(current_app.static_folder, 'hash.json')
-    hashmap = json.load(fp)
+
+def inline_static(filename):
+    pass
+
+
+STATIC_HASH_JSON = os.path.join(APP_ROOT, 'david/static/dist/hash.json')
+
+hashmap = {}
+
+def load_hashmap():
+    hashmap = json.load(open(STATIC_HASH_JSON))
+
 
 if not DEBUG:
-    _load_hashmap()
-
+    load_hashmap()

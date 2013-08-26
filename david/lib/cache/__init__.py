@@ -1,7 +1,7 @@
 # coding: utf-8
 from werkzeug.contrib.cache import SimpleCache, RedisCache
 
-from david.config import REDIS_KEY_PREFIX
+from config import REDIS_KEY_PREFIX
 from david.lib.rc import redis_client
 from .decorators import create_decorators
 
