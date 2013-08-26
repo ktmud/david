@@ -3,14 +3,15 @@ import os
 from fabric.api import *
 import config
 
-env.user = 'david'
-env.hosts = ['localhost']
+# Example usage
+env.hosts = ['david@david:19848']
+
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__)) + '/david'
 TRANSLATION_ROOT = APP_ROOT + '/translations'
 
 
-REMOTE_APP_ROOT = '/srv/user/david/www/david'
+REMOTE_APP_ROOT = '/srv/user/david/app/tongdawei.cc'
 
 
 
@@ -42,24 +43,14 @@ def babel_init():
         local('pybabel init -i messages.pot -d %s -l %s' % (TRANSLATION_ROOT, l))
 
 
-
-def static():
-    local('cd ./david/static && grunt build')
-
-def pack():
-    local('python setup.py sdist --formats=gztar', capture=False)
-
 def deploy():
-    dist = local('python setup.py --fullname', capture=True).strip()
-    put('dist/%s.tar.gz' % dist, '/tmp/david_app.tar.gz')
-    run('mkdir /tmp/david_app')
-    with cd('/tmp/david_app'):
-        run('tar zxf /tmp/david_app.tar.gz')
-        run('%s/venv/bin/python setup.py install' % REMOTE_APP_ROOT)
-    run('rm -rf /tmp/david_app /tmp/david_app.tar.gz')
+    with cd(REMOTE_APP_ROOT):
+        run('source venv/bin/activate && pip install -r requirements.txt')
+        run('cd ./david/static && npm install && grunt build')
+        run('make dpyc && sudo supervisorctl restart david')
 
 
 def bootstrap():
-    run('mkdir -p %s' % REMOTE_APP_ROOT)
     with cd(REMOTE_APP_ROOT):
         run('virtualenv --distribute venv')
+        run('source venv/bin/activate && pip install gunicorn')

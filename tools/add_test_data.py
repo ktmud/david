@@ -5,7 +5,7 @@ import datetime
 from david.core.db import db
 from david.core.accounts import user_datastore, User
 from david.core.article import CATS
-from david import app
+from app import app
 
 from flask.ext.security.utils import encrypt_password
 

@@ -5,7 +5,7 @@ gunicorn:
 	@gunicorn app:app --debug --bind localhost:5000 --error-logfile '-'
 
 dpyc:
-	@find "`pwd`/david" \( -name '*.pyc' -o -name '*.ptlc' \) -type f -delete
+	@find "`pwd`" \( -name '*.pyc' -o -name '*.ptlc' \) -type f -delete
 
 venv:
 	@virtualenv venv

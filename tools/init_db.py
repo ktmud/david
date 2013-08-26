@@ -1,6 +1,6 @@
 # coding: utf-8
 from david.core.db import db
-from david import app
+from app import app
 
 def init_db():
     print 'Init database...'

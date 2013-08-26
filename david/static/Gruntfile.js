@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 
 
   function hash_check(f) {
-    f = f.replace('./dist/', '');
+    f = f.replace('dist/', '');
     // old hash !== new hash
     if (f in dist_hash_cache && hash_cache[f] == getHash(f)) {
       grunt.log.writeln('Skipping ' + f.cyan + ' ..');

@@ -3,8 +3,10 @@ local_config.py
 venv
 npm-debug.log
 node_modules
+
+bower_components/
+
 */static/dist
-*/static/bower_components/
 */static/tmp
 *hash.json
 *.bak

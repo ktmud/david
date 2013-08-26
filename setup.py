@@ -8,8 +8,6 @@ import david
 REQUIREMENTS = [i.strip() for i in open("requirements.txt").readlines()
                 if not i.startswith('#') and i.strip()]
 
-print REQUIREMENTS
-
 dependency_links = ['http://pypi.douban.com/simple/']
 
 classifiers = ["Development Status :: 4 - Beta",
@@ -41,6 +39,6 @@ setup(name='david',
       package_dir={'david': 'david'},
       install_requires=REQUIREMENTS,
       dependency_links=dependency_links,
-      scripts=['david/bin/david-admin.py'],
+      scripts=['manage.py'],
       include_package_data=True,
       test_suite='runtests')

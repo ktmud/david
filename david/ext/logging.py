@@ -6,8 +6,6 @@ from raven.contrib.flask import Sentry
 
 from config import SENTRY_DSN
 
-sentry = Sentry()
-
 
 LOGGING_CONFIG = {
     'version': 1,
@@ -44,25 +42,37 @@ LOGGING_CONFIG = {
             'dsn': SENTRY_DSN,
             },
         },
-    'loggers': {
-        '': {
-            'handlers': ['console', 'sentry'],
-            'level': 'DEBUG',
-            'propagate': False,
-            },
-        'werkzeug': {
-            'handlers': ['simple'],
-            'propagate': False,
+}
+
+DEFAULT_LOGGERS = ['console']
+
+
+if SENTRY_DSN:
+    sentry = Sentry()
+    DEFAULT_LOGGERS.append('sentry')
+else:
+    sentry = None
+
+
+LOGGING_CONFIG['loggers'] = {
+    '': {
+        'handlers': DEFAULT_LOGGERS,
+        'level': 'DEBUG',
+        'propagate': False,
         },
-        'david': {
-            'level': 'DEBUG',
-            'propagate': True,
+    'werkzeug': {
+        'handlers': ['simple'],
+        'propagate': False,
         },
-    },
+    'david': {
+        'level': 'DEBUG',
+        'propagate': True,
+        },
 }
 
 
 def setup_logging(app):
-    sentry.init_app(app)
+    if sentry:
+        sentry.init_app(app)
     dictConfig(LOGGING_CONFIG)
 
