@@ -4,7 +4,7 @@
   {% for item in items %}
   <li class="{{ item_cls }}">
     <a class="pic" href="{{ item.url() }}"">
-      <img src="{{ item.picture_url() }}" alt="" />
+      <img src="{{ item.picture_url('thumb') }}" alt="" />
     </a>
     <div class="detail">
       <h3><a href="{{ item.url() }}">{{ item.title }}</a></h3>
