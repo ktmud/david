@@ -29,6 +29,7 @@ module.exports = function(grunt) {
 
 
   function hash_check(f) {
+    return true;
     f = f.replace('dist/', '');
     // old hash !== new hash
     if (f in dist_hash_cache && hash_cache[f] == getHash(f)) {
