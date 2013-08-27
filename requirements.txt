@@ -3,6 +3,7 @@ Flask-Security==1.6.9
 Flask-SQLAlchemy
 MarkupSafe
 Werkzeug
+MySQL-python
 redis
 raven
 Babel
@@ -18,9 +19,9 @@ Flask-Testing
 Flask-Cache
 Flask-DebugToolbar
 Flask-Uploads
-#Flask-Admin==1.0.6
-https://github.com/mrjoes/flask-admin/tarball/master
-https://github.com/mrjoes/flask-babelex/tarball/master
+Flask-Admin==1.0.6
+#https://github.com/mrjoes/flask-admin/tarball/master
+#https://github.com/mrjoes/flask-babelex/tarball/master
 WTForms
 passlib
 itsdangerous

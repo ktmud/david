@@ -6,12 +6,6 @@ from sqlalchemy import orm, func, sql
 
 db = SQLAlchemy()
 
-BaseModel = db.Model
-
-
-
-
-
 
 class CatLimitedQuery(BaseQuery):
 

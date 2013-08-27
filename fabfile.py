@@ -48,8 +48,15 @@ def deploy():
         run('source venv/bin/activate && pip install -r requirements.txt')
         run('cd ./david/static && npm install && grunt build')
         run('make dpyc')
-    run('sudo supervisorctl restart david')
+    run('sudo supervisorctl -c /etc/supervisor/supervisord.conf restart david')
 
+
+def fillup():
+    ret = prompt('Discard existing remote data?', default='Y')
+    if ret != 'Y':
+        return
+    with cd(REMOTE_APP_ROOT):
+        run('source venv/bin/activate && make fillup')
 
 def bootstrap():
     with cd(REMOTE_APP_ROOT):
