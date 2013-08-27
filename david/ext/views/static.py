@@ -38,8 +38,11 @@ def urlmap(*filenames):
 
 def _hashed_filename(filename):
     if filename in hashmap:
-        return
-    return os.path.join('/', filename)
+        if '.' in filename:
+            basename, ext = filename.rsplit('.', 1)
+            return '%s_%s.%s' % (basename, hashmap[filename], ext)
+        return filename + '_' + hashmap[filename]
+    return filename
 
 
 def inline_static(filename):
@@ -51,7 +54,7 @@ STATIC_HASH_JSON = os.path.join(APP_ROOT, 'david/static/dist/hash.json')
 hashmap = {}
 
 def load_hashmap():
-    hashmap = json.load(open(STATIC_HASH_JSON))
+    hashmap.update(json.load(open(STATIC_HASH_JSON)))
 
 
 if not DEBUG:
