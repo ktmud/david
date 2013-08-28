@@ -1,12 +1,12 @@
 {% extends 'modules/works/base.html' %}
 {% from 'modules/works/widgets/work_list.html' import poster_list %}
+{% from 'modules/works/widgets/filter.html' import year_filter %}
 
 {% block cat_title %}电影作品{% endblock %}
 
 
 
 {% block article_content %}
-  {{ poster_list(items) }}
+  {{ year_filter(years) }}
+  {{ poster_list(items, years_ident=True) }}
 {% endblock %}
-
-

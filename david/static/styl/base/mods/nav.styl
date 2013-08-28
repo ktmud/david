@@ -24,9 +24,9 @@ active_menu_link_color = #333
     text-align: center
     line-height: 1
   a:hover, a:active,
-  &.pure-menu-selected a
+  > li.selected > a
     background: active_color
-    color: #222
+    color: #111
 
 .header-nav
   background: bg_color
@@ -71,10 +71,22 @@ active_menu_link_color = #333
 
 
 .pure-menu.shrinked
+  margin: 0
   li
     padding-right: 15px
     margin-right: 15px
     padding-top: 0
     padding-bottom: 0
   a
-    padding: 1px 2px
+    line-height: 1;
+    padding: 3px 5px
+
+.pure-menu.slim
+  @extend .pure-menu.shrinked
+  li
+    margin-right: 0
+  a
+    color: color_primary
+  a:hover, .active a
+    color: #111
+    background-color: color_primary

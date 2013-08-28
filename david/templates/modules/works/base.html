@@ -6,7 +6,8 @@
   {% block article %}
     <div class="mod">
       <div class="hd">
-        {{ artist_menu(cls='pure-menu pure-menu-open pure-menu-horizontal shrinked') }}
+        {{ artist_menu(cls='pure-menu pure-menu-open pure-menu-horizontal shrinked',
+            urlfunc=artist_work_url, current=artist_id) }}
         <h2>
           {% block cat_title %}
             作品

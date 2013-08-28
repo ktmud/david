@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Blueprint, request, g, abort, redirect
+from flask import Blueprint, request, g, abort, redirect, url_for
 from david.lib.template import st
 from .model import *
 
@@ -31,14 +31,29 @@ catname2id = {
 @bp.route('/works/<catname>/')
 @bp.route('/works/<catname>/p<int:page>')
 def list(catname, page=1):
-    print catname
     cat_id = catname2id.get(catname)
     if not cat_id:
         abort(404)
     page = int(page)
     perpage = 50
-    pagination = Work.query.filter(Work.cat == cat_id).paginate(page, perpage)
+
+    query = Work.query.filter(Work.cat == cat_id).order_by(Work.pubdate.desc())
+    artist_id = request.args.get('artist', '')
+    artist_id = int(artist_id) if artist_id.isdigit() else None
+    if artist_id:
+        query = query.filter(Work.artist_id == artist_id)
+
+    def artist_work_url(artist):
+        args = dict(catname=catname)
+        if artist_id != artist.id:
+            args['artist'] = artist.id
+        return url_for('works.list', **args)
+
+    pagination = query.paginate(page, perpage)
     items = pagination.items
+
+    years = sorted(set(x.pubdate.year for x in items), reverse=True)
+
     return st('/modules/works/%s/index.html' % catname, **locals())
 
 __all__ = [bp]

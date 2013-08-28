@@ -23,25 +23,23 @@
   {% endblock %}
 </head>
 <body>
-  <div class="body-wrapper">
-    <div class="container">
-      {% block page_body %}
-        {% block header %}
-          {% include "common/header.html" %}
-        {% endblock %}
-        <div id="main">
-          {% block main %}
-            <div class="sinked">
-              {% block main_content %}
-              {% endblock %}
-            </div>
-          {% endblock %}
-        </div>
-        {% block footer %}
-          {% include "common/footer.html" %}
-        {% endblock %}
+  <div class="container">
+    {% block page_body %}
+      {% block header %}
+        {% include "common/header.html" %}
       {% endblock %}
-    </div>
+      <div id="main">
+        {% block main %}
+          <div class="sinked">
+            {% block main_content %}
+            {% endblock %}
+          </div>
+        {% endblock %}
+      </div>
+      {% block footer %}
+        {% include "common/footer.html" %}
+      {% endblock %}
+    {% endblock %}
   </div>
   {% block tail %}
     

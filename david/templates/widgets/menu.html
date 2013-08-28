@@ -7,17 +7,19 @@
 {% if menu %}
 <ul class="{{ cls }}">
   {% for item in menu.items() %}
-  <li class="{{ item_cls }} {{'has-submenu' if item.has_submenu else ''}} {{ 'pure-menu-selected' if item.is_current else '' }}">
-  {% set target = 'target="_blank"' if item.path.startswith('http') else '' %}
-  <a href="{{ item.path }}"{{ target }}>
-    {{ item.text }}
+  <li class="{{ item_cls }}
+             {{'has-submenu' if item.has_submenu else ''}}
+             {{ 'selected' if item.is_current else '' }}">
+    {% set target = 'target="_blank"' if item.path.startswith('http') else '' %}
+    <a href="{{ item.path }}"{{ target }}>
+      {{ item.text }}
+      {% if item.has_submenu %}
+      <i class="tri-down"></i>
+      {% endif %}
+    </a>
     {% if item.has_submenu %}
-    <i class="tri-down"></i>
+      {{ pure_menu(item.submenu, cls='submenu') }}
     {% endif %}
-  </a>
-  {% if item.has_submenu %}
-    {{ pure_menu(item.submenu, cls='submenu') }}
-  {% endif %}
   </li>
   {% endfor %}
 </ul>

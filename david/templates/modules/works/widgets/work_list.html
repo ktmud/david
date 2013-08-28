@@ -1,11 +1,17 @@
-{%- macro poster_list(items, cls='poster-list', item_cls='') -%}
+{%- macro poster_list(items, cls='poster-list', item_cls='', years_ident=True) -%}
 {% if items %}
 <ul class="{{ cls }}">
+  {% set year = None %}
   {% for item in items %}
   <li class="{{ item_cls }}">
-  <a title="{{ item.title }}" class="pic" href="{{ item.url() }}"">
-    <img src="{{ item.picture_url() }}" alt="{{ item.title }}的海报" />
-  </a>
+    {% set _year = item.pubdate.year %}
+    {% if years_ident and _year != year %}
+      {% set year = _year %}
+      <a id="year-{{ year }}"></a>
+    {% endif %}
+    <a title="{{ item.title }}" class="pic" href="{{ item.url() }}"">
+      <img src="{{ item.picture_url() }}" alt="{{ item.title }}的海报" />
+    </a>
   </li>
   {% endfor %}
 </ul>

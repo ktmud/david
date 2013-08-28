@@ -2,15 +2,8 @@ html, body
   height: 100%
 
 body
-  background: #fbfbfb url(../img/bg-main.jpg) no-repeat 50% 0
-  max-height: 1235px
-  overflow: hidden
+  //background: #fbfbfb url(../img/bg-main.jpg) no-repeat 50% 0
   background-size(cover)
-
-.body-wrapper
-  overflow-y: scroll
-  height: 100%
-  position: relative
 
 .container
   min-height: 100%
@@ -18,7 +11,15 @@ body
   margin: 0 auto
   position: relative
   padding-bottom: 70px
-  box-sizing(border-box)
+  //box-sizing(border-box)
+
+.affix-top
+  position: absolute
+
+.affix
+  position: fixed
+  top: 0
+  z-index: 1
 
 #footer
   background: bg_color
