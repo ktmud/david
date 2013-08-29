@@ -48,11 +48,11 @@ HEADER_MENU = [
         ),
         #('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '活动'),
         ('/news/', '新闻'),
-        ('/works/movie/', '作品', 'works',
+        ('/works/', '作品', 'works',
             [('/works/movie/', '电影'), ('/works/tv/', '电视'), ('/works/music/', '音乐')]
         ),
-        ('/magazine/', '杂志'),
-        ('/photos/', '图片'),
+        ('/gallery/magazine/', '杂志'),
+        ('/gallery/photos/', '图片'),
         ('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '论坛'),
         ]
 

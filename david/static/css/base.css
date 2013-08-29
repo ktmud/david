@@ -1,5 +1,5 @@
 @import pure-min.css;
 @import pure-black.css;
-@import ../dist/css/base.css;
 @import ../bower_components/font-awesome/css/font-awesome.css
 @import ../bower_components/font-awesome/css/font-awesome-ie7.css
+@import ../dist/css/base.css;

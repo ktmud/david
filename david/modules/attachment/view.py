@@ -13,9 +13,10 @@ bp = Blueprint('attachment', __name__)
 def qiniu_upload(id):
     item = Attachment.get_or_404(id)
     if request.method == 'POST':
-        item.update_props(dict(request.form))
-        return jsonify({ 'r': 0, 'item': item.info() })
+        item.update_props(title=request.form.get('title'),
+                desc=request.form.get('desc'))
+        return jsonify(r=0, item=item.serialize())
     if request.method == 'DELETE':
         item.remove()
-        return jsonify({ 'r': 0 })
-    return jsonify(item.info())
+        return jsonify(r=0)
+    return jsonify(r=0, item=item.serialize())

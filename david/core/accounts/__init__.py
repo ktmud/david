@@ -4,7 +4,7 @@ from flask.ext.security import UserMixin, RoleMixin
 from config import BABEL_DEFAULT_LOCALE, BABEL_DEFAULT_TIMEZONE
 
 from david.core.mapper import add_kind
-from david.core.db import db
+from david.core.db import db, UidMixin
 from david.lib.mixins.props import PropsMixin, PropsItem
 from flask.ext.security import SQLAlchemyUserDatastore
 
@@ -24,7 +24,7 @@ class Role(db.Model, RoleMixin):
 
 K_USER = 100
 
-class User(db.Model, UserMixin, PropsMixin):
+class User(db.Model, UserMixin, UidMixin, PropsMixin):
     kind = K_USER
     kins_name = 'user'
     id = db.Column(db.Integer, primary_key=True)
@@ -46,7 +46,7 @@ class User(db.Model, UserMixin, PropsMixin):
 
     @property
     def display_name(self):
-        return self.name or self.id
+        return self.name or (self.uid if self.uid else self.email.split('@')[0])
 
 Account = User
 

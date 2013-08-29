@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{%- macro album_js_template()  -%}
+<script type="text/template" id="tmpl-photos">
+  <% _.each(items, function(item, i){ %>
+    <div class="mod">
+      <h2><%= item.title %></h2>
+      <a href="<%= item.url %>">
+        <img src="<%= item.median_url %>" alt="" />
+      </a>
+      <p class="desc">
+        <%= item.abstract %>
+      </p>
+    </div>
+  <% }); %>
+</script>
+{%- endmacro -%}
+
+
+{% block main %}
+<div class="photos-grid">
+</div>
+{{ album_js_template() }}
+<script type="text/javascript">
+  Do.urls({{ urlmap('modules/gallery/photos')|json|safe }})
+  Do('lodash', 'modules/gallery/photos', function(){
+    var photos = require('modules/gallery/photos');
+    photos('.photos-grid', {{ data|json|safe }});
+  });
+</script>
+{% endblock %}
+

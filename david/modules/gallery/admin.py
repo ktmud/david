@@ -1,12 +1,18 @@
 # -*- coding: utf-8 -*-
 from david.core.article.admin import ArticleAdmin
-from david.ext.babel import lazy_gettext as _
+from david.ext.admin import _
 
-from .model import Gallery
+from .model import Photos, Magazine
 
-class GalleryAdmin(ArticleAdmin):
+class PhotosAdmin(ArticleAdmin):
     pass
 
+
+class MagazineAdmin(PhotosAdmin):
+    pass
+
+
 views = [
-  GalleryAdmin(Gallery, name=_('Gallery'))
+  MagazineAdmin(Magazine, name=_('Magazine'), category=_('Article')),
+  PhotosAdmin(Photos, name=_('Photos'), category=_('Article')),
 ]

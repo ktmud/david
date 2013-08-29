@@ -71,19 +71,31 @@ InlineUploader.prototype.init_events = function() {
         node.remove();
       });
     });
-  }).on('click', '.save-item', function(e) {
-    e.preventDefault();
+  }).on('focus', 'input,textarea', function(e) {
+    this._oldval = this.value;
+  }).on('blur', 'input,textarea', function(e) {
+    var name = this.name, val = this.value;
+
+    if (val == this._oldval) {
+      return;
+    }
+    this._oldval = val;
+
     var node = $(this).closest('.uploaded-item')
     var data = node.data();
+    var saved = $(this).siblings('.saved');
+
+    data[name] = val;
+
     $.ajax({
       url: '/api/attachment/' + data.id,
       type: 'POST',
       dataType: 'json',
-      data: {
-        // add csrf here
-      }
+      data: data
     }).success(function(e) {
-      
+      saved.show().fadeOut(2000);
+    }).error(function(e) {
+      alert('保存失败!');
     });
   });
 };

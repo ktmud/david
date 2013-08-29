@@ -10,6 +10,7 @@ bp = Blueprint('works', __name__)
 
 @bp.route('/works/')
 def home():
+    return redirect(url_for('works.list', catname='movie'))
     return st('/modules/works/index.html', **locals())
 
 

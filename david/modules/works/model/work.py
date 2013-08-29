@@ -34,6 +34,7 @@ class Work(db.Model, UidMixin, PictureMixin):
 
     @property
     def cat_id(self):
+        print self.cat
         return self.cat
 
     cat_name = 'work'

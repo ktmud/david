@@ -62,8 +62,7 @@ class QiniuStore(FileStore):
         return ret
 
     def exists(self, key):
-        ret, err = self._client.stat(self._bucket, key)
-        return ret
+        return False
 
     def url(self, key, category='default', user=None):
         return QINIU_ROOT + key + (self._delimiter + category if category else '')

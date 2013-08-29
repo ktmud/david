@@ -46,16 +46,21 @@
       </div>
       <div class="col col-8 col-lg-9">
         <div class="detail">
-          <div class="title">
-            <input name="file-<%= id %>-title" type="text" class="form-control"
-            placeholder="{{ _('attachment title') }}" value="<%= title %>" />
-          </div>
-          <textarea class="form-control" name="file-<%= id %>-desc" rows="4"
-            cols="30" placeholder="{{ _('attachment description') }}"><%= desc %></textarea>
-            <a href="#" class="btn btn-success btn-xs icon save">
-              <span class="icon-ok"></span>
-            </a>
           <a href="#" class="close remove-item">&times;</a>
+          <div class="title">
+            <input name="title" type="text" class="form-control"
+            placeholder="{{ _('attachment title') }}" value="<%= title %>" />
+            <span class="label label-success saved">
+              <span class="icon-ok"></span> 已保存
+            </span>
+          </div>
+          <div class="desc">
+            <textarea class="form-control" name="desc" rows="4"
+              cols="30" placeholder="{{ _('attachment description') }}"><%= desc %></textarea>
+            <span class="label label-success saved">
+              <span class="icon-ok"></span> 已保存
+            </span>
+          </div>
         </div>
       </div>
     <% } %>

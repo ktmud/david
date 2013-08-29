@@ -1,0 +1,12 @@
+{% extends 'layout.modal.html' %}
+{% import 'widgets/carousel.html' as carousel %}
+
+
+{% block modal_content %}
+<a class="close" href="{{ url_for('gallery.home', mod=mod) }}">&times;</a>
+<div class="modal-body">
+  {{ carousel.render_carousel(carousel_items) }}
+</div>
+{% endblock %}
+
+

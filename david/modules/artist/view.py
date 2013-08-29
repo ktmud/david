@@ -6,10 +6,16 @@ from .model import Artist
 bp = Blueprint('artist', __name__)
 
 @bp.app_template_global('artists')
-def artist():
+def artists():
     return Artist.query.all()
 
-@bp.route('/artist/<uid>')
-def artist_intro(uid):
+@bp.route('/artist/<uid>/')
+def intro(uid):
     artist = Artist.get_or_404(uid)
     return st('modules/artist/show.html', **locals())
+
+
+@bp.route('/artist/<uid>/detail')
+def detail(uid):
+    artist = Artist.get_or_404(uid)
+    return st('modules/artist/detailed.html', **locals())

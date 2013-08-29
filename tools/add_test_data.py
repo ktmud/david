@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import datetime
+import random
 
 from david.core.db import db
 from david.core.accounts import user_datastore, User
@@ -10,6 +11,8 @@ from app import app
 from flask.ext.security.utils import encrypt_password
 
 TOOLS_FOLER = os.path.dirname(__file__)
+
+lorem = open(TOOLS_FOLER + '/data/loremipsum.txt').read()
 
 def add_test_users():
     print 'Init users...'
@@ -43,14 +46,12 @@ def add_test_articles():
         # send a fake request, so `current_app` can be the app
         rv = c.get('/')
 
-        lorem = open(TOOLS_FOLER + '/data/loremipsum.txt').read()
-
         for cat, model in CATS.items():
             for i in range(40):
                 article = model()
                 article.cat = cat
                 article.title = '%s 测试文章 - %s' % (article.cat_name, i + 1)
-                article.content = lorem
+                article.content = unicode(lorem)[:random.randint(10, 600)]
                 article.owner_id = User.query.first().id
                 db.session.add(article)
         db.session.commit()
@@ -67,8 +68,6 @@ def add_test_works():
     with app.test_client() as c:
         # send a fake request, so `current_app` can be the app
         rv = c.get('/')
-
-        lorem = open(TOOLS_FOLER + '/data/loremipsum.txt').read()
 
         artist = Artist()
         artist.name = '佟大为'

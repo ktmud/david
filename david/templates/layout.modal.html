@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block tail %}
+<div class="modal" id="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      {% block modal_content %}
+      {% endblock %}
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  Do(function() {
+    $('#modal').modal('show')
+    .on('hide.bs.modal', function(e) {
+        return false;
+    });
+  });
+</script>
+{% endblock %}
+
+

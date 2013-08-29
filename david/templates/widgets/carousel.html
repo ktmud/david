@@ -1,36 +1,89 @@
-{%- macro render_carousel(items, id, cls='', active=0) -%}
-  <div id="{{ id }}" class="carousel slide {{ cls }}">
-    <ol class="carousel-indicators">
-      {% for item in items %}
-        <li data-target="#{{ id }}" data-slide-to="{{ loop.index0 }}"
-            {% if loop.index0 == active %}class="active"{% endif %}></li>
-      {% endfor %}
-    </ol>
-
+{%- macro carousel_js_template() -%}
+<script type="text/tmpl" id="tmpl-carousel">
+  <div id="<%= id %>" class="carousel slide <%= obj.cls %>">
+    <% if (obj.show_indicators) { %>
+      <ol class="carousel-indicators">
+        <% _.each(items, function(item, i) { %>
+          <li data-target="#<%= id %>" data-slide-to="<%= i %>"
+            <%= (i == active ? 'class="active"' : '') %>
+          ></li>
+        <% }); %>
+      </ol>
+    <% } %>
     <div class="carousel-inner">
-      {% for item in items %}
-      <div class="item {% if loop.index0 == active %}active{% endif %}">
-        {% if item.link %}<a href="{{ item.link }}">{% endif %}
-        {% if item.img %}
-          <img src="{{ item.img }}" alt="...">
-        {% endif %}
-        {% if item.caption %}
-          <div class="carousel-caption">
-            {{ item.caption|n2br }}
-          </div>
-        {% endif %}
-        {% if item.link %}</a>{% endif %}
-      </div>
-      {% endfor %}
+      <% _.each(items, function(item, i) { %>
+        <div class="item <%= (i == active ? 'active' : '') %>">
+          <% if (item.link) { %>
+            <a href="<%= item.link %>">
+          <% } %>
+          <% if (item.img) { %>
+            <img src="<%= item.img %>" alt="">
+          <% } %>
+          <% if (item.caption) { %>
+            <div class="carousel-caption">
+              <%= item.caption %>
+            </div>
+          <% } %>
+          <% if (item.link) { %>
+            </a>
+          <% } %>
+        </div>
+      <% }); %>
     </div>
+    <% if (obj.show_controls) { %>
+      <a class="left carousel-control icon" href="#<%= id %>" data-slide="prev">
+        <span class="icon-angle-left"></span>
+      </a>
+      <a class="right carousel-control icon" href="#<%= id %>" data-slide="next">
+        <span class="icon-angle-right"></span>
+      </a>
+    <% } %>
+  </div>
+</script>
+{%- endmacro -%}
 
-    <!-- Controls -->
-    <a class="left carousel-control icon" href="#{{ id }}" data-slide="prev">
-      <span class="icon-angle-left"></span>
-    </a>
-    <a class="right carousel-control icon" href="#{{ id }}" data-slide="next">
-      <span class="icon-angle-right"></span>
-    </a>
+
+
+{%- macro render_pic_items(items, active=0) -%}
+{% for item in items %}
+  <div class="item {% if loop.index0 == active %}active{% endif %}">
+    {% if item.link %}<a href="{{ item.link }}">{% endif %}
+    {% if item.img %}
+      <img src="{{ item.img }}" alt="...">
+    {% endif %}
+    {% if item.caption %}
+      <div class="carousel-caption">
+        {{ item.caption|n2br }}
+      </div>
+    {% endif %}
+    {% if item.link %}</a>{% endif %}
+  </div>
+{% endfor %}
+{%- endmacro -%}
+
+
+{%- macro render_carousel(items, id='carousel', cls='', active=0,
+show_indicators=False, show_controls=True, itemsfunc=render_pic_items) -%}
+  <div id="{{ id }}" class="carousel slide {{ cls }}">
+    {% if show_indicators %}
+      <ol class="carousel-indicators">
+        {% for item in items %}
+          <li data-target="#{{ id }}" data-slide-to="{{ loop.index0 }}"
+              {% if loop.index0 == active %}class="active"{% endif %}></li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+    <div class="carousel-inner">
+      {{ itemsfunc(items, active) }}
+    </div>
+    {% if show_controls %}
+      <a class="left carousel-control icon" href="#{{ id }}" data-slide="prev">
+        <span class="icon-angle-left"></span>
+      </a>
+      <a class="right carousel-control icon" href="#{{ id }}" data-slide="next">
+        <span class="icon-angle-right"></span>
+      </a>
+    {% endif %}
   </div>
 {%- endmacro -%}
 

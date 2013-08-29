@@ -27,7 +27,7 @@ class Article(db.Model, UidMixin, PictureMixin, SerializeMixin):
     content = db.Column(db.Text())
     create_at = db.Column(db.DateTime, default=func.now())
     update_at = db.Column(db.DateTime, default=func.now(), onupdate=func.utc_timestamp())
-    deleted = db.Column(db.Boolean, default=False)
+    published = db.Column(db.Boolean, default=True)
     sticking = db.Column(db.Boolean, default=False)
     tags = db.relationship('Tag', secondary=tags_table,
                     backref=db.backref('articles', lazy='dynamic'))

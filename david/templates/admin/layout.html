@@ -28,7 +28,7 @@
   {% for item in admin_view.admin.menu_links() %}
     {% if item.is_accessible() and item.is_visible() %}
       <li>
-        <a href="{{ item.get_url() }}">{{ item.name }}</a>
+        <a target="{{ item.target }}" href="{{ item.get_url() }}">{{ item.name }}</a>
       </li>
     {% endif %}
   {% endfor %}
@@ -41,7 +41,7 @@
         {% if category == 'error' %}
         <div class="alert alert-error">
         {% else %}
-        <div class="alert">
+        <div class="alert alert-info">
         {% endif %}
           <a href="javascript:void(0)" class="close" data-dismiss="alert">x</a>
           {{ m }}

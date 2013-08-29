@@ -4,6 +4,7 @@ from david.ext.admin import ModelAdmin, Proped, admin
 from david.ext.babel import lazy_gettext as _
 from .tag import Tag
 
+
 class ArticleAdmin(ModelAdmin):
 
     column_labels = dict(
@@ -19,7 +20,7 @@ class ArticleAdmin(ModelAdmin):
     column_list = ('id', 'title', 'create_at', 'update_at')
     column_sortable_list = ('id', 'title')
 
-    form_columns = ('title', 'content', 'summary', 'create_at')
+    form_columns = ('title', 'content', 'summary')
     richtext_columns = ('content', )
     form_widget_args = {
         'summary': dict(rows='4',
@@ -40,4 +41,4 @@ class TagAdmin(ModelAdmin):
     form_columns = ('name', 'desc')
 
 
-admin.add_view(TagAdmin(Tag, name=_('Tag')))
+#admin.add_view(TagAdmin(Tag, name=_('Tag'), category=_('Article')))

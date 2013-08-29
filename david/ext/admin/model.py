@@ -1,13 +1,15 @@
 # coding: utf-8
-from flask import json
+from flask import json, request, redirect
 from david.core.db import db, func, sql
-from david.ext.babel import lazy_gettext as _
+from david.ext.babel import gettext, lazy_gettext as _
 
-from flask.ext.admin import AdminIndexView
+from flask.ext.admin import AdminIndexView, expose
 from flask.ext.admin.contrib.sqla import ModelView
 from flask.ext.admin.actions import action
 from flask.ext.security import current_user
 from flask.ext.security.utils import url_for_security
+from flask.ext.admin.helpers import get_form_data, validate_form_on_submit
+
 from flask import redirect, flash, url_for, Response
 
 from wtforms import fields, validators
@@ -76,6 +78,8 @@ class ModelAdmin(Proped, Roled, ModelView):
     
     richtext_columns = ('desc', 'content')
 
+    column_default_sort = ('id', True)
+
 
     def has_attachments(self):
         return hasattr(self.model, 'attachments')
@@ -103,8 +107,38 @@ class ModelAdmin(Proped, Roled, ModelView):
         return super(ModelAdmin, self).create_model(form)
 
 
+    @expose('/new/', methods=('GET', 'POST'))
+    def create_view(self):
+        """
+            Create model view
+        """
+        return_url = request.args.get('url') or url_for('.index_view')
+
+        if not self.can_create:
+            return redirect(return_url)
+
+        form = self.create_form()
+
+        if validate_form_on_submit(form):
+            if self.create_model(form):
+                if '_add_another' in request.form:
+                    flash(gettext('已成功创建'))
+                    return redirect(url_for('.create_view', url=return_url))
+                if self.has_attachments:
+                    return redirect(url_for('.edit_view', url=return_url))
+                return redirect(return_url)
+
+        return self.render(self.create_template,
+                           form=form,
+                           form_widget_args=self.form_widget_args,
+                           return_url=return_url)
+
+
 
 class AdminIndex(Roled, AdminIndexView):
-    pass
+    @expose('/')
+    def index(self):
+        return self.render('admin/index.html')
+
 
 
