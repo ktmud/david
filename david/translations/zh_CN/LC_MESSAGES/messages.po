@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: kissmud@gmail.com\n"
-"POT-Creation-Date: 2013-08-30 08:52+0800\n"
+"POT-Creation-Date: 2013-08-30 20:40+0800\n"
 "PO-Revision-Date: 2013-08-18 14:32+0800\n"
 "Last-Translator: Jesse Yang <kissmud@gmail.com>\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
@@ -117,13 +117,13 @@ msgstr "选择文件"
 msgid "Attachments"
 msgstr "附件"
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:33
-#: david/ext/admin/__init__.py:33 config/__init__.py:46
+#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:32
+#: david/ext/admin/__init__.py:32 config/__init__.py:46
 msgid "Home"
 msgstr "主页"
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:36
-#: david/ext/admin/__init__.py:36
+#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:35
+#: david/ext/admin/__init__.py:35
 msgid "Visit Site"
 msgstr "访问网站"
 
@@ -153,14 +153,6 @@ msgstr "明星"
 msgid "Magazine"
 msgstr "杂志"
 
-#: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:16
-#: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:17
-#: /Users/jesse/projects/tongdawei/david/modules/news/admin.py:11
-#: david/modules/gallery/admin.py:16 david/modules/gallery/admin.py:17
-#: david/modules/news/admin.py:11
-msgid "Article"
-msgstr "文章"
-
 #: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:17
 #: david/modules/gallery/admin.py:17 config/__init__.py:64
 msgid "Photos"
@@ -189,9 +181,22 @@ msgid "Publish date"
 msgstr "发表日期"
 
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:44
-#: david/modules/works/admin.py:44 config/__init__.py:56
+#: david/modules/works/admin.py:44 config/__init__.py:58
+msgid "Movie"
+msgstr "电影"
+
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:44
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:45
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:46
+#: david/modules/works/admin.py:44 david/modules/works/admin.py:45
+#: david/modules/works/admin.py:46 config/__init__.py:56
 msgid "Works"
 msgstr "作品"
+
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:45
+#: david/modules/works/admin.py:45 config/__init__.py:59
+msgid "TV"
+msgstr "电视"
 
 #: /Users/jesse/projects/tongdawei/david/templates/admin/model/create.html:34
 #: david/templates/admin/model/create.html:34
@@ -220,13 +225,13 @@ msgstr "取消上传"
 msgid "Delete"
 msgstr "删除"
 
-#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:52
-#: david/templates/modules/qiniu/inline.html:52
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:49
+#: david/templates/modules/qiniu/inline.html:49
 msgid "attachment title"
 msgstr "附件标题"
 
-#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:59
-#: david/templates/modules/qiniu/inline.html:59
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:56
+#: david/templates/modules/qiniu/inline.html:56
 msgid "attachment description"
 msgstr "附件描述"
 
@@ -235,10 +240,32 @@ msgstr "附件描述"
 msgid "No files uploaded yet."
 msgstr "还没有上传过任何文件"
 
+#: /Users/jesse/projects/tongdawei/david/templates/security/_menu.html:3
+#: david/templates/security/_menu.html:3
+msgid "Menu"
+msgstr "菜单"
+
+#: /Users/jesse/projects/tongdawei/david/templates/security/_menu.html:5
 #: /Users/jesse/projects/tongdawei/david/templates/security/login_user.html:10
-#: david/templates/security/login_user.html:10
+#: david/templates/security/_menu.html:5
+#: david/templates/security/login_user.html:10 config/security.py:59
 msgid "Login"
 msgstr "登录"
+
+#: /Users/jesse/projects/tongdawei/david/templates/security/_menu.html:7
+#: david/templates/security/_menu.html:7 config/security.py:61
+msgid "Register"
+msgstr "注册"
+
+#: /Users/jesse/projects/tongdawei/david/templates/security/_menu.html:10
+#: david/templates/security/_menu.html:10
+msgid "Forgot password"
+msgstr "忘记密码"
+
+#: /Users/jesse/projects/tongdawei/david/templates/security/_menu.html:13
+#: david/templates/security/_menu.html:13
+msgid "Confirm account"
+msgstr "确认账号"
 
 #: config/__init__.py:22
 msgid "Dawei Tong"
@@ -255,14 +282,6 @@ msgstr "佟大为"
 #: config/__init__.py:51
 msgid "Yue"
 msgstr "关　悦"
-
-#: config/__init__.py:58
-msgid "Movie"
-msgstr "电影"
-
-#: config/__init__.py:59
-msgid "TV"
-msgstr "电视"
 
 #: config/__init__.py:60
 msgid "Music"
@@ -284,6 +303,182 @@ msgstr "联系方式"
 msgid "Join us"
 msgstr "加入我们"
 
+#: config/security.py:23
+msgid "You do not have permission to view this resource."
+msgstr "你无权查看此内容"
+
+#: config/security.py:24
+#, python-format
+msgid "Thank you. Confirmation instructions have been sent to %(email)s."
+msgstr "谢谢，有关如何进行确认的说明已发往你的邮箱 %(email)s"
+
+#: config/security.py:25
+msgid "Thank you. Your email has been confirmed."
+msgstr "十分感谢，邮箱已验证成功"
+
+#: config/security.py:26
+msgid "Your email has already been confirmed."
+msgstr "邮箱验证成功"
+
+#: config/security.py:27
+msgid "Invalid confirmation token."
+msgstr "无效的确认码"
+
+#: config/security.py:28
+#, python-format
+msgid "%(email)s is already associated with an account."
+msgstr "%(email)s 已关联了其他账号"
+
+#: config/security.py:29
+msgid "Password does not match"
+msgstr "密码不正确"
+
+#: config/security.py:30
+msgid "Passwords do not match"
+msgstr "两次输入密码不一致"
+
+#: config/security.py:31
+msgid "Redirections outside the domain are forbidden"
+msgstr "跳转取消"
+
+#: config/security.py:32
+#, python-format
+msgid "Instructions to reset your password have been sent to %(email)s."
+msgstr ""
+
+#: config/security.py:33
+#, python-format
+msgid ""
+"You did not reset your password within %(within)s. New instructions have "
+"been sent to %(email)s."
+msgstr ""
+
+#: config/security.py:34
+msgid "Invalid reset password token."
+msgstr ""
+
+#: config/security.py:35
+msgid "Email requires confirmation."
+msgstr ""
+
+#: config/security.py:36
+#, python-format
+msgid "Confirmation instructions have been sent to %(email)s."
+msgstr ""
+
+#: config/security.py:37
+#, python-format
+msgid ""
+"You did not confirm your email within %(within)s. New instructions to "
+"confirm your email have been sent to %(email)s."
+msgstr ""
+
+#: config/security.py:38
+#, python-format
+msgid ""
+"You did not login within %(within)s. New instructions to login have been "
+"sent to %(email)s."
+msgstr ""
+
+#: config/security.py:39
+#, python-format
+msgid "Instructions to login have been sent to %(email)s."
+msgstr ""
+
+#: config/security.py:40
+msgid "Invalid login token."
+msgstr "不正确的登录校验码"
+
+#: config/security.py:41
+msgid "Account is disabled."
+msgstr "账户被禁用"
+
+#: config/security.py:42
+msgid "Email not provided"
+msgstr "请输入Email"
+
+#: config/security.py:43
+msgid "Invalid email address"
+msgstr "不正确的邮件地址"
+
+#: config/security.py:44
+msgid "Password not provided"
+msgstr "请输入密码"
+
+#: config/security.py:45
+msgid "Password must be at least 6 characters"
+msgstr "密码至少要6个字符"
+
+#: config/security.py:46
+msgid "Specified user does not exist"
+msgstr "用户不存在"
+
+#: config/security.py:47
+msgid "Invalid password"
+msgstr "密码错误"
+
+#: config/security.py:48
+msgid "You have successfuly logged in."
+msgstr "已成功登录"
+
+#: config/security.py:49
+msgid ""
+"You successfully reset your password and you have been logged in "
+"automatically."
+msgstr ""
+
+#: config/security.py:50
+msgid "You successfully changed your password."
+msgstr "成功修改密码"
+
+#: config/security.py:51
+msgid "Please log in to access this page."
+msgstr "登录以访问此页"
+
+#: config/security.py:52
+msgid "Please reauthenticate to access this page."
+msgstr "需要重新登录"
+
+#: config/security.py:56
+msgid "Email Address"
+msgstr "Email"
+
+#: config/security.py:57
+msgid "Password"
+msgstr "密码"
+
+#: config/security.py:58
+msgid "Remember Me"
+msgstr "记住登录"
+
+#: config/security.py:60 config/security.py:65
+msgid "Retype Password"
+msgstr "重新输入密码"
+
+#: config/security.py:62
+msgid "Resend Confirmation Instructions"
+msgstr "重新发送确认邮件"
+
+#: config/security.py:63
+msgid "Recover Password"
+msgstr "找回密码"
+
+#: config/security.py:64
+msgid "Reset Password"
+msgstr "重置密码"
+
+#: config/security.py:66
+msgid "New Password"
+msgstr "新密码"
+
+#: config/security.py:67
+msgid "Change Password"
+msgstr "修改密码"
+
+#: config/security.py:68
+msgid "Send Login Link"
+msgstr "发送登录链接"
+
 #~ msgid "article"
 #~ msgstr "文章"
 
@@ -301,4 +496,7 @@ msgstr "加入我们"
 
 #~ msgid "Gallery"
 #~ msgstr "图片"
+
+#~ msgid "Article"
+#~ msgstr "文章"
 

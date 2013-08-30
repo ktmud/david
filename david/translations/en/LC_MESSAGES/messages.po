@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-08-30 08:52+0800\n"
+"POT-Creation-Date: 2013-08-30 20:40+0800\n"
 "PO-Revision-Date: 2013-08-18 08:17+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: en <LL@li.org>\n"
@@ -117,13 +117,13 @@ msgstr ""
 msgid "Attachments"
 msgstr ""
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:33
-#: david/ext/admin/__init__.py:33 config/__init__.py:46
+#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:32
+#: david/ext/admin/__init__.py:32 config/__init__.py:46
 msgid "Home"
 msgstr ""
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:36
-#: david/ext/admin/__init__.py:36
+#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:35
+#: david/ext/admin/__init__.py:35
 msgid "Visit Site"
 msgstr ""
 
@@ -151,14 +151,6 @@ msgstr ""
 #: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:16
 #: david/modules/gallery/admin.py:16 config/__init__.py:63
 msgid "Magazine"
-msgstr ""
-
-#: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:16
-#: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:17
-#: /Users/jesse/projects/tongdawei/david/modules/news/admin.py:11
-#: david/modules/gallery/admin.py:16 david/modules/gallery/admin.py:17
-#: david/modules/news/admin.py:11
-msgid "Article"
 msgstr ""
 
 #: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:17
@@ -189,8 +181,21 @@ msgid "Publish date"
 msgstr ""
 
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:44
-#: david/modules/works/admin.py:44 config/__init__.py:56
+#: david/modules/works/admin.py:44 config/__init__.py:58
+msgid "Movie"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:44
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:45
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:46
+#: david/modules/works/admin.py:44 david/modules/works/admin.py:45
+#: david/modules/works/admin.py:46 config/__init__.py:56
 msgid "Works"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:45
+#: david/modules/works/admin.py:45 config/__init__.py:59
+msgid "TV"
 msgstr ""
 
 #: /Users/jesse/projects/tongdawei/david/templates/admin/model/create.html:34
@@ -220,13 +225,13 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:52
-#: david/templates/modules/qiniu/inline.html:52
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:49
+#: david/templates/modules/qiniu/inline.html:49
 msgid "attachment title"
 msgstr ""
 
-#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:59
-#: david/templates/modules/qiniu/inline.html:59
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:56
+#: david/templates/modules/qiniu/inline.html:56
 msgid "attachment description"
 msgstr ""
 
@@ -235,9 +240,31 @@ msgstr ""
 msgid "No files uploaded yet."
 msgstr ""
 
+#: /Users/jesse/projects/tongdawei/david/templates/security/_menu.html:3
+#: david/templates/security/_menu.html:3
+msgid "Menu"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/security/_menu.html:5
 #: /Users/jesse/projects/tongdawei/david/templates/security/login_user.html:10
-#: david/templates/security/login_user.html:10
+#: david/templates/security/_menu.html:5
+#: david/templates/security/login_user.html:10 config/security.py:59
 msgid "Login"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/security/_menu.html:7
+#: david/templates/security/_menu.html:7 config/security.py:61
+msgid "Register"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/security/_menu.html:10
+#: david/templates/security/_menu.html:10
+msgid "Forgot password"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/templates/security/_menu.html:13
+#: david/templates/security/_menu.html:13
+msgid "Confirm account"
 msgstr ""
 
 #: config/__init__.py:22
@@ -254,14 +281,6 @@ msgstr ""
 
 #: config/__init__.py:51
 msgid "Yue"
-msgstr ""
-
-#: config/__init__.py:58
-msgid "Movie"
-msgstr ""
-
-#: config/__init__.py:59
-msgid "TV"
 msgstr ""
 
 #: config/__init__.py:60
@@ -282,6 +301,182 @@ msgstr ""
 
 #: config/__init__.py:72
 msgid "Join us"
+msgstr ""
+
+#: config/security.py:23
+msgid "You do not have permission to view this resource."
+msgstr ""
+
+#: config/security.py:24
+#, python-format
+msgid "Thank you. Confirmation instructions have been sent to %(email)s."
+msgstr ""
+
+#: config/security.py:25
+msgid "Thank you. Your email has been confirmed."
+msgstr ""
+
+#: config/security.py:26
+msgid "Your email has already been confirmed."
+msgstr ""
+
+#: config/security.py:27
+msgid "Invalid confirmation token."
+msgstr ""
+
+#: config/security.py:28
+#, python-format
+msgid "%(email)s is already associated with an account."
+msgstr ""
+
+#: config/security.py:29
+msgid "Password does not match"
+msgstr ""
+
+#: config/security.py:30
+msgid "Passwords do not match"
+msgstr ""
+
+#: config/security.py:31
+msgid "Redirections outside the domain are forbidden"
+msgstr ""
+
+#: config/security.py:32
+#, python-format
+msgid "Instructions to reset your password have been sent to %(email)s."
+msgstr ""
+
+#: config/security.py:33
+#, python-format
+msgid ""
+"You did not reset your password within %(within)s. New instructions have "
+"been sent to %(email)s."
+msgstr ""
+
+#: config/security.py:34
+msgid "Invalid reset password token."
+msgstr ""
+
+#: config/security.py:35
+msgid "Email requires confirmation."
+msgstr ""
+
+#: config/security.py:36
+#, python-format
+msgid "Confirmation instructions have been sent to %(email)s."
+msgstr ""
+
+#: config/security.py:37
+#, python-format
+msgid ""
+"You did not confirm your email within %(within)s. New instructions to "
+"confirm your email have been sent to %(email)s."
+msgstr ""
+
+#: config/security.py:38
+#, python-format
+msgid ""
+"You did not login within %(within)s. New instructions to login have been "
+"sent to %(email)s."
+msgstr ""
+
+#: config/security.py:39
+#, python-format
+msgid "Instructions to login have been sent to %(email)s."
+msgstr ""
+
+#: config/security.py:40
+msgid "Invalid login token."
+msgstr ""
+
+#: config/security.py:41
+msgid "Account is disabled."
+msgstr ""
+
+#: config/security.py:42
+msgid "Email not provided"
+msgstr ""
+
+#: config/security.py:43
+msgid "Invalid email address"
+msgstr ""
+
+#: config/security.py:44
+msgid "Password not provided"
+msgstr ""
+
+#: config/security.py:45
+msgid "Password must be at least 6 characters"
+msgstr ""
+
+#: config/security.py:46
+msgid "Specified user does not exist"
+msgstr ""
+
+#: config/security.py:47
+msgid "Invalid password"
+msgstr ""
+
+#: config/security.py:48
+msgid "You have successfuly logged in."
+msgstr ""
+
+#: config/security.py:49
+msgid ""
+"You successfully reset your password and you have been logged in "
+"automatically."
+msgstr ""
+
+#: config/security.py:50
+msgid "You successfully changed your password."
+msgstr ""
+
+#: config/security.py:51
+msgid "Please log in to access this page."
+msgstr ""
+
+#: config/security.py:52
+msgid "Please reauthenticate to access this page."
+msgstr ""
+
+#: config/security.py:56
+msgid "Email Address"
+msgstr ""
+
+#: config/security.py:57
+msgid "Password"
+msgstr ""
+
+#: config/security.py:58
+msgid "Remember Me"
+msgstr ""
+
+#: config/security.py:60 config/security.py:65
+msgid "Retype Password"
+msgstr ""
+
+#: config/security.py:62
+msgid "Resend Confirmation Instructions"
+msgstr ""
+
+#: config/security.py:63
+msgid "Recover Password"
+msgstr ""
+
+#: config/security.py:64
+msgid "Reset Password"
+msgstr ""
+
+#: config/security.py:66
+msgid "New Password"
+msgstr ""
+
+#: config/security.py:67
+msgid "Change Password"
+msgstr ""
+
+#: config/security.py:68
+msgid "Send Login Link"
 msgstr ""
 
 #~ msgid "With selected"
@@ -375,5 +570,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "已成功创建"
+#~ msgstr ""
+
+#~ msgid "Article"
 #~ msgstr ""
 

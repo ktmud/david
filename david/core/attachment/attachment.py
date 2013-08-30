@@ -26,9 +26,6 @@ class Attachment(PropsMixin, SerializeMixin):
     owner_id = PropsItem('owner_id')
     owner_kind = PropsItem('owner_kind')
 
-    _url = PropsItem('url')
-    _path = PropsItem('path')
-
     def __init__(self, id):
         self.id = id
 
@@ -36,11 +33,11 @@ class Attachment(PropsMixin, SerializeMixin):
         return 'attachment:%s' % self.id
 
     def url(self, category='large', user=None):
-        return self._url or self.manager.url(self.key, category=category,
+        return self.manager.url(self.key, category=category,
                 user=user)
 
     def path(self):
-        return self._path or self.manager.path(self.key)
+        return self.manager.path(self.key)
 
     @property
     def owner(self):
@@ -48,7 +45,16 @@ class Attachment(PropsMixin, SerializeMixin):
 
     @property
     def thumb_url(self):
-        return self.url('thumb') if self.is_image else ext_image_url(self.file_ext)
+        if self.is_image:
+            return self.url('thumb')
+        if self.is_video:
+            return self.video_thumbnail()
+        return ext_image_url(self.file_ext)
+
+    def video_thumbnail(self, **kwargs):
+        if hasattr(self.manager, 'video_thumbnail'):
+            return self.manager.video_thumbnail(self.key, **kwargs)
+        return ext_image_url(self.file_ext)
 
     @property
     def file_ext(self):
@@ -67,12 +73,24 @@ class Attachment(PropsMixin, SerializeMixin):
     def is_video(self):
         return self.file_ext in EXT_VIDEO
 
+    @property
+    def safe_title(self):
+        if self.title:
+            return self.title
+        if self.is_video:
+            return '[video] ' + self.key
+        if self.is_audio:
+            return '[audio] ' + self.key
+        return self.key
+
     def serialize(self):
         return dict(
                 id=self.id,
-                title=self.title or self.key,
+                title=self.safe_title,
                 desc=self.desc,
-                key=self.key, url=self.url(),
+                key=self.key,
+                url=self.url(),
+                raw_url=self.url(category=None),
                 thumb_url=self.thumb_url,
                 is_image=self.is_image,
                 size=self.size, mime=self.mime,

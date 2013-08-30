@@ -13,14 +13,14 @@ AVAILABLE_DOMAINS = {
 }
 
 def get_translations(locale, domain='messages'):
-    local = str(locale)
+    locale = str(locale)
     # to unify locale names
     if locale.startswith('zh_hans'):
         locale = 'zh_CN'
     elif locale.startswith('zh_hant'):
         locale = 'zh_TW'
 
-    ident = local + '/' + domain
+    ident = locale + '/' + domain
 
     if ident in cached_translations:
         return cached_translations[ident]

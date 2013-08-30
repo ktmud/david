@@ -1,5 +1,6 @@
 {% macro render_field_with_errors(field) %}
   <div class="pure-control-group">
+    {{ field | set_trans }}
     {{ field.label }}
     {{ field(**kwargs)|safe }}
     {% if field.errors %}
@@ -15,5 +16,6 @@
 {% endmacro %}
 
 {% macro render_field(field, class='') %}
+  {{ field | set_trans }}
   <p>{{ field(class=class, **kwargs)|safe }}</p>
 {% endmacro %}

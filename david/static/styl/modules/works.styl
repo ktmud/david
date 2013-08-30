@@ -1,3 +1,34 @@
+.carousel
+  .icon-angle-left, .icon-angle-right
+    height: 46px
+    width: 18px
+    &:before
+      content: ''
+    background: url('../img/carousel-controls.png') no-repeat 0 50%;
+    background-image: embedurl('../img/carousel-controls.png');
+  .icon-angle-right
+    background-position: 100% 50%;
+
+.modal
+  .carousel-inner
+    margin-left: 100px
+    margin-right: 100px
+    width: auto
+    min-height: 400px
+  .carousel-control
+    opacity(.8)
+    &.left, &.right
+      background-image: none
+    &:hover
+      background: none
+  .icon-angle-left, .icon-angle-right
+    background-image: url('../img/carousel-controls-black.png')
+    background-image: embedurl('../img/carousel-controls-black.png')
+
+
+
+
+
 .filter-by-year
   height: 45px
   margin: 0 15px
@@ -11,17 +42,6 @@
 .year-anchor
   position: absolute
   margin-top: -50px
-
-.carousel
-  .icon-angle-left, .icon-angle-right
-    height: 46px
-    width: 18px
-    &:before
-      content: ''
-    background: url(../img/carousel-controls.png) no-repeat 0 50%;
-    background-image: embedurl('../img/carousel-controls.png');
-  .icon-angle-right
-    background-position: 100% 50%;
 
 .work-carousel
   padding-bottom: 15px

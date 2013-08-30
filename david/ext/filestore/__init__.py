@@ -10,7 +10,7 @@ from config import STATIC_ROOT
 
 EXT_IMAGE = tuple('jpg jpe jpeg png gif svg bmp'.split())
 EXT_AUDIO = tuple('wav mp3 aac ogg oga'.split())
-EXT_VIDEO = tuple('mp4 flv'.split())
+EXT_VIDEO = tuple('mp4 flv mov'.split())
 
 
 

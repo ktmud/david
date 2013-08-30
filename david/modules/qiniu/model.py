@@ -29,6 +29,7 @@ qiniu.conf.SECRET_KEY = QINIU_SK
 class QiniuPutPolicy(qiniu.rs.PutPolicy):
     #callbackUrl = SITE_ROOT + '/api/qiniu/callback'
     callbackBody = 'owner_type=$(x:owner_type)&owner_id=$(x:owner_id)&key=$(etag)&size=$(fsize)&uid=$(endUser)'
+    asyncOps = 'avthumb/ipad_high'
 
 
 
@@ -65,8 +66,11 @@ class QiniuStore(FileStore):
     def exists(self, key):
         return False
 
-    def url(self, key, category='default', user=None):
-        return QINIU_ROOT + key + (self._delimiter + category if category else '')
+    def url(self, key, category=None, user=None):
+        suffix = self._delimiter + category if category else ''
+        if category == 'mp4' and key.endswith('.mp4'):
+            suffix = ''
+        return QINIU_ROOT + key + suffix
 
     def path(self, key):
         return key
@@ -77,6 +81,10 @@ class QiniuStore(FileStore):
             logger.error('%s - "%s", %s', self._bucket, key, err)
             raise QiniuStoreA('%s: %s' % (key, err))
         return ret
+
+    def video_thumbnail(self, key, offset=5, size='360x240'):
+        w, h = size.split('x')
+        return '%s?vframe/jpg/offset/%s/w/%s/h/%s' % (self.url(key), offset, w, h)
 
 
 class QiniuAttachment(Attachment):

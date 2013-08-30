@@ -43,5 +43,5 @@ class WorksAdmin(ModelAdmin):
 views = [
   (WorksAdmin(Movie, name=_('Movie'), category=_('Works')), 40),
   (WorksAdmin(TV, name=_('TV'), category=_('Works')), 41),
-  (WorksAdmin(Music, name=('Music'), category=_('Works')), 42),
+  (WorksAdmin(Music, name=_('Music'), category=_('Works')), 42),
 ]

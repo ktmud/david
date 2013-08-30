@@ -18,7 +18,7 @@
       <span class="btn btn-default fileinput-button">
         <i class="icon-plus icon-white"></i>
         <span>{{ _('Add files...') }}</span>
-        <input name="file" type="file" multiple accept="image/*" />
+        <input name="file" type="file" multiple accept="image/*,video/*,audio/*" />
       </span>
     </div>
   </div>
@@ -38,21 +38,23 @@
       <% } else { %>
         <div class="col col-4 col-lg-3">
           <div class="thumb">
-            <img class="img-thumbnail" src="<%= thumb_url %>" alt="" />
+            <a href="<%= raw_url %>" target="_blank">
+              <img class="img-thumbnail" src="<%= thumb_url %>" alt="" />
+            </a>
           </div>
         </div>
         <div class="col col-8 col-lg-9">
           <div class="detail">
             <a href="#" class="close remove-item">&times;</a>
             <div class="title">
-              <input name="title" type="text" class="form-control"
+              <input name="a-title" type="text" class="form-control"
               placeholder="{{ _('attachment title') }}" value="<%= title %>" />
               <span class="label label-success saved">
                 <span class="icon-ok"></span> 已保存
               </span>
             </div>
             <div class="desc">
-              <textarea class="form-control" name="desc" rows="4"
+              <textarea class="form-control" name="a-desc" rows="4"
                 cols="30" placeholder="{{ _('attachment description') }}"><%= desc %></textarea>
               <span class="label label-success saved">
                 <span class="icon-ok"></span> 已保存
