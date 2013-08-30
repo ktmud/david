@@ -104,9 +104,27 @@ def add_test_works():
     print 'Done.'
     print
 
+def add_test_pages():
+    print 'Creating pages...'
+
+    from david.modules.pages.model import Page
+
+    with app.test_client() as c:
+        c.get('/')
+
+        db.session.add(Page(title='About', uid='about',
+            content='<h2>About us</h2>'))
+        db.session.add(Page(title='English', uid='en',
+            content='<h2>About us</h2>'))
+        db.session.add(Page(title='Contact', uid='contact',
+            content='<h2>Contact us</h2>'))
+        db.session.commit()
+    print 'Done.'
+    print
 
 if __name__ == '__main__':
     add_test_users()
     add_test_articles()
     add_test_works()
+    add_test_pages()
 

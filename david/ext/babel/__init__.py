@@ -10,6 +10,8 @@ from flask.ext.login import current_user
 from david.translations import get_translations
 
 
+
+
 def init_babel(app):
     babel = Babel(app)
     babel.timezoneselector(_get_timezone)

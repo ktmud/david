@@ -2,6 +2,8 @@
 from .security import *
 from .database import *
 
+from flask.ext.babel import lazy_gettext as _
+
 DEVELOP_MODE = True
 DEBUG = True
 
@@ -17,7 +19,7 @@ BABEL_ACCEPT_LANGUAGE = ['zh_CN', 'zh_TW', 'en']
 BABEL_DEFAULT_LOCALE = 'zh_CN'
 BABEL_DEFAULT_TIMEZONE = 'Asia/Shanghai'
 
-SITE_NAME = '佟大为官网'
+SITE_NAME = _('Dawei Tong')
 SITE_DOMAIN = 'tongdawei.cc'
 SITE_ORIGIN = 'localhost:5000'
 SITE_ROOT = 'http://' + SITE_ORIGIN + '/'
@@ -41,25 +43,33 @@ SECURITY_EMAIL_SUBJECT_CONFIRM = '请确认你的登录邮箱(%s)' % (SITE_DOMAI
 
 #TODO: move this to database or something
 HEADER_MENU = [
-        ('/', '首页', 'home'),
-        ('/admin', '登录'),
-        ('javascript:void(0);', '明星', 'artist',
-            [ ('/artist/tong', '佟大为'), ('/artist/guan', '关　悦'), ]
+        ('/', _('Home'), 'home'),
+        #('/admin', _('Login')),
+        ('javascript:void(0);', _('Star'), 'artist',
+            [
+                ('/artist/tong', _('Dawei')),
+                ('/artist/guan', _('Yue')),
+            ]
         ),
         #('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '活动'),
-        ('/news/', '新闻'),
-        ('/works/', '作品', 'works',
-            [('/works/movie/', '电影'), ('/works/tv/', '电视'), ('/works/music/', '音乐')]
+        ('/news/', _('News')),
+        ('/works/', _('Works'), 'works',
+            [
+                ('/works/movie/', _('Movie')),
+                ('/works/tv/', _('TV')),
+                ('/works/music/', _('Music'))
+            ]
         ),
-        ('/gallery/magazine/', '杂志'),
-        ('/gallery/photos/', '图片'),
-        ('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '论坛'),
+        ('/gallery/magazine/', _('Magazine')),
+        ('/gallery/photos/', _('Photos')),
+        ('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA',
+            _('Forum')),
         ]
 
 FOOTER_MENU = [
-        ('/about', '关于佟大为工作室'),
-        ('/contact', '联系方式'),
-        ('/jobs', '加入我们')
+        ('/about', _('About David Tong Studio')),
+        ('/contact', _('Contact')),
+        ('/jobs', _('Join us'))
         ]
 
 

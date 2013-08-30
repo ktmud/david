@@ -2,6 +2,10 @@
 {% from 'widgets/article_list.html' import piced_list, render_pagination %}
 
 
+{% block title %}
+{{ _('News') }} - {{ config['SITE_NAME'] }}
+{% endblock %}
+
 
 {% block main_content %}
 <div class="mod">

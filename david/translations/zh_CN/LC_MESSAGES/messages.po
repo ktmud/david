@@ -1,16 +1,16 @@
 # Chinese (Simplified, China) translations for PROJECT.
-# Copyright (C) 2013 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# Copyright (C) 2013 Jesse Yang
+# This file is distributed under the same license as the DAVID project.
+# Jesse Yang <kissmud@gmail.com>, 2013.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-08-25 20:51+0800\n"
+"Report-Msgid-Bugs-To: kissmud@gmail.com\n"
+"POT-Creation-Date: 2013-08-30 08:52+0800\n"
 "PO-Revision-Date: 2013-08-18 14:32+0800\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Jesse Yang <kissmud@gmail.com>\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -18,151 +18,271 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:10
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:11
+#: /Users/jesse/projects/tongdawei/david/modules/pages/admin.py:10
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:13
+#: david/core/article/admin.py:11 david/modules/pages/admin.py:10
+#: david/modules/works/admin.py:13
 msgid "Title"
 msgstr "标题"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:11
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:35
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:12
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:36
 #: /Users/jesse/projects/tongdawei/david/modules/artist/admin.py:12
+#: /Users/jesse/projects/tongdawei/david/modules/pages/admin.py:12
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:14
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:17
+#: david/core/article/admin.py:12 david/core/article/admin.py:36
+#: david/modules/artist/admin.py:12 david/modules/pages/admin.py:12
+#: david/modules/works/admin.py:14 david/modules/works/admin.py:17
 msgid "Slug"
 msgstr "短网址"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:12
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:36
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:13
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:37
 #: /Users/jesse/projects/tongdawei/david/modules/artist/admin.py:11
+#: /Users/jesse/projects/tongdawei/david/modules/pages/admin.py:11
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:15
+#: david/core/article/admin.py:13 david/core/article/admin.py:37
+#: david/modules/artist/admin.py:11 david/modules/pages/admin.py:11
+#: david/modules/works/admin.py:15
 msgid "ID"
 msgstr "ID"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:13
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:14
+#: david/core/article/admin.py:14
 msgid "Tags"
 msgstr "标签"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:14
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:37
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:15
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:38
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:20
+#: david/core/article/admin.py:15 david/core/article/admin.py:38
+#: david/modules/works/admin.py:20
 msgid "Create at"
 msgstr "创建日期"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:15
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:16
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:21
+#: david/core/article/admin.py:16 david/modules/works/admin.py:21
 msgid "Update at"
 msgstr "最近更新"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:16
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:17
+#: david/core/article/admin.py:17
 msgid "Summary"
 msgstr "摘要"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:17
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:18
+#: /Users/jesse/projects/tongdawei/david/modules/pages/admin.py:13
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:23
+#: david/core/article/admin.py:18 david/modules/pages/admin.py:13
+#: david/modules/works/admin.py:23
 msgid "Content"
 msgstr "内容"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:26
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:27
+#: david/core/article/admin.py:27
 msgid "will abstract content body if not set"
 msgstr "如果不填会自动摘取正文"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:27
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:28
+#: david/core/article/admin.py:28
 msgid "default to current time"
 msgstr "默认为当前时间"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:34
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:35
 #: /Users/jesse/projects/tongdawei/david/modules/artist/admin.py:10
+#: david/core/article/admin.py:35 david/modules/artist/admin.py:10
 msgid "Name"
 msgstr "名称"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:38
+#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:39
 #: /Users/jesse/projects/tongdawei/david/core/attachment/admin.py:9
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:22
+#: david/core/article/admin.py:39 david/core/attachment/admin.py:9
+#: david/modules/works/admin.py:22
 msgid "Description"
 msgstr "描述"
 
-#: /Users/jesse/projects/tongdawei/david/core/article/admin.py:43
-msgid "Tag"
-msgstr "标签"
-
 #: /Users/jesse/projects/tongdawei/david/core/attachment/admin.py:8
+#: david/core/attachment/admin.py:8
 msgid "Choose File"
 msgstr "选择文件"
 
 #: /Users/jesse/projects/tongdawei/david/core/attachment/mixins.py:40
 #: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:11
+#: david/core/attachment/mixins.py:40
+#: david/templates/modules/qiniu/inline.html:11
 msgid "Attachments"
 msgstr "附件"
 
+#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:33
+#: david/ext/admin/__init__.py:33 config/__init__.py:46
+msgid "Home"
+msgstr "主页"
+
+#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:36
+#: david/ext/admin/__init__.py:36
+msgid "Visit Site"
+msgstr "访问网站"
+
+#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:125
+#: david/ext/admin/model.py:125
+msgid "Creating succeed."
+msgstr "已成功创建"
+
 #: /Users/jesse/projects/tongdawei/david/modules/artist/admin.py:13
+#: david/modules/artist/admin.py:13
 msgid "Short bio"
 msgstr "简介"
 
 #: /Users/jesse/projects/tongdawei/david/modules/artist/admin.py:14
+#: david/modules/artist/admin.py:14
 msgid "Detail"
 msgstr "详细内容"
 
 #: /Users/jesse/projects/tongdawei/david/modules/artist/admin.py:22
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:18
+#: david/modules/artist/admin.py:22 david/modules/works/admin.py:18
 msgid "Artist"
 msgstr "明星"
 
-#: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:11
-msgid "Gallery"
+#: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:16
+#: david/modules/gallery/admin.py:16 config/__init__.py:63
+msgid "Magazine"
+msgstr "杂志"
+
+#: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:16
+#: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:17
+#: /Users/jesse/projects/tongdawei/david/modules/news/admin.py:11
+#: david/modules/gallery/admin.py:16 david/modules/gallery/admin.py:17
+#: david/modules/news/admin.py:11
+msgid "Article"
+msgstr "文章"
+
+#: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:17
+#: david/modules/gallery/admin.py:17 config/__init__.py:64
+msgid "Photos"
 msgstr "图片"
 
 #: /Users/jesse/projects/tongdawei/david/modules/news/admin.py:11
+#: /Users/jesse/projects/tongdawei/david/templates/modules/news/index.html:6
+#: david/modules/news/admin.py:11 david/templates/modules/news/index.html:6
+#: config/__init__.py:55
 msgid "News"
 msgstr "新闻"
 
+#: /Users/jesse/projects/tongdawei/david/modules/pages/admin.py:21
+#: david/modules/pages/admin.py:21
+msgid "Pages"
+msgstr "页面"
+
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:16
+#: david/modules/works/admin.py:16
 msgid "Category"
 msgstr "分类"
 
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:19
+#: david/modules/works/admin.py:19
 msgid "Publish date"
 msgstr "发表日期"
 
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:44
+#: david/modules/works/admin.py:44 config/__init__.py:56
 msgid "Works"
 msgstr "作品"
 
 #: /Users/jesse/projects/tongdawei/david/templates/admin/model/create.html:34
+#: david/templates/admin/model/create.html:34
 msgid "Add attachments after created."
 msgstr "条目创建后方可上传附件"
 
 #: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:46
 #: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:20
+#: david/templates/modules/qiniu/form.html:46
+#: david/templates/modules/qiniu/inline.html:20
 msgid "Add files..."
 msgstr "添加文件..."
 
 #: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:51
+#: david/templates/modules/qiniu/form.html:51
 msgid "Start upload"
 msgstr "开始上传"
 
 #: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:55
+#: david/templates/modules/qiniu/form.html:55
 msgid "Cancel upload"
 msgstr "取消上传"
 
 #: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/form.html:59
+#: david/templates/modules/qiniu/form.html:59
 msgid "Delete"
 msgstr "删除"
 
-#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:51
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:52
+#: david/templates/modules/qiniu/inline.html:52
 msgid "attachment title"
 msgstr "附件标题"
 
-#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:54
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:59
+#: david/templates/modules/qiniu/inline.html:59
 msgid "attachment description"
 msgstr "附件描述"
 
 #: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/list.html:13
+#: david/templates/modules/qiniu/list.html:13
 msgid "No files uploaded yet."
 msgstr "还没有上传过任何文件"
 
 #: /Users/jesse/projects/tongdawei/david/templates/security/login_user.html:10
+#: david/templates/security/login_user.html:10
 msgid "Login"
 msgstr "登录"
+
+#: config/__init__.py:22
+msgid "Dawei Tong"
+msgstr "佟大为"
+
+#: config/__init__.py:48
+msgid "Star"
+msgstr "明星"
+
+#: config/__init__.py:50
+msgid "Dawei"
+msgstr "佟大为"
+
+#: config/__init__.py:51
+msgid "Yue"
+msgstr "关　悦"
+
+#: config/__init__.py:58
+msgid "Movie"
+msgstr "电影"
+
+#: config/__init__.py:59
+msgid "TV"
+msgstr "电视"
+
+#: config/__init__.py:60
+msgid "Music"
+msgstr "音乐"
+
+#: config/__init__.py:66
+msgid "Forum"
+msgstr "论坛"
+
+#: config/__init__.py:70
+msgid "About David Tong Studio"
+msgstr "关于佟大为工作室"
+
+#: config/__init__.py:71
+msgid "Contact"
+msgstr "联系方式"
+
+#: config/__init__.py:72
+msgid "Join us"
+msgstr "加入我们"
 
 #~ msgid "article"
 #~ msgstr "文章"
@@ -175,4 +295,10 @@ msgstr "登录"
 
 #~ msgid "Export as csv"
 #~ msgstr "输出为csv"
+
+#~ msgid "Tag"
+#~ msgstr "标签"
+
+#~ msgid "Gallery"
+#~ msgstr "图片"
 

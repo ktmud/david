@@ -122,7 +122,7 @@ class ModelAdmin(Proped, Roled, ModelView):
         if validate_form_on_submit(form):
             if self.create_model(form):
                 if '_add_another' in request.form:
-                    flash(gettext('已成功创建'))
+                    flash(gettext('Creating succeed.'))
                     return redirect(url_for('.create_view', url=return_url))
                 if self.has_attachments:
                     return redirect(url_for('.edit_view', url=return_url))

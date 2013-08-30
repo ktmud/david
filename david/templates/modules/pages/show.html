@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ item.title }}
+{% endblock %}
+
+{% block main_content %}
+  <div class="mod">
+    <div class="readable">
+      {{ item.content|safe }}
+    </div>
+  </div>
+{% endblock %}
+
+

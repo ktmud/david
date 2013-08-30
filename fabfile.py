@@ -2,6 +2,7 @@
 import os
 from fabric.api import *
 import config
+import david
 
 # Example usage
 env.hosts = ['david@david:19848']
@@ -22,9 +23,12 @@ def babel():
 
 def babel_extract():
     local('pybabel extract -F david/babel.cfg '
-          '--msgid-bugs-address=kisdmud@gmail.com '
-          '--copyright-holder="Jesse Yang" '
-          '-o /tmp/messages.pot %s' % APP_ROOT)
+          '--msgid-bugs-address "kisdmud@gmail.com" '
+          '--project david '
+          '--version %s '
+          '--copyright-holder "Jesse Yang" '
+          '-o /tmp/messages.pot %s '
+          'david/ config/' % (david.__version__, APP_ROOT))
 
 def babel_update():
     babel_extract()
