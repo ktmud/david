@@ -2,6 +2,8 @@
 from david.lib.mixins.wrapper import WrapperMixin
 from david.ext.views.static import lazy_static_url 
 
+from .work import Work
+
 C_MOVIE = 1001
 
 class Movie(WrapperMixin):

@@ -3,9 +3,16 @@
 Store uploaded file to somewhere.
 """
 import os
-from flask.ext.uploads import UploadSet, secure_filename, IMAGES as EXT_IMAGES
+from flask.ext.uploads import UploadSet, secure_filename
 
 from config import STATIC_ROOT
+
+
+EXT_IMAGE = tuple('jpg jpe jpeg png gif svg bmp'.split())
+EXT_AUDIO = tuple('wav mp3 aac ogg oga'.split())
+EXT_VIDEO = tuple('mp4 flv'.split())
+
+
 
 class FileStore(UploadSet):
 

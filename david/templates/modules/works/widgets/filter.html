@@ -3,7 +3,7 @@
   <div id="years">
     <ul class="pure-menu pure-menu-horizontal nav slim">
       {% for i in years  %}
-        <li>
+        <li data-year="{{ i }}">
           <a href="#year-{{ i }}">{{ i }}</a>
         </li>
       {% endfor %}
@@ -12,12 +12,48 @@
 </div>
 <script type="text/javascript">
   Do(function() {
-    $('body').scrollspy({ target: '#years' });
     var node = $('#years');
+    var list = $('.poster-list');
+    var h = node.height();
+    var o = node.offset();
+
+    node.parent().height(h);
+
+    node.find('a').each(function(i, item) {
+        var year = this.href.split('-')[1];
+        list.children('[data-year=' + year + ']:first').prepend('<a class="year-anchor" id="year-' + year + '"></a>');
+    });
+
+    $('a.year-anchor').css('margin-top', -h);
+
+    var doc = $('body'), win = $(window);
+    doc.scrollspy({
+      target: '#years',
+      offset: h
+    }).on('activate.bs.scrollspy', function(e) {
+      var year = $(e.target).data('year');
+      list.children().removeClass('active')
+          .filter('[data-year=' + year + ']').addClass('active')
+    });
+
+    node.on('click', 'a', function(e) {
+      e.preventDefault();
+      var target = $(this).attr('href');
+      var top = $(target).offset().top;
+      var duration = Math.min(300, Math.abs(top - win.scrollTop()));
+
+      doc.animate({ scrollTop: top }, duration, function() {
+        location.hash = target;
+        setTimeout(function() {
+          doc.data('bs.scrollspy').activate(target);
+        }, 0);
+      });
+    });
+
     node.width(node.parent().width());
     node.affix({
       offset: {
-        top: node.offset().top
+        top: o.top
       }
     });
   });

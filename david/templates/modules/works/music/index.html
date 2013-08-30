@@ -1,0 +1,19 @@
+{% extends 'modules/works/base.html' %}
+{% from 'modules/works/widgets/work_list.html' import poster_list %}
+{% from 'modules/works/widgets/media.html' import audio_player %}
+
+{% block title %}
+{%- if artist -%}
+  {{ artist.name }}音乐作品
+{%- else  -%}
+  音乐作品 - {{ config['SITE_NAME'] }}
+{%- endif -%}
+{% endblock %}
+
+{% block cat_title %}音乐作品{% endblock %}
+
+
+{% block main_content %}
+{% endblock %}
+
+

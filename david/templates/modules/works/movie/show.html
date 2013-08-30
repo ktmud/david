@@ -1,6 +1,10 @@
 {% extends 'modules/works/movie/index.html' %}
 {% from 'widgets/carousel.html' import render_carousel %}
 
+{% block title %}
+{{ work.title }} - {{ artist.name }}电影作品
+{% endblock %}
+
 
 {% block article_content %}
 {% if carousel_items %}

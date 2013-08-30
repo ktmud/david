@@ -8,5 +8,5 @@ class NewsAdmin(ArticleAdmin):
     pass
 
 views = [
-  NewsAdmin(News, name=_('News'), category=_('Article'))
+  (NewsAdmin(News, name=_('News')), 20)
 ]

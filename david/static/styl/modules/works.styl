@@ -5,14 +5,23 @@
   .pure-menu
     padding: 10px 0
     background: rgba(bg_color, 0.5)
+    .active a
+      color: #fff
 
+.year-anchor
+  position: absolute
+  margin-top: -50px
 
 .carousel
   .icon-angle-left, .icon-angle-right
-    font-size: 70px
-    height: 70px
-    margin-top: -35px
-    transform(scaleX(0.6))
+    height: 46px
+    width: 18px
+    &:before
+      content: ''
+    background: url(../img/carousel-controls.png) no-repeat 0 50%;
+    background-image: embedurl('../img/carousel-controls.png');
+  .icon-angle-right
+    background-position: 100% 50%;
 
 .work-carousel
   padding-bottom: 15px

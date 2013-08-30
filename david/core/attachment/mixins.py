@@ -74,3 +74,14 @@ class PictureMixin(AttachmentMixin):
         if '%s' in dft:
             return dft % category
         return self._DEFAULT_PIC
+
+
+class MediaMixin(PictureMixin):
+
+    def attachment_medias(self):
+        audios, videos = [], []
+        items = self.attachment_items
+        for x in items:
+            if x.is_audio: audios.append(x)
+            elif x.is_video: videos.append(x)
+        return audios, videos

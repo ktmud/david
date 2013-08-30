@@ -2,11 +2,11 @@
 from wtforms import SelectField
 
 from david.ext.admin import ModelAdmin
-from david.ext.babel import lazy_gettext as _
+from david.ext.admin import _
 
 from david.modules.artist.model import Artist, all_artists
 
-from .model import Work
+from .model import Work, Movie, TV, Music
 
 class WorksAdmin(ModelAdmin):
     column_labels = dict(
@@ -41,5 +41,7 @@ class WorksAdmin(ModelAdmin):
     )
 
 views = [
-  WorksAdmin(Work, name=_('Works'))
+  (WorksAdmin(Movie, name=_('Movie'), category=_('Works')), 40),
+  (WorksAdmin(TV, name=_('TV'), category=_('Works')), 41),
+  (WorksAdmin(Music, name=('Music'), category=_('Works')), 42),
 ]

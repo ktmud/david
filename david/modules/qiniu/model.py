@@ -3,6 +3,7 @@ import logging
 import qiniu.conf
 import qiniu.rs
 import qiniu.io
+import qiniu.resumable_io as rio
 import sys
 
 from david.ext.filestore import FileStore 

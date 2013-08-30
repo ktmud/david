@@ -9,14 +9,13 @@ from config import SITE_ROOT
 from .model import Roled, ModelAdmin, AdminIndex, Proped
 
 
-translations = {
-    'Article': lazy_gettext('Article')
-}
+translations = {}
 
 def _(string):
     if string in translations:
         return translations[string]
-    return lazy_gettext(string)
+    ret = translations[string] = lazy_gettext(string)
+    return ret
 
 
 

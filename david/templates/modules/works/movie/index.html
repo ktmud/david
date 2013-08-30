@@ -1,12 +1,26 @@
 {% extends 'modules/works/base.html' %}
 {% from 'modules/works/widgets/work_list.html' import poster_list %}
 {% from 'modules/works/widgets/filter.html' import year_filter %}
+{% from 'modules/works/widgets/media.html' import video_player %}
+
+{% block title %}
+{%- if artist -%}
+  {{ artist.name }}电影作品
+{%- else  -%}
+  电影作品 - {{ config['SITE_NAME'] }}
+{%- endif -%}
+
+{% endblock %}
 
 {% block cat_title %}电影作品{% endblock %}
 
 
-
 {% block article_content %}
   {{ year_filter(years) }}
-  {{ poster_list(items, years_ident=True) }}
+  {{ poster_list(items) }}
+  {% if video %}
+    <div class="mod">
+      {{ video_player(video) }}
+    </div>
+  {% endif %}
 {% endblock %}

@@ -9,10 +9,8 @@ bp = Blueprint('qiniu', __name__)
 @bp.route('/api/qiniu/upload', methods=['GET', 'POST', 'PUT'])
 def qiniu_upload():
     if request.method in ['POST', 'PUT'] and request.files:
-
         if 'file' not in request.files:
             return jsonify(r=400)
-
         form = request.form
         owner_id = form.get('owner_id')
         owner_kind = form.get('owner_kind')
@@ -32,7 +30,6 @@ def qiniu_upload():
             except QiniuUploadFail, e:
                 ret.append({ 'failure': 'saving', 'filename': fp.filename })
                 continue
-
         return jsonify(r=0, items=ret)
 
 

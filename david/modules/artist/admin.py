@@ -19,5 +19,5 @@ class ArtistAdmin(ModelAdmin):
     }
 
 views = [
-  ArtistAdmin(Artist, name=_('Artist'))
+  (ArtistAdmin(Artist, name=_('Artist')), 10)
 ]

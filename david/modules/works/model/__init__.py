@@ -3,14 +3,14 @@ from david.core.mapper import add_kind
 from david.ext.babel import lazy_gettext as _
 
 from .work import K_WORK, Work as BaseWork
-from .movie import C_MOVIE, Movie
-from .tv import C_TV, TV
-from .music import C_MUSIC, Music
+from .movie import C_MOVIE, Movie as MovieWrapper
+from .tv import C_TV, TV as TVWrapper
+from .music import C_MUSIC, Music as MusicWrapper
 
 cat2type = {
-    C_MOVIE: Movie,
-    C_TV: TV,
-    C_MUSIC: Music,
+    C_MOVIE: MovieWrapper,
+    C_TV: TVWrapper,
+    C_MUSIC: MusicWrapper,
 }
 
 
@@ -29,6 +29,15 @@ class Work(BaseWork):
     @property
     def extended_self(self):
         return cat2type[self.cat](self)
+
+class Music(BaseWork):
+    cat_id = C_MUSIC
+
+class Movie(BaseWork):
+    cat_id = C_MOVIE
+
+class TV(BaseWork):
+    cat_id = C_TV
 
 
 # Export Work kind

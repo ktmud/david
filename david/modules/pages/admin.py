@@ -18,5 +18,5 @@ class PagesAdmin(ModelAdmin):
     }
 
 views = [
-  PagesAdmin(Page, name=_('Pages'))
+  (PagesAdmin(Page, name=_('Pages')), 90)
 ]

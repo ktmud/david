@@ -4,7 +4,7 @@ from flask import abort
 from david.core.db import db, SerializeMixin
 from david.core.mapper import get_obj
 from david.lib.mixins.props import PropsMixin, PropsItem
-from david.ext.filestore import FileStore, EXT_IMAGES
+from david.ext.filestore import FileStore, EXT_IMAGE, EXT_VIDEO, EXT_AUDIO
 from david.ext.babel import lazy_gettext as _
 
 
@@ -57,7 +57,15 @@ class Attachment(PropsMixin, SerializeMixin):
 
     @property
     def is_image(self):
-        return self.file_ext in EXT_IMAGES
+        return self.file_ext in EXT_IMAGE
+
+    @property
+    def is_audio(self):
+        return self.file_ext in EXT_AUDIO
+
+    @property
+    def is_video(self):
+        return self.file_ext in EXT_VIDEO
 
     def serialize(self):
         return dict(

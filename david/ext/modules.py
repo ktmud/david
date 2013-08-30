@@ -7,6 +7,7 @@ from importlib import import_module
 from .views import register_views
 from .admin import admin
 
+
 def load_module(app, name):
     package = 'david.modules.%s' % name
     mod = __import__(package, fromlist=['admin', 'bp', 'setup', 'view'])
@@ -17,9 +18,8 @@ def load_module(app, name):
     if hasattr(mod, 'view'):
         register_views(app, mod.view)
 
-    # register admin view
-    if hasattr(mod, 'admin') and hasattr(mod.admin, 'views'):
-        admin_views = [admin.add_view(v) for v in mod.admin.views]
+    return mod
+
 
 def load_modules(app):
     names = app.config.get('MODULES')
@@ -28,5 +28,15 @@ def load_modules(app):
         modules_folder = import_module('david.modules').__path__[0]
         names = [x for x in os.listdir(modules_folder) if
                 '__init__' not in x]
-    for m in names:
-        load_module(app, m)
+    mods = [load_module(app, m) for m in names]
+    register_admin_views(mods)
+
+
+def register_admin_views(modules):
+    views = []
+    for mod in modules:
+        if hasattr(mod, 'admin') and hasattr(mod.admin, 'views'):
+            views += mod.admin.views
+    views = sorted(views, key=lambda x: x[1])
+    for x in views:
+        admin.add_view(x[0])

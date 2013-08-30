@@ -13,7 +13,7 @@ class CatLimitedQuery(BaseQuery):
         super(CatLimitedQuery, self).__init__(*args, **kwargs)
         cls = self._entities[0].type
         # only apply filter to cat_id defined
-        if hasattr(cls, 'cat'):
+        if hasattr(cls, 'cat') and hasattr(cls, 'cat_id') and cls.cat_id:
             filtered = self.filter(cls.cat==cls.cat_id)
             self._criterion = filtered._criterion
 

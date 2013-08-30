@@ -69,35 +69,35 @@ def add_test_works():
         # send a fake request, so `current_app` can be the app
         rv = c.get('/')
 
-        artist = Artist()
-        artist.name = '佟大为'
-        artist.uid = 'tong'
+        artist1 = Artist()
+        artist1.name = '佟大为'
+        artist1.uid = 'tong'
 
         artist2 = Artist()
         artist2.name = '关悦'
         artist2.uid = 'guan'
 
-        db.session.add_all([artist, artist2])
+        db.session.add_all([artist1, artist2])
         db.session.commit()
 
         artist1, artist2 = Artist.query.all()
-        artist.desc = artist2.desc = lorem
+        artist1.desc = artist2.desc = lorem
 
-        pubdate = datetime.date.today()
         one_year = datetime.timedelta(days=366)
         one_month = datetime.timedelta(days=30)
 
         for cat, model in cat2type.items():
-            pubdate -= one_year
-            for i in range(10):
-                for i in range(6):
+            pubdate = datetime.date.today() + one_year
+            for i in range(20):
+                pubdate -= one_year
+                for i in range(7):
                     pubdate -= one_month
                     obj = Work()
                     obj.title = '%s作品%s' % (model.__name__, i + 1)
                     obj.cat = cat
                     obj.pubdate = pubdate
                     obj.desc = lorem
-                    obj.artist_id = artist.id
+                    obj.artist_id = artist1.id if i % 2 else artist2.id
                     obj.owner_id = User.query.first().id
                     db.session.add(obj)
         db.session.commit()
