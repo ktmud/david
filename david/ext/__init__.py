@@ -24,9 +24,10 @@ def init_app(app):
     cache.init_app(app)
     init_babel(app)
 
+    setup_views(app)
+
     admin.name = app.config.get('SITE_NAME')
     admin.init_app(app)
 
     load_modules(app)
-    setup_views(app)
     setup_debug(app)

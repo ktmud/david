@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint, abort, redirect, request as req
+from flask import current_app
 from david.lib.template import TemplateNotFound, st
 
 from .model import Page
@@ -14,6 +15,10 @@ def home():
 
 @bp.route('/<page>')
 def show(page='home'):
+    if req.path == 'home':
+        return redirect(url_for('pages.show'))
+    if '.' in page:
+        return current_app.send_static_file(page)
     if page == 'show' or page.isdigit():
         return abort(404)
     try:

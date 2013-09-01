@@ -10,6 +10,7 @@ from .static import static_url, inline_static, urlmap, admin_static_url
 from .menu import Menu
 from .errorhandler import setup_errorhandler
 from .accounts import setup_accounts_manager
+from .routing import NoDotConverter
 
 from wtforms.fields.core import Field, Label
 
@@ -63,6 +64,7 @@ def setup(app):
 
     app.context_processor(inject_app_contexts)
     app.jinja_env.filters.update(template_filters)
+    app.url_map.converters['nodot'] = NoDotConverter
 
 
 

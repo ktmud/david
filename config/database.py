@@ -5,8 +5,8 @@ REDIS_SERVER = dict(
     port=6379,
     db=0
 )
-REDIS_KEY_PREFIX = 'dawei:'
+REDIS_KEY_PREFIX = 'david:'
 
-SQLALCHEMY_DATABASE_URI = 'mysql://root@localhost/tongdawei'
+SQLALCHEMY_DATABASE_URI = 'mysql://root@localhost/test_david'
 
 

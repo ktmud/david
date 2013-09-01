@@ -13,7 +13,7 @@ TRANSLATION_ROOT = APP_ROOT + '/translations'
 
 
 REMOTE_APP_ROOT = '/srv/user/david/app/tongdawei.cc'
-
+REMOTE_ALEMBIC_CONFIG_FILE = REMOTE_APP_ROOT + '/local_alembic.ini'
 
 
 def babel():
@@ -51,6 +51,7 @@ def deploy():
     with cd(REMOTE_APP_ROOT):
         run('source venv/bin/activate && pip install -r requirements.txt')
         run('cd ./david/static && npm install && grunt build')
+        run('source venv/bin/activate && alembic -c %s upgrade head' % REMOTE_ALEMBIC_CONFIG_FILE)
         run('make dpyc')
     run('sudo supervisorctl -c /etc/supervisor/supervisord.conf restart david')
 

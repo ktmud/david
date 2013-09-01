@@ -4,6 +4,7 @@ Flask-SQLAlchemy
 MarkupSafe
 Werkzeug
 MySQL-python
+alembic
 redis
 raven
 Babel
