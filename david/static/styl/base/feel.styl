@@ -26,11 +26,13 @@ above_md = '(min-width: ' + screen-md + ')'
 above_sm = '(min-width: ' + screen-sm + ')'
 above_xs = '(min-width: ' + screen-xs + ')'
 
-
-imgtext(imgurl, width, height)
+hidetext()
   display: inline-block
   line-height: 99999em
   overflow: hidden
+
+imgtext(imgurl, width, height)
+  hidetext()
   background: url(imgurl) no-repeat 50% 50%
   background-image: embedurl(imgurl);
   height: height

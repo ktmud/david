@@ -3,15 +3,25 @@
   max-width: 100%
   height: auto
 
+
 @media below_md
   .sinked
-    margin-top: 160px
+    margin-top: 200px
   .container
     min-height: 0
+    margin-right: 160px
+  .bg-logo
+    width: 100px
 
 @media below_sm
+  .container
+    margin-right: 0
+  .header-nav
+    margin-right: 170px
+  .hidden-sm
+    display: none
   .sinked
-    margin-top: 60px
+    margin-top: 120px
   #footer
     bottom: 0
     .pure-menu
@@ -19,9 +29,22 @@
     .copyright
       display: block
       margin-top: 5px
-
-@media below_sm
   .header-nav .pure-menu.pure-menu-open li
     width: 100px
   .mod .news-list
     margin-left: 15px
+
+@media (max-width: 580px)
+  .header-nav
+    margin-right: 0
+  .header-sns
+    display: none
+  .bg-logo
+    width: 130px
+
+@media below_xs
+  .bg-logo
+    right: 20px
+  .hidden-xs
+    display: none
+
