@@ -1,15 +1,15 @@
-{%- macro hmenu(menu) -%}
-  {{ pure_menu(menu, cls='pure-menu pure-menu-open pure-menu-horizontal') }}
+{%- macro hmenu(menu, show_active=True) -%}
+  {{ pure_menu(menu, cls='pure-menu pure-menu-open pure-menu-horizontal', show_active=show_active) }}
 {%- endmacro -%}
 
 
-{%- macro pure_menu(menu, cls='pure-menu', item_cls='') -%}
+{%- macro pure_menu(menu, cls='pure-menu', item_cls='', show_active=True) -%}
 {% if menu %}
 <ul class="{{ cls }}">
   {% for item in menu.items() %}
   <li class="{{ item_cls }}
              {{'has-submenu' if item.has_submenu else ''}}
-             {{ 'selected' if item.is_current else '' }}">
+             {{ 'selected' if show_active and item.is_current else '' }}">
     {% set target = 'target="_blank"' if item.path.startswith('http') else '' %}
     <a href="{{ item.path }}"{{ target }}>
       {{ item.text }}
