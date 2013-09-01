@@ -9,7 +9,7 @@ bp = Blueprint('news', __name__)
 @bp.route('/news/p<int:page>')
 def list(page=1):
     limit = perpage = 5
-    pagi = News.query.paginate(page, perpage)
+    pagi = News.query.order_by(News.create_at.desc()).paginate(page, perpage)
     items = pagi.items
     total = pagi.total
     return st('/modules/news/index.html', **locals())

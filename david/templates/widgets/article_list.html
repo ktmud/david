@@ -1,15 +1,18 @@
-{%- macro piced_list(items, cls='', item_cls='') -%}
+{%- macro piced_list(items, cls='', item_cls='', pic_cat='sqr100') -%}
 {% if items %}
 <ul class="{{ cls }}">
   {% for item in items %}
   <li class="{{ item_cls }}">
     <a class="pic" href="{{ item.url() }}"">
-      <img src="{{ item.picture_url('thumb') }}" alt="" />
+      <img src="{{ item.picture_url(pic_cat) }}" alt="" />
     </a>
     <div class="detail">
       <h3><a href="{{ item.url() }}">{{ item.title }}</a></h3>
       <p class="summary">
         {{ item.abstract() }}
+      </p>
+      <p class="meta">
+      发表于 {{ item.create_at }}
       </p>
     </div>
   </li>

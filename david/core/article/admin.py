@@ -20,7 +20,7 @@ class ArticleAdmin(ModelAdmin):
     column_list = ('id', 'title', 'create_at', 'update_at')
     column_sortable_list = ('id', 'title')
 
-    form_columns = ('title', 'content', 'summary')
+    form_columns = ('title', 'content', 'summary', 'create_at',)
     richtext_columns = ('content', )
     form_widget_args = {
         'summary': dict(rows='4',

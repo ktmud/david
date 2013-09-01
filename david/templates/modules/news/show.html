@@ -2,9 +2,12 @@
 
 {% block modal_content %}
   <a href="{{ article.listpage_url() }}" class="close">&times;</a>
-  <div class="modal-body">
+  <div class="modal-body news-article">
     <h1>
       {{ article.title }}
+      <small>
+        {{ article.create_at }}
+      </small>
     </h1>
     <div class="readable">
       {{ article.content|safe }}

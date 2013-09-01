@@ -19,7 +19,7 @@ BABEL_ACCEPT_LANGUAGE = ['zh_CN', 'zh_TW', 'en']
 BABEL_DEFAULT_LOCALE = 'zh_CN'
 BABEL_DEFAULT_TIMEZONE = 'Asia/Shanghai'
 
-SITE_NAME = _('Dawei Tong')
+SITE_NAME = _('Dawei Tong Official')
 SITE_DOMAIN = 'tongdawei.cc'
 SITE_ORIGIN = 'localhost:5000'
 SITE_ROOT = 'http://' + SITE_ORIGIN + '/'
@@ -52,7 +52,7 @@ HEADER_MENU = [
             ]
         ),
         #('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '活动'),
-        ('/news/', _('News')),
+        ('/news/', _('News'), 'news', None, lambda x, req: req.path.startswith('/news/')),
         ('/works/', _('Works'), 'works',
             [
                 ('/works/movie/', _('Movie')),
