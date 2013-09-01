@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: kissmud@gmail.com\n"
-"POT-Creation-Date: 2013-08-30 20:40+0800\n"
+"POT-Creation-Date: 2013-09-01 15:10+0800\n"
 "PO-Revision-Date: 2013-08-18 14:32+0800\n"
 "Last-Translator: Jesse Yang <kissmud@gmail.com>\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
@@ -110,9 +110,9 @@ msgstr "描述"
 msgid "Choose File"
 msgstr "选择文件"
 
-#: /Users/jesse/projects/tongdawei/david/core/attachment/mixins.py:40
+#: /Users/jesse/projects/tongdawei/david/core/attachment/mixins.py:47
 #: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:11
-#: david/core/attachment/mixins.py:40
+#: david/core/attachment/mixins.py:47
 #: david/templates/modules/qiniu/inline.html:11
 msgid "Attachments"
 msgstr "附件"
@@ -149,12 +149,12 @@ msgid "Artist"
 msgstr "明星"
 
 #: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:16
-#: david/modules/gallery/admin.py:16 config/__init__.py:63
+#: david/modules/gallery/admin.py:16 config/__init__.py:64
 msgid "Magazine"
 msgstr "杂志"
 
 #: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:17
-#: david/modules/gallery/admin.py:17 config/__init__.py:64
+#: david/modules/gallery/admin.py:17 config/__init__.py:56
 msgid "Photos"
 msgstr "图片"
 
@@ -181,7 +181,7 @@ msgid "Publish date"
 msgstr "发表日期"
 
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:44
-#: david/modules/works/admin.py:44 config/__init__.py:58
+#: david/modules/works/admin.py:44 config/__init__.py:59
 msgid "Movie"
 msgstr "电影"
 
@@ -189,14 +189,19 @@ msgstr "电影"
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:45
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:46
 #: david/modules/works/admin.py:44 david/modules/works/admin.py:45
-#: david/modules/works/admin.py:46 config/__init__.py:56
+#: david/modules/works/admin.py:46 config/__init__.py:57
 msgid "Works"
 msgstr "作品"
 
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:45
-#: david/modules/works/admin.py:45 config/__init__.py:59
+#: david/modules/works/admin.py:45 config/__init__.py:60
 msgid "TV"
 msgstr "电视"
+
+#: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:46
+#: david/modules/works/admin.py:46 config/__init__.py:61
+msgid "Music"
+msgstr "音乐"
 
 #: /Users/jesse/projects/tongdawei/david/templates/admin/model/create.html:34
 #: david/templates/admin/model/create.html:34
@@ -225,13 +230,13 @@ msgstr "取消上传"
 msgid "Delete"
 msgstr "删除"
 
-#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:49
-#: david/templates/modules/qiniu/inline.html:49
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:51
+#: david/templates/modules/qiniu/inline.html:51
 msgid "attachment title"
 msgstr "附件标题"
 
-#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:56
-#: david/templates/modules/qiniu/inline.html:56
+#: /Users/jesse/projects/tongdawei/david/templates/modules/qiniu/inline.html:58
+#: david/templates/modules/qiniu/inline.html:58
 msgid "attachment description"
 msgstr "附件描述"
 
@@ -268,8 +273,8 @@ msgid "Confirm account"
 msgstr "确认账号"
 
 #: config/__init__.py:22
-msgid "Dawei Tong"
-msgstr "佟大为"
+msgid "Dawei Tong Official"
+msgstr "佟大为官方网站"
 
 #: config/__init__.py:48
 msgid "Star"
@@ -282,10 +287,6 @@ msgstr "佟大为"
 #: config/__init__.py:51
 msgid "Yue"
 msgstr "关　悦"
-
-#: config/__init__.py:60
-msgid "Music"
-msgstr "音乐"
 
 #: config/__init__.py:66
 msgid "Forum"
@@ -499,4 +500,7 @@ msgstr "发送登录链接"
 
 #~ msgid "Article"
 #~ msgstr "文章"
+
+#~ msgid "Dawei Tong"
+#~ msgstr "佟大为"
 
