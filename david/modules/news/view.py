@@ -17,6 +17,7 @@ def list(page=1):
 @bp.route('/news/<uid>')
 def single(uid):
     article = News.get_or_404(uid)
+    pics = article.attachment_pics()
     return st('/modules/news/show.html', **locals())
 
 

@@ -16,6 +16,17 @@ mod_margin = 20px
 font_serif = 'times new roman',times,serif
 
 
+screen-phone = screen-xs = 480px
+screen-tablet = screen-sm = 768px
+screen-desktop = screen-md = 992px
+below_md = '(max-width: ' + screen-md + ')'
+below_sm = '(max-width: ' + screen-sm + ')'
+below_xs = '(max-width: ' + screen-xs + ')'
+above_md = '(min-width: ' + screen-md + ')'
+above_sm = '(min-width: ' + screen-sm + ')'
+above_xs = '(min-width: ' + screen-xs + ')'
+
+
 imgtext(imgurl, width, height)
   display: inline-block
   line-height: 99999em

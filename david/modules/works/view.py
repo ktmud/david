@@ -18,8 +18,7 @@ def home():
 def show(uid):
     work = Work.get_or_404(uid)
     audios, videos = work.attachment_medias()
-    carousel_items = [dict(img=a.url(), caption=a.desc)
-                     for a in work.attachment_items if a.is_image]
+    carousel_items = [dict(img=a.url(), caption=a.desc) for a in work.attachment_pics()]
     cat = work.cat_name
     artist = work.artist
     return st('/modules/works/%s/show.html' % cat, **locals())

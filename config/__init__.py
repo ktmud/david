@@ -43,7 +43,7 @@ SECURITY_EMAIL_SUBJECT_CONFIRM = '请确认你的登录邮箱(%s)' % (SITE_DOMAI
 
 #TODO: move this to database or something
 HEADER_MENU = [
-        ('/', _('Home'), 'home'),
+        ('/', _('Home'), 'home', None, lambda x, req: False),
         #('/admin', _('Login')),
         ('javascript:void(0);', _('Star'), 'artist',
             [
@@ -53,6 +53,7 @@ HEADER_MENU = [
         ),
         #('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '活动'),
         ('/news/', _('News'), 'news', None, lambda x, req: req.path.startswith('/news/')),
+        ('/gallery/photos/', _('Photos')),
         ('/works/', _('Works'), 'works',
             [
                 ('/works/movie/', _('Movie')),
@@ -61,7 +62,6 @@ HEADER_MENU = [
             ]
         ),
         ('/gallery/magazine/', _('Magazine')),
-        ('/gallery/photos/', _('Photos')),
         ('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA',
             _('Forum')),
         ]

@@ -31,7 +31,7 @@ class Photos(Article):
     def pics_info(self):
         pics = [dict(title=x.title, desc=x.desc, large_url=x.url('large'),
                      thumb_url=x.thumb_url)
-                for x in self.attachment_items if x.is_image]
+                for x in self.attachment_pics()]
         return pics
 
 

@@ -14,13 +14,20 @@ class AttachmentMixin(PropsMixin):
 
     attachments = PropsItem('attachments', [])
 
-    @property
-    def attachment_items(self):
-        return filter(None, Attachment.gets(self.attachments))
+    def attachment_items(self, media_type=None):
+        media_filter = None
+        if media_type:
+            if isinstance(media_type, str):
+                media_type = (media_type,)
+            media_filter = lambda x: x and any([getattr(x, 'is_' + m) for m in media_type])
+        ret = filter(media_filter, Attachment.gets(self.attachments))
+        return ret
 
-    @property
-    def attachments_info(self):
-        return [item.serialize() for item in self.attachment_items]
+    def attachment_pics(self):
+        return [x for x in self.attachment_items('image') if x.is_image]
+
+    def attachments_info(self, *args, **kwargs):
+        return [item.serialize() for item in self.attachment_items(*args, **kwargs)]
 
     def add_attachments(self, items):
         items = _get_ids(items)
@@ -80,7 +87,7 @@ class MediaMixin(PictureMixin):
 
     def attachment_medias(self):
         audios, videos = [], []
-        items = self.attachment_items
+        items = self.attachment_items()
         for x in items:
             if x.is_audio: audios.append(x)
             elif x.is_video: videos.append(x)

@@ -1,5 +1,10 @@
 {% extends 'layout.modal.html' %}
 
+{% block title %}
+  {{ article.title }} - {{ config['SITE_NAME'] }}
+{% endblock %}
+
+
 {% block modal_content %}
   <a href="{{ article.listpage_url() }}" class="close">&times;</a>
   <div class="modal-body news-article">
@@ -10,6 +15,15 @@
       </small>
     </h1>
     <div class="readable">
+      {%- if pics  -%}
+        <div class="pics">
+          {%- for p in pics  -%}
+            <div class="pic">
+              <img class="img-responsive" src="{{ p.url('large') }}" alt="" />
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
       {{ article.content|safe }}
     </div>
   </div>

@@ -7,8 +7,6 @@
 // .modal-dialog    - positioning shell for the actual modal
 // .modal-content   - actual modal w/ bg and corners and shit
 
-screen-tablet = screen-sm = 768px
-
 zindex-modal-background =  1040
 zindex-modal = 1050
 
@@ -154,7 +152,7 @@ modal-box-shadow = 0 0 30px rgba(0,0,0,.4)
 }
 
 // Scale up the modal
-@media screen and (min-width: screen-sm) {
+@media below_small {
 
   .modal-dialog {
     left: 50%;

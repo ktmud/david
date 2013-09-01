@@ -1,7 +1,7 @@
 {%- macro video_player(v, width=610, height=230) -%}
 <video id="video-{{ v.id }}"
 class="video-js vjs-default-skin"
-controls preload="auto" width="{{ width }}" height="{{ 260 }}"
+controls preload="auto" width="{{ width }}" height="{{ height }}"
 poster="{{ v.video_thumbnail() }}"
 data-setup=''>
   <source src="{{ v.url(category='mp4') }}" type="video/mp4"></source>
