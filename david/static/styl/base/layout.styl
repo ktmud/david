@@ -1,11 +1,3 @@
-html, body
-  height: 100%
-
-body
-  background: #fbfbfb url(../img/bg-main.jpg) no-repeat 50% 0
-  background-attachment: fixed
-  background-size(cover)
-
 .container
   min-height: 90%
   max-width: global-max-width
@@ -28,17 +20,22 @@ body
   padding: 20px 0 5px
   .logo
     imgtext('../img/logo.png', 260px, 36px)
+    background-position: 0 50%
 
 .header-nav
+  background: bg_color
+  background-image: linear-gradient(#111, #000)
+  margin: 0 0 40px
   .pure-menu.pure-menu-open
     width: auto
-    background: bg_color
-    background-image: linear-gradient(#111, #000)
-    padding: 9px
-    margin: 0 0 40px
+    padding: 8px
+    padding-bottom: 7px
   .pure-menu.pure-menu-open li
     border-right-style: dotted
     border-right-color: #eee 
+    margin-bottom: 1px
+  .pure-menu.pure-menu-open li li
+    margin-bottom: 0
 
 #footer
   background: bg_color

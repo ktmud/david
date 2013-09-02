@@ -21,7 +21,7 @@
   .hidden-sm
     display: none
   .sinked
-    margin-top: 120px
+    margin-top: 100px
   #footer
     bottom: 0
     .pure-menu
@@ -29,22 +29,46 @@
     .copyright
       display: block
       margin-top: 5px
-  .header-nav .pure-menu.pure-menu-open li
-    width: 100px
+  .header-nav .pure-menu.pure-menu-open > li
+    width: 94px
   .mod .news-list
     margin-left: 15px
+  .header-brand .logo
+    width: 150px
+    margin-left: 10px
 
 @media (max-width: 580px)
   .header-nav
     margin-right: 0
   .header-sns
     display: none
-  .bg-logo
-    width: 130px
 
 @media below_xs
   .bg-logo
-    right: 20px
+    right: 10px
   .hidden-xs
     display: none
+  .news-list .pic img
+    width: 75px
+    height: 75px
+  .news-list .detail
+    margin-left: 90px
+    font-size: 14px
+    p
+      font-size: 13px
+  .paginator
+    font-size: 0
+    a, span, strong
+      font-size: 14px
 
+@media only screen and (orientation: portrait) and (device-width: 320px), (device-width: 768px) {
+  .body-bg {
+    background-size: 200% auto;
+  }
+}
+ 
+@media only screen and (orientation: landscape) and (device-width: 320px), (device-width: 768px) {
+  .body-bg {
+    background-size: 120% auto;
+  }
+}
