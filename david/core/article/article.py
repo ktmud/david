@@ -38,7 +38,10 @@ class Article(db.Model, UidMixin, PictureMixin, SerializeMixin):
     def cat_id(self):
         return self.cat
 
-    cat_name = 'article'
+    @property
+    def cat_name(self):
+        return CAT_NAMES[str(self.cat)]
+
     catname = property(lambda x: _(x.cat_name))
 
     query_class = CatLimitedQuery
@@ -64,8 +67,11 @@ class Article(db.Model, UidMixin, PictureMixin, SerializeMixin):
 CATS = {
     str(C_COMMON): Article
 }
+CAT_NAMES = {
+}
 
 def add_cat(cat_id, cls):
     if cat_id in CATS:
         raise Exception('cat id %s already in use' % cat_id)
     CATS[str(cat_id)] = cls
+    CAT_NAMES[str(cat_id)] = cls.cat_name

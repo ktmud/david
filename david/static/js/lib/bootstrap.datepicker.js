@@ -189,10 +189,6 @@ DatePicker.prototype = {
 
       if (!date) {
           date = new Date();
-
-        if (this.displayTime) {
-          date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-        }
       }
 
       this.selectedDate = date;

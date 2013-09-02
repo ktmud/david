@@ -6,7 +6,7 @@
 
 
 {% block modal_content %}
-  <a href="{{ article.listpage_url() }}" class="close">&times;</a>
+  <a href="{{ article.listpage_url() if not request.referrer else 'javascript:history.go(-1);' }}" class="close">&times;</a>
   <div class="modal-body news-article">
     <h1>
       {{ article.title }}

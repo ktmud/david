@@ -3,15 +3,20 @@
   max-width: 100%
   height: auto
 
+@media (max-width: 1400px)
+  .container
+    margin-right: 200px
+@media (max-width: 1280px)
+  .container
+    margin-right: 160px
+  .bg-logo
+    width: 100px
 
 @media below_md
   .sinked
     margin-top: 200px
   .container
     min-height: 0
-    margin-right: 160px
-  .bg-logo
-    width: 100px
 
 @media below_sm
   .container
@@ -36,6 +41,8 @@
   .header-brand .logo
     width: 150px
     margin-left: 10px
+  .home-carousel .carousel-inner
+    height: auto
 
 @media (max-width: 580px)
   .header-nav

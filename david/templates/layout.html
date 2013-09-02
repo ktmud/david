@@ -23,9 +23,8 @@
   {% endblock %}
 </head>
 <body>
-  <div class="body-bg">
-    <img class="bg-logo" src="{{ static('img/tong-logo.png') }}" alt="" />
-  </div>
+  {% block body_head %}
+  {% endblock %}
   <div class="container">
     {% block page_body %}
       {% block header %}
@@ -45,7 +44,6 @@
     {% endblock %}
   </div>
   {% block tail %}
-    
   {% endblock %}
 </body>
 </html>

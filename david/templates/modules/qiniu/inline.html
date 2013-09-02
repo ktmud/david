@@ -5,7 +5,7 @@
 <div class="form-group inline-uploader"
   data-owner_id="{{ model.id }}"
   data-owner_kind="{{ model.kind }}"
-  data-uploaded="{{ jsonify(model.attachments_info) }}"
+  data-uploaded="{{ jsonify(model.attachments_info()) }}"
 >
     <div class="col-lg-2 control-label">
       {{ _('Attachments') }}

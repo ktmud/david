@@ -1,5 +1,5 @@
+{% extends 'layout.html' %}
 {% import 'admin/layout.html' as layout with context -%}
-{% extends 'base.html' %}
 
 {% block title %}{% if admin_view.category %}{{ admin_view.category }} - {% endif %}{{ admin_view.name }} - {{ admin_view.admin.name }}{% endblock %}
 
@@ -28,9 +28,18 @@
         </ul>
       {% endblock %}
       {% block menu_links %}
-        <ul class="nav pull-right">
-          {{ layout.menu_links() }}
-        </ul>
+        <div class="pull-right">
+          <ul class="nav navbar-nav pull-right">
+            <li class="dropdown">
+              <a href="javascript:void(0);" class="dropdown-toggler" data-toggle="dropdown">
+                更多<i class="caret"></i>
+              </a>
+              <ul class="dropdown-menu">
+                {{ layout.menu_links() }}
+              </ul>
+            </li>
+          </ul>
+        </div>
       {% endblock %}
       {% block access_control %}
       {% endblock %}

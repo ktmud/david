@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint, jsonify, request
+from david.core.accounts.utils import require_editor
 from david.lib.template import st
 
 from .model import QiniuAttachment, QiniuUploadFail
 
 bp = Blueprint('qiniu', __name__)
 
+@require_editor
 @bp.route('/api/qiniu/upload', methods=['GET', 'POST', 'PUT'])
 def qiniu_upload():
     if request.method in ['POST', 'PUT'] and request.files:

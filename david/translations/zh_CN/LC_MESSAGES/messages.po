@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: kissmud@gmail.com\n"
-"POT-Creation-Date: 2013-09-01 15:10+0800\n"
+"POT-Creation-Date: 2013-09-02 22:34+0800\n"
 "PO-Revision-Date: 2013-08-18 14:32+0800\n"
 "Last-Translator: Jesse Yang <kissmud@gmail.com>\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
@@ -117,18 +117,23 @@ msgstr "选择文件"
 msgid "Attachments"
 msgstr "附件"
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:32
-#: david/ext/admin/__init__.py:32 config/__init__.py:46
+#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:33
+#: david/ext/admin/__init__.py:33 config/__init__.py:46
 msgid "Home"
 msgstr "主页"
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:35
-#: david/ext/admin/__init__.py:35
+#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:36
+#: david/ext/admin/__init__.py:36
 msgid "Visit Site"
 msgstr "访问网站"
 
-#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:125
-#: david/ext/admin/model.py:125
+#: /Users/jesse/projects/tongdawei/david/ext/admin/__init__.py:37
+#: david/ext/admin/__init__.py:37
+msgid "Logout"
+msgstr "登出"
+
+#: /Users/jesse/projects/tongdawei/david/ext/admin/model.py:131
+#: david/ext/admin/model.py:131
 msgid "Creating succeed."
 msgstr "已成功创建"
 
@@ -165,10 +170,25 @@ msgstr "图片"
 msgid "News"
 msgstr "新闻"
 
-#: /Users/jesse/projects/tongdawei/david/modules/pages/admin.py:21
-#: david/modules/pages/admin.py:21
+#: /Users/jesse/projects/tongdawei/david/modules/pages/admin.py:23
+#: david/modules/pages/admin.py:23
 msgid "Pages"
 msgstr "页面"
+
+#: /Users/jesse/projects/tongdawei/david/modules/pages/homepage/__init__.py:21
+#: david/modules/pages/homepage/__init__.py:21
+msgid "Home Page"
+msgstr "首页内容"
+
+#: /Users/jesse/projects/tongdawei/david/modules/pages/homepage/__init__.py:24
+#: david/modules/pages/homepage/__init__.py:24
+msgid "Home page articles"
+msgstr "首页出现的文章"
+
+#: /Users/jesse/projects/tongdawei/david/modules/pages/homepage/__init__.py:27
+#: david/modules/pages/homepage/__init__.py:27
+msgid "article ids or article url, one item per line"
+msgstr "输入文章ID或url，每行一个"
 
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:16
 #: david/modules/works/admin.py:16

@@ -2,8 +2,9 @@
 from flask import json, request, redirect
 from david.core.db import db, func, sql
 from david.ext.babel import gettext, lazy_gettext as _
+from david.lib.store import redis_store as rs
 
-from flask.ext.admin import AdminIndexView, expose
+from flask.ext.admin import AdminIndexView, expose, BaseView
 from flask.ext.admin.contrib.sqla import ModelView
 from flask.ext.admin.actions import action
 from flask.ext.security import current_user
@@ -13,6 +14,11 @@ from flask.ext.admin.helpers import get_form_data, validate_form_on_submit
 from flask import redirect, flash, url_for, Response
 
 from wtforms import fields, validators
+
+
+
+__all__ = ['Roled', 'ModelAdmin', 'AdminIndex', 'Proped', 'DBKeyAdminView']
+
 
 
 # to admin models with PropsMixin
@@ -141,4 +147,28 @@ class AdminIndex(Roled, AdminIndexView):
         return self.render('admin/index.html')
 
 
+
+class DBKeyAdminView(Roled, BaseView):
+    def __init__(self, *args, **kwargs):
+        super(DBKeyAdminView, self).__init__(*args, **kwargs)
+        self.db_keys = ()
+        self.key_labels = {}
+        self.help_text = {}
+
+    @expose('/', methods=['POST', 'GET'])
+    def index(self):
+        labels = self.key_labels
+        dbkeys = self.db_keys
+        helptext = self.help_text
+        vals = dict(zip(dbkeys, rs.get_many(*dbkeys)))
+        if request.method == 'POST':
+            self.update_keys(request.form)
+            return redirect(url_for('.index'))
+        return self.render('admin/dbkey/edit.html', labels=labels,
+                            dbkeys=dbkeys, vals=vals, helptext=helptext)
+    
+    def update_keys(self, form):
+        for k,v in form.items():
+            if k in self.db_keys:
+                rs.set(k, v)
 

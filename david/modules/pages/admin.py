@@ -3,9 +3,9 @@ from david.ext.admin import ModelAdmin
 from david.ext.babel import lazy_gettext as _
 
 from .model import Page
+from .homepage import homepage_admin
 
 class PagesAdmin(ModelAdmin):
-
     column_labels = dict(
             title=_('Title'),
             id=_('ID'),
@@ -17,6 +17,9 @@ class PagesAdmin(ModelAdmin):
         'summary': dict(rows='8')
     }
 
+
+
 views = [
-  (PagesAdmin(Page, name=_('Pages')), 90)
+  (PagesAdmin(Page, name=_('Pages')), 90),
+  (homepage_admin, 5),
 ]
