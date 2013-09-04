@@ -26,6 +26,9 @@
   {% block body_head %}
   {% endblock %}
   <div class="container">
+    {% block page_head %}
+      <img class="bg-logo" src="{{ static('img/tong-logo.png') }}" alt="" />
+    {% endblock %}
     {% block page_body %}
       {% block header %}
         {% include "common/header.html" %}
@@ -41,6 +44,8 @@
       {% block footer %}
         {% include "common/footer.html" %}
       {% endblock %}
+    {% endblock %}
+    {% block page_tail %}
     {% endblock %}
   </div>
   {% block tail %}

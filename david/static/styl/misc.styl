@@ -34,10 +34,16 @@ html, body
   height: 100%
 
 .bg-logo
-  position absolute
-  z-index 0
-  right 30px
-  top 20px
+  position fixed
+  display: block
+  z-index -1
+  left 20px
+  top 30px
+  img
+    img-responsive()
+  &:hover
+    background: none
+
 
 .body-bg
   z-index: -1

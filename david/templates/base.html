@@ -2,7 +2,12 @@
 
 {% block body_head %}
   <div class="body-bg">
-    <img class="bg-logo" src="{{ static('img/tong-logo.png') }}" alt="" />
   </div>
+{% endblock %}
+
+{% block page_head %}
+  <a class="bg-logo" href="{{ SITE_ROOT }}">
+    <img src="{{ static('img/tong-logo.png') }}" alt="" />
+  </a>
 {% endblock %}
 
