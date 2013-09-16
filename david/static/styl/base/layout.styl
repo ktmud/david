@@ -3,7 +3,6 @@
   max-width: global-max-width
   margin: 0 auto
   position: relative
-  padding-bottom: 60px
   //box-sizing(border-box)
 
 .affix-top
@@ -40,12 +39,11 @@
 #footer
   background: bg_color
   text-align: center
-  position: absolute
-  bottom: 30px
   width: 100%
   font-size: 12px
   padding-top: 5px
   padding-bottom: 5px
+  margin-top: 40px;
   color: text_color
   .pure-menu
     display: inline
@@ -58,9 +56,22 @@
       padding: 0 10px
     a:hover, a:active
       background: #eee
-  .copyright
-    font-size: 12px
-    line-height: 18px
+
+.footer-right
+  line-height: 18px
+  float: right
+  padding-right: 10px
+  .links
+    color: #ccc
+    a
+      display: inline-block
+      line-height: 1.2em
+      margin: 0 3px
+
+.footer-more
+  font-size: 12px;
+  margin: 15px 0 30px;
+  text-align: center;
 
 
 #main
@@ -88,7 +99,9 @@
   padding: mod_padding
 
 .sinked
-  margin: 280px 0 20px auto
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 300px;
   max-width: sinked_width
 
 .sinked .hd

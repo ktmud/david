@@ -28,7 +28,7 @@ def api_list(mod='photos', page=1):
 
 @bp.route('/api/gallery/<int:id>')
 def api_item(id):
-    if mod not in ['magazine', 'photos']:
+    if mod not in ['magazine']:
         return abort(404)
     cls = Magazine if 'magazine' == mod else Photos
     item = cls.get_or_404(id)
@@ -37,7 +37,7 @@ def api_item(id):
 
 @bp.route('/gallery/<mod>/')
 def home(mod):
-    if mod not in ['magazine', 'photos']:
+    if mod not in ['magazine']:
         return abort(404)
     data = list_data(mod=mod, page=1)
     return st('modules/gallery/%s.html' % mod, **locals())
@@ -45,7 +45,7 @@ def home(mod):
 
 @bp.route('/gallery/<mod>/<int:ident>/')
 def show(mod, ident):
-    if mod not in ['magazine', 'photos']:
+    if mod not in ['magazine']:
         return abort(404)
     cls = Magazine if 'magazine' == mod else Photos
     item = cls.get_or_404(ident)

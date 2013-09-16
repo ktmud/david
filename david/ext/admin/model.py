@@ -58,7 +58,7 @@ class Roled(object):
 
     def _handle_view(self, name, *args, **kwargs):
         if not current_user.is_authenticated():
-            return redirect(url_for_security('login', next="/admin"))
+            return redirect(url_for_security('login', next=url_for('admin.index')))
         if not self.is_accessible():
             return self.render("admin/denied.html")
 

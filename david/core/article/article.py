@@ -14,7 +14,6 @@ from .tag import tags_table, Tag
 
 
 K_ARTICLE = 200
-C_COMMON = 0
 
 class Article(db.Model, UidMixin, PictureMixin, SerializeMixin):
     kind = K_ARTICLE
@@ -47,8 +46,9 @@ class Article(db.Model, UidMixin, PictureMixin, SerializeMixin):
     query_class = CatLimitedQuery
 
 
-    def abstract(self, limit=140):
-        return truncate((self.summary or '').strip() or striptags(self.content or '').strip(), limit)
+    def abstract(self, limit=140, killwords=True):
+        return truncate((self.summary or '').strip() or
+                striptags(self.content or '').strip(), limit, killwords)
 
     def url(self):
         return '%s%s/%s' % (SITE_ROOT, self.cat_name, self.slug)
@@ -65,7 +65,6 @@ class Article(db.Model, UidMixin, PictureMixin, SerializeMixin):
 
 # article cats, will be extended later
 CATS = {
-    str(C_COMMON): Article
 }
 CAT_NAMES = {
 }

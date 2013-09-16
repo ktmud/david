@@ -14,5 +14,5 @@ class MagazineAdmin(PhotosAdmin):
 
 views = [
   (MagazineAdmin(Magazine, name=_('Magazine')), 30),
-  (PhotosAdmin(Photos, name=_('Photos')), 31)
+  #(PhotosAdmin(Photos, name=_('Photos')), 31)
 ]

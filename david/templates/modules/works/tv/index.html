@@ -1,8 +1,8 @@
 {% extends 'modules/works/movie/index.html' %}
 
 {% block title %}
-电视作品 - {{ config['SITE_NAME'] }}
+{{ artist.name }}电视作品 - {{ config['SITE_NAME'] }}
 {% endblock %}
 
-{% block cat_title %}电视作品{% endblock %}
+{% block cat_title %}{{ artist.name }}电视{% endblock %}
 

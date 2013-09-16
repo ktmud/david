@@ -53,8 +53,8 @@ HEADER_MENU = [
         ),
         #('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '活动'),
         ('/news/', _('News'), 'news', None, lambda x, req: req.path.startswith('/news/')),
-        ('/gallery/photos/', _('Photos')),
-        ('/works/', _('Works'), 'works',
+        ('/event/', _('Event')),
+        ('javascript:void(0);', _('Works'), 'works',
             [
                 ('/works/movie/', _('Movie')),
                 ('/works/tv/', _('TV')),

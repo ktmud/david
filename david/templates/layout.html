@@ -27,7 +27,6 @@
   {% endblock %}
   <div class="container">
     {% block page_head %}
-      <img class="bg-logo" src="{{ static('img/tong-logo.png') }}" alt="" />
     {% endblock %}
     {% block page_body %}
       {% block header %}
@@ -35,10 +34,8 @@
       {% endblock %}
       <div id="main">
         {% block main %}
-          <div class="sinked">
             {% block main_content %}
             {% endblock %}
-          </div>
         {% endblock %}
       </div>
       {% block footer %}

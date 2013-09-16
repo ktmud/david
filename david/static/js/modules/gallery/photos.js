@@ -33,7 +33,7 @@ PhotoGrid.prototype.init = function(data) {
 
 PhotoGrid.prototype.render = function(data) {
   var self = this;
-  var boxes = $(self._tmpl(data)).filter('.mod');
+  var boxes = $(self._tmpl(data)).filter('div,p');
   self.gridalicious.append(boxes);
 };
 

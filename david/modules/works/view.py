@@ -39,10 +39,11 @@ def list(catname, page=1):
     page = int(page)
     perpage = 100
 
-    query = Work.query.filter(Work.cat == cat_id).order_by(Work.pubdate.desc())
     artist_id = request.args.get('artist', '')
     artist_id = int(artist_id) if artist_id.isdigit() else None
     artist = Artist.get(artist_id)
+
+    query = Work.query.filter(Work.cat == cat_id).order_by(Work.pubdate.desc())
     if artist_id:
         query = query.filter(Work.artist_id == artist_id)
 

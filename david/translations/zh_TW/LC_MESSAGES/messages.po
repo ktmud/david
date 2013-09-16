@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-09-02 22:34+0800\n"
+"POT-Creation-Date: 2013-09-16 13:51+0800\n"
 "PO-Revision-Date: 2013-08-18 14:32+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_Hant_TW <LL@li.org>\n"
@@ -19,65 +19,75 @@ msgstr ""
 "Generated-By: Babel 1.3\n"
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:11
+#: /Users/jesse/projects/tongdawei/david/modules/event/admin.py:9
 #: /Users/jesse/projects/tongdawei/david/modules/pages/admin.py:10
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:13
-#: david/core/article/admin.py:11 david/modules/pages/admin.py:10
-#: david/modules/works/admin.py:13
+#: david/core/article/admin.py:11 david/modules/event/admin.py:9
+#: david/modules/pages/admin.py:10 david/modules/works/admin.py:13
 msgid "Title"
 msgstr ""
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:12
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:36
 #: /Users/jesse/projects/tongdawei/david/modules/artist/admin.py:12
+#: /Users/jesse/projects/tongdawei/david/modules/event/admin.py:10
 #: /Users/jesse/projects/tongdawei/david/modules/pages/admin.py:12
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:14
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:17
 #: david/core/article/admin.py:12 david/core/article/admin.py:36
-#: david/modules/artist/admin.py:12 david/modules/pages/admin.py:12
-#: david/modules/works/admin.py:14 david/modules/works/admin.py:17
+#: david/modules/artist/admin.py:12 david/modules/event/admin.py:10
+#: david/modules/pages/admin.py:12 david/modules/works/admin.py:14
+#: david/modules/works/admin.py:17
 msgid "Slug"
 msgstr ""
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:13
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:37
 #: /Users/jesse/projects/tongdawei/david/modules/artist/admin.py:11
+#: /Users/jesse/projects/tongdawei/david/modules/event/admin.py:11
 #: /Users/jesse/projects/tongdawei/david/modules/pages/admin.py:11
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:15
 #: david/core/article/admin.py:13 david/core/article/admin.py:37
-#: david/modules/artist/admin.py:11 david/modules/pages/admin.py:11
-#: david/modules/works/admin.py:15
+#: david/modules/artist/admin.py:11 david/modules/event/admin.py:11
+#: david/modules/pages/admin.py:11 david/modules/works/admin.py:15
 msgid "ID"
 msgstr ""
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:14
-#: david/core/article/admin.py:14
+#: /Users/jesse/projects/tongdawei/david/modules/event/admin.py:12
+#: david/core/article/admin.py:14 david/modules/event/admin.py:12
 msgid "Tags"
 msgstr ""
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:15
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:38
+#: /Users/jesse/projects/tongdawei/david/modules/event/admin.py:13
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:20
 #: david/core/article/admin.py:15 david/core/article/admin.py:38
-#: david/modules/works/admin.py:20
+#: david/modules/event/admin.py:13 david/modules/works/admin.py:20
 msgid "Create at"
 msgstr ""
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:16
+#: /Users/jesse/projects/tongdawei/david/modules/event/admin.py:14
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:21
-#: david/core/article/admin.py:16 david/modules/works/admin.py:21
+#: david/core/article/admin.py:16 david/modules/event/admin.py:14
+#: david/modules/works/admin.py:21
 msgid "Update at"
 msgstr ""
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:17
-#: david/core/article/admin.py:17
+#: /Users/jesse/projects/tongdawei/david/modules/event/admin.py:15
+#: david/core/article/admin.py:17 david/modules/event/admin.py:15
 msgid "Summary"
 msgstr ""
 
 #: /Users/jesse/projects/tongdawei/david/core/article/admin.py:18
+#: /Users/jesse/projects/tongdawei/david/modules/event/admin.py:17
 #: /Users/jesse/projects/tongdawei/david/modules/pages/admin.py:13
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:23
-#: david/core/article/admin.py:18 david/modules/pages/admin.py:13
-#: david/modules/works/admin.py:23
+#: david/core/article/admin.py:18 david/modules/event/admin.py:17
+#: david/modules/pages/admin.py:13 david/modules/works/admin.py:23
 msgid "Content"
 msgstr ""
 
@@ -153,20 +163,26 @@ msgstr ""
 msgid "Artist"
 msgstr ""
 
+#: /Users/jesse/projects/tongdawei/david/modules/event/admin.py:16
+#: david/modules/event/admin.py:16
+msgid "Out link"
+msgstr ""
+
+#: /Users/jesse/projects/tongdawei/david/modules/event/admin.py:27
+#: david/modules/event/admin.py:27 config/__init__.py:56
+msgid "Event"
+msgstr ""
+
 #: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:16
 #: david/modules/gallery/admin.py:16 config/__init__.py:64
 msgid "Magazine"
 msgstr ""
 
-#: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:17
-#: david/modules/gallery/admin.py:17 config/__init__.py:56
-msgid "Photos"
-msgstr ""
-
 #: /Users/jesse/projects/tongdawei/david/modules/news/admin.py:11
 #: /Users/jesse/projects/tongdawei/david/templates/modules/news/index.html:6
+#: /Users/jesse/projects/tongdawei/david/templates/modules/news/index.html:13
 #: david/modules/news/admin.py:11 david/templates/modules/news/index.html:6
-#: config/__init__.py:55
+#: david/templates/modules/news/index.html:13 config/__init__.py:55
 msgid "News"
 msgstr ""
 
@@ -597,5 +613,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Dawei Tong"
+#~ msgstr ""
+
+#~ msgid "Photos"
 #~ msgstr ""
 

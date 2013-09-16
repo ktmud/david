@@ -58,7 +58,6 @@ def add_test_articles():
     print 'Done.'
     print
 
-
 def add_test_works():
     print 'Creating Works...'
 
@@ -104,6 +103,25 @@ def add_test_works():
     print 'Done.'
     print
 
+def add_test_events():
+    print 'Creating Events...'
+
+    from david.modules.event.model import Event
+
+    with app.test_client() as c:
+        # send a fake request, so `current_app` can be the app
+        rv = c.get('/')
+
+        for i in range(20):
+            obj = Event()
+            obj.title = 'test event %s' % (i + 1)
+            obj.content = lorem
+            obj.link = 'http://www.example.com/'
+            db.session.add(obj)
+        db.session.commit()
+    print 'Done.'
+    print
+
 def add_test_pages():
     print 'Creating pages...'
 
@@ -127,4 +145,5 @@ if __name__ == '__main__':
     add_test_articles()
     add_test_works()
     add_test_pages()
+    add_test_events()
 

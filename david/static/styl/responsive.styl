@@ -3,27 +3,31 @@
   max-width: 100%
   height: auto
 
-.container
+.container, .modal
   margin-left: 200px
+.modal-dialog
+  margin-left: 0
 
-@media (max-width: 1280px)
+@media (max-width: 1200px)
   .container
     margin-right: 20px
-    margin-left: 20px
-  .header-nav
-    margin-left: 160px
 
 @media below_md
   .sinked
     margin-top: 200px
   .container
     min-height: 0
+  .footer-right
+    display: block
+    margin-top: 5px
+    float: none
+  #footer
+    .pure-menu
+      margin-right: 0
 
 @media below_sm
   .bg-logo
-    left: auto
-    right: 20px
-    width: 100px
+    display: none
   .header-sns
     display: none
   .header-nav
@@ -39,11 +43,6 @@
     margin-left: 0
   #footer
     bottom: 0
-    .pure-menu
-      margin-right: 0
-    .copyright
-      display: block
-      margin-top: 5px
   .header-nav .pure-menu.pure-menu-open > li
     width: 94px
   .mod .news-list

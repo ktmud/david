@@ -6,7 +6,7 @@ def init_db():
     print 'Init database...'
     with app.test_client() as c:
         # send a fake request, so `current_app` can be the app
-        rv = c.get('/')
+        rv = c.get('/404')
         # drop all the database data
         db.drop_all()
         db.create_all()

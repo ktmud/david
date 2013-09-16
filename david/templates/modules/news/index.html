@@ -10,9 +10,7 @@
 {% block main_content %}
 <div class="mod">
   <h2>
-    <em>
-    News
-    </em>
+    {{ _('News') }}
   </h2>
   {{ piced_list(items, 'news-list') }}
   {{ render_pagination(pagi, 'news.list') }}
