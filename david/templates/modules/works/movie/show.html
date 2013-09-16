@@ -1,9 +1,19 @@
 {% extends 'modules/works/movie/index.html' %}
+
 {% from 'widgets/carousel.html' import render_carousel %}
 {% from 'modules/works/widgets/media.html' import video_player %}
 
 {% block title %}
 {{ work.title }} - {{ artist.name }}电影作品
+{% endblock %}
+
+{% block article_hd %}
+  <div class="hd">
+    {#<div class="filter">#}
+      {#<a href="{{ artist_work_url(artist) }}">查看{{ artist.name }}的全部{{ _(work.cat_name.capitalize()) }}作品</a>#}
+    {#</div>#}
+    <h2>{{ work.title }}</h2>
+  </div>
 {% endblock %}
 
 
@@ -17,7 +27,6 @@
   {{ work.desc|safe }}
 </div>
 {% endblock %}
-
 
 {% block article_extra %}
   {%- for v in videos -%}

@@ -5,28 +5,30 @@
 {% block main_content %}
   {% block article %}
     <div class="mod">
-      <div class="hd">
-        <div class="dropdown-filter">
-          {%- if artist -%}
-            <a href="./">重设</a>
-          {%- else  -%}
-            <ul class="pure-menu pure-menu-open pure-menu-horizontal">
-              <li class="has-submenu">
-                <a href="javascript:void(0);">选择明星
-                <i class="tri-down"></i>
-              </a>
-                {{ artist_menu(cls='submenu',
-                    urlfunc=artist_work_url, current=artist_id) }}
-              </li>
-            </ul>
-          {%- endif -%}
+      {% block article_hd %}
+        <div class="hd">
+          <div class="filter">
+            {%- if artist -%}
+              <a href="./">重设</a>
+            {%- else  -%}
+              <ul class="pure-menu pure-menu-open pure-menu-horizontal">
+                <li class="has-submenu">
+                  <a href="javascript:void(0);">选择明星
+                  <i class="tri-down"></i>
+                </a>
+                  {{ artist_menu(cls='submenu',
+                      urlfunc=artist_work_url, current=artist_id) }}
+                </li>
+              </ul>
+            {%- endif -%}
+          </div>
+          <h2>
+            {% block cat_title %}
+              作品
+            {% endblock %}
+          </h2>
         </div>
-        <h2>
-          {% block cat_title %}
-            作品
-          {% endblock %}
-        </h2>
-      </div>
+      {% endblock %}
       {% block article_content %}
       {% endblock %}
     </div>
