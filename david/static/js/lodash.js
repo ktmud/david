@@ -1,3 +1,3 @@
-@import ../bower_components/lodash/lodash.js
+@import ../bower_components/lodash/dist/lodash.js
 
 window._ = module.exports;

@@ -1,6 +1,8 @@
 var $ = require('/jquery');
 var _ = require('/lodash');
 
+require('/lib/jquery.sortable');
+
 
 var fileupload = require('/lib/jquery.fileupload');
 
@@ -127,4 +129,3 @@ $.fn.inlineUploader = function() {
 };
 
 module.exports = init;
-
