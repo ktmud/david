@@ -9,7 +9,7 @@ class ArticleAdmin(ModelAdmin):
 
     column_labels = dict(
             title=_('Title'),
-            slug=_('Slug'),
+            uid=_('Slug'),
             id=_('ID'),
             tags=_('Tags'),
             create_at=_('Create at'),
@@ -17,8 +17,8 @@ class ArticleAdmin(ModelAdmin):
             summary=_('Summary'),
             content=_('Content')
         )
-    column_list = ('id', 'title', 'create_at', 'update_at')
-    column_sortable_list = ('id', 'title')
+    column_list = ('id', 'title', 'create_at', 'update_at', 'uid')
+    column_sortable_list = ('id', 'title', 'create_at', 'update_at')
 
     form_columns = ('title', 'content', 'summary', 'create_at',)
     richtext_columns = ('content', )

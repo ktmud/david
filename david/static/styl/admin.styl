@@ -31,7 +31,10 @@ form.icon {
 
 
 .uploaded-item
-  margin-bottom: 20px
+  padding: 10px 0
+  &:hover
+    background: #f9f9f9
+
   img
     width: 100%
     min-height: 40px
@@ -48,7 +51,13 @@ form.icon {
   .remove-item
     absolute: right 10px top 5px
 
-
+.uploaded
+  .sortable-dragging
+    opacity(0.5)
+  .sortable-placeholder
+    border: 4px dashed #dfdfdf
+    height: 60px
+    margin: 20px 0
 
 
 .fileinput-button {

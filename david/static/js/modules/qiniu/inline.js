@@ -1,3 +1,10 @@
+require.register('lib/jquery.sortable.js', function(exports, require, module) {
+//@import ../../lib/jquery.sortable.js
+});
+
+require.register('modules/qiniu/inline.js', function(exports, require, module) {
+
+
 var $ = require('/jquery');
 var _ = require('/lodash');
 
@@ -22,6 +29,7 @@ InlineUploader.prototype._tmpl_uploaded_item = _.template(TMPL_UPLOADED_ITEM);
 
 InlineUploader.prototype.init = function() {
   var self = this;
+  self.list = self.container.find('.uploaded');
   self.container.fileupload({
     url: '/api/qiniu/upload',
     dataType: 'json',
@@ -55,8 +63,9 @@ InlineUploader.prototype.init = function() {
   self.render_uploaded(self.uploaded);
   self.init_events();
 };
+
 InlineUploader.prototype.init_events = function() {
-  var self = this;
+  var self = this, list = self.list;
   self.container.on('click', '.remove-item',  function(e) {
     e.preventDefault();
     var node = $(this).closest('.uploaded-item')
@@ -100,7 +109,18 @@ InlineUploader.prototype.init_events = function() {
       alert('保存失败!');
     });
   });
+  list.on('sortupdate', function() {
+    var items = list.children().toArray().map(function(item, i) {
+      return $(item).data('id');
+    });
+    $.post('../attachments/' + self.extras.owner_id, {
+      items: items.join('||')
+    }).success(function(res) {
+      console.log(res);
+    });
+  });
 };
+
 InlineUploader.prototype.render_uploaded = function(data) {
   if (!_.isArray(data)) {
     console.log(data);
@@ -108,13 +128,13 @@ InlineUploader.prototype.render_uploaded = function(data) {
   }
 
   var self = this;
-  var list = self.container.find('.uploaded');
-
+  var list = self.list;
   _.forEach(data, function(item) {
     item.filename = item.filename || '';
     item.thumb_url = item.thumb_url || '';
     list.append(self._tmpl_uploaded_item(item));
   });
+  list.sortable('destroy').sortable();
 };
 
 function init(container, options) {
@@ -129,3 +149,5 @@ $.fn.inlineUploader = function() {
 };
 
 module.exports = init;
+
+});

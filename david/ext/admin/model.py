@@ -1,5 +1,5 @@
 # coding: utf-8
-from flask import json, request, redirect
+from flask import json, request, redirect, jsonify
 from david.core.db import db, func, sql
 from david.ext.babel import gettext, lazy_gettext as _
 from david.lib.store import redis_store as rs
@@ -138,6 +138,17 @@ class ModelAdmin(Proped, Roled, ModelView):
                            form=form,
                            form_widget_args=self.form_widget_args,
                            return_url=return_url)
+
+    @expose('/attachments/<int:id>', methods=('POST', ))
+    def attachments_view(self, id):
+        model = self.get_one(id)
+        if not model:
+            abort(404)
+        items = request.form.get('items')
+        items = items and items.split('||')
+        if items:
+            model.attachments = items
+        return jsonify(r=0)
 
 
 

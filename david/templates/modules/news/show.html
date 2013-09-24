@@ -6,7 +6,7 @@
 
 
 {% block modal_content %}
-  <a href="{{ article.listpage_url() if not request.referrer else 'javascript:history.go(-1);' }}" class="close">&times;</a>
+  <a href="{{ article.listpage_url() if not request.referrer else request.referrer }}" class="close">&times;</a>
   <div class="modal-body news-article">
     <h1>
       {{ article.title }}
@@ -20,6 +20,16 @@
           {%- for p in pics  -%}
             <div class="pic">
               <img class="img-responsive" src="{{ p.url('large') }}" alt="" />
+              {% if p.title %}
+              <div class="title">
+                {{ p.title }}
+              </div>
+              {% endif %}
+              {% if p.desc %}
+              <div class="desc">
+                {{ p.desc }}
+              </div>
+              {% endif %}
             </div>
           {%- endfor -%}
         </div>

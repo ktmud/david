@@ -14,11 +14,7 @@
         {% endif %}
         {{ lib.render_form_buttons(return_url, extra()) }}
     {% endcall %}
-{% endblock %}
-
-{% block tail %}
-  {{ super() }}
-  {% if admin_view.has_attachments() %}
-    {{ qiniu.uploader_inline_js() }}
-  {% endif %}
+    {% if admin_view.has_attachments() %}
+      {{ qiniu.uploader_inline_js() }}
+    {% endif %}
 {% endblock %}

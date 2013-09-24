@@ -11,9 +11,10 @@ from ..view import bp
 
 @bp.route('/')
 def home():
-    articles = get_homepage_articles()
-    carousel_items = [dict(img=x.picture_url('large'), link=x.url())
-                      for x in articles if x]
+    articles, captions = get_homepage_articles()
+    carousel_items = [dict(img=x.picture_url('large'), link=x.url(),
+                                caption=captions[i])
+                      for i,x in enumerate(articles) if x]
     return st('modules/pages/home.html', **locals())
 
 
