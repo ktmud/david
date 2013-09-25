@@ -161,7 +161,7 @@ MagazineSwitcher.prototype.centerize = function(elem) {
       current = self.container.find(elem),
       pos = current.position(),
       item_center = current.width() / 2,
-      min = self.container.width() - list.width(),
+      min = Math.min(0, self.container.width() - list.width()),
       outter_center = self.container.width() / 2;
 
   list.stop().animate({

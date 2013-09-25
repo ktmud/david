@@ -61,7 +61,7 @@ HEADER_MENU = [
                 ('/works/music/', _('Music'))
             ]
         ),
-        ('/gallery/magazine/', _('Magazine')),
+        ('/magazine/', _('Magazine')),
         ('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA',
             _('Forum')),
         ]
