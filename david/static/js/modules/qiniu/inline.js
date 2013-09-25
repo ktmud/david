@@ -116,7 +116,6 @@ InlineUploader.prototype.init_events = function() {
     $.post('../attachments/' + self.extras.owner_id, {
       items: items.join('||')
     }).success(function(res) {
-      console.log(res);
     });
   });
 };
