@@ -3,7 +3,7 @@
 
 
 {% block modal_content %}
-<a class="close" href="{{ url_for('gallery.home', mod=mod) }}">&times;</a>
+<a class="close" href="{{ url_for(endpoint) }}">&times;</a>
 <div class="modal-body">
   {{ carousel.render_carousel(carousel_items) }}
 </div>

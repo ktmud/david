@@ -35,18 +35,15 @@ def api_item(id):
     return jsonify(item=item.serialize())
 
 
-#@bp.route('/photos/')
-@bp.route('/magazine/')
-def home():
-    mod = 'magazine' if request.path.startswith('/magazine/') else 'photos'
-    data = list_data(mod=mod, page=1)
-    return st('modules/gallery/%s.html' % mod, **locals())
-
+@bp.route('/magazine/', endpoint='magazine')
+def magazine_home():
+    data = list_data(mod='magazine', page=1)
+    return st('modules/gallery/magazine.html', **locals())
 
 @bp.route('/magazine/<int:ident>/')
 def show(ident):
-    mod = 'magazine' if request.url.startswith('/magazine/') else 'photos'
-    cls = Magazine if 'magazine' == mod else Photos
+    endpoint = 'gallery.magazine'
+    cls = Magazine
     item = cls.get_or_404(ident)
     carousel_items = [dict(img=x['large_url'], caption=x['desc']) for x in item.pics_info()]
     return st('modules/gallery/show.html', **locals())
