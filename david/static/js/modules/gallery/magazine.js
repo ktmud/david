@@ -34,6 +34,10 @@ Magazine.prototype.init = function(data, active) {
     wrap: false
   }).on('slid.bs.carousel', function() {
     self.active = self.container.find('.carousel-inner .active').index();
+  }).hammer().on('swipeleft', function(e) {
+    $(this).carousel('next');
+  }).on('swiperight', function() {
+    $(this).carousel('prev');
   });
 };
 Magazine.prototype.switchTo = function(n) {
