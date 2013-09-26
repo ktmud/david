@@ -4,7 +4,7 @@
 {% block modal_content %}
 <a class="close" href="{{ artist.url() }}">&times;</a>
 <div class="branding-pic">
-  <img src="{{ artist.picture_url('xlarge') }}" alt="" />
+  <img src="{{ artist.picture_url('large') }}" alt="" />
 </div>
 <div class="modal-body">
   {{ artist.desc|safe }}
