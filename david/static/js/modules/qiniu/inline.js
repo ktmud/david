@@ -109,20 +109,21 @@ InlineUploader.prototype.init_events = function() {
       alert('保存失败!');
     });
   });
-  list.on('sortupdate', function() {
+  list.on('sortupdate', function(e, data) {
     var items = list.children().toArray().map(function(item, i) {
       return $(item).data('id');
     });
+    data.item.addClass('updating');
     $.post('../attachments/' + self.extras.owner_id, {
       items: items.join('||')
     }).success(function(res) {
+      data.item.removeClass('updating');
     });
   });
 };
 
 InlineUploader.prototype.render_uploaded = function(data) {
   if (!_.isArray(data)) {
-    console.log(data);
     return;
   }
 

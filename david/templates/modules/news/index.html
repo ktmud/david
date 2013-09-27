@@ -3,17 +3,17 @@
 
 
 {% block title %}
-{{ _('News') }} - {{ config['SITE_NAME'] }}
+{{ _(Catname) }} - {{ config['SITE_NAME'] }}
 {% endblock %}
 
 
 {% block main_content %}
 <div class="mod">
   <h2>
-    {{ _('News') }}
+    {{ _(Catname) }}
   </h2>
   {{ piced_list(items, 'news-list') }}
-  {{ render_pagination(pagi, 'news.list') }}
+  {{ render_pagination(pagi, endpoint) }}
 </div>
 {% endblock %}
 

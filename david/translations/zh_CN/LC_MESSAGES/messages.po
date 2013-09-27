@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: kissmud@gmail.com\n"
-"POT-Creation-Date: 2013-09-16 13:51+0800\n"
+"POT-Creation-Date: 2013-09-27 10:41+0800\n"
 "PO-Revision-Date: 2013-08-18 14:32+0800\n"
 "Last-Translator: Jesse Yang <kissmud@gmail.com>\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
@@ -169,40 +169,42 @@ msgid "Out link"
 msgstr "外部链接"
 
 #: /Users/jesse/projects/tongdawei/david/modules/event/admin.py:27
-#: david/modules/event/admin.py:27 config/__init__.py:56
+#: david/modules/event/admin.py:27 config/__init__.py:57
 msgid "Event"
 msgstr "活动"
 
 #: /Users/jesse/projects/tongdawei/david/modules/gallery/admin.py:16
-#: david/modules/gallery/admin.py:16 config/__init__.py:64
+#: david/modules/gallery/admin.py:16 config/__init__.py:65
 msgid "Magazine"
 msgstr "杂志"
 
 #: /Users/jesse/projects/tongdawei/david/modules/news/admin.py:11
-#: /Users/jesse/projects/tongdawei/david/templates/modules/news/index.html:6
-#: /Users/jesse/projects/tongdawei/david/templates/modules/news/index.html:13
-#: david/modules/news/admin.py:11 david/templates/modules/news/index.html:6
-#: david/templates/modules/news/index.html:13 config/__init__.py:55
+#: david/modules/news/admin.py:11 config/__init__.py:55
 msgid "News"
 msgstr "新闻"
+
+#: /Users/jesse/projects/tongdawei/david/modules/news/admin.py:12
+#: david/modules/news/admin.py:12 config/__init__.py:56
+msgid "Charity"
+msgstr "公益"
 
 #: /Users/jesse/projects/tongdawei/david/modules/pages/admin.py:23
 #: david/modules/pages/admin.py:23
 msgid "Pages"
 msgstr "页面"
 
-#: /Users/jesse/projects/tongdawei/david/modules/pages/homepage/__init__.py:21
-#: david/modules/pages/homepage/__init__.py:21
+#: /Users/jesse/projects/tongdawei/david/modules/pages/homepage/__init__.py:22
+#: david/modules/pages/homepage/__init__.py:22
 msgid "Home Page"
 msgstr "首页内容"
 
-#: /Users/jesse/projects/tongdawei/david/modules/pages/homepage/__init__.py:24
-#: david/modules/pages/homepage/__init__.py:24
+#: /Users/jesse/projects/tongdawei/david/modules/pages/homepage/__init__.py:25
+#: david/modules/pages/homepage/__init__.py:25
 msgid "Home page articles"
 msgstr "首页出现的文章"
 
-#: /Users/jesse/projects/tongdawei/david/modules/pages/homepage/__init__.py:27
-#: david/modules/pages/homepage/__init__.py:27
+#: /Users/jesse/projects/tongdawei/david/modules/pages/homepage/__init__.py:28
+#: david/modules/pages/homepage/__init__.py:28
 msgid "article ids or article url, one item per line"
 msgstr "输入文章ID或url，每行一个"
 
@@ -217,7 +219,7 @@ msgid "Publish date"
 msgstr "发表日期"
 
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:44
-#: david/modules/works/admin.py:44 config/__init__.py:59
+#: david/modules/works/admin.py:44 config/__init__.py:60
 msgid "Movie"
 msgstr "电影"
 
@@ -225,17 +227,17 @@ msgstr "电影"
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:45
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:46
 #: david/modules/works/admin.py:44 david/modules/works/admin.py:45
-#: david/modules/works/admin.py:46 config/__init__.py:57
+#: david/modules/works/admin.py:46 config/__init__.py:58
 msgid "Works"
 msgstr "作品"
 
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:45
-#: david/modules/works/admin.py:45 config/__init__.py:60
+#: david/modules/works/admin.py:45 config/__init__.py:61
 msgid "TV"
 msgstr "电视"
 
 #: /Users/jesse/projects/tongdawei/david/modules/works/admin.py:46
-#: david/modules/works/admin.py:46 config/__init__.py:61
+#: david/modules/works/admin.py:46 config/__init__.py:62
 msgid "Music"
 msgstr "音乐"
 
@@ -324,19 +326,19 @@ msgstr "佟大为"
 msgid "Yue"
 msgstr "关　悦"
 
-#: config/__init__.py:66
-msgid "Forum"
-msgstr "论坛"
+#: config/__init__.py:67
+msgid "Fans"
+msgstr "粉丝"
 
-#: config/__init__.py:70
+#: config/__init__.py:71
 msgid "About David Tong Studio"
 msgstr "关于佟大为工作室"
 
-#: config/__init__.py:71
+#: config/__init__.py:72
 msgid "Contact"
 msgstr "联系方式"
 
-#: config/__init__.py:72
+#: config/__init__.py:73
 msgid "Join us"
 msgstr "加入我们"
 
@@ -548,4 +550,7 @@ msgstr "发送登录链接"
 
 #~ msgid "活动"
 #~ msgstr ""
+
+#~ msgid "Forum"
+#~ msgstr "论坛"
 

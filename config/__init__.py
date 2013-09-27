@@ -53,6 +53,7 @@ HEADER_MENU = [
         ),
         #('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA', '活动'),
         ('/news/', _('News'), 'news', None, lambda x, req: req.path.startswith('/news/')),
+        ('/charity/', _('Charity'), 'charity', None, lambda x, req: req.path.startswith('/charity/')),
         ('/event/', _('Event')),
         ('javascript:void(0);', _('Works'), 'works',
             [
@@ -63,7 +64,7 @@ HEADER_MENU = [
         ),
         ('/magazine/', _('Magazine')),
         ('http://tieba.baidu.com/f?ie=utf-8&kw=%E4%BD%9F%E5%A4%A7%E4%B8%BA',
-            _('Forum')),
+            _('Fans')),
         ]
 
 FOOTER_MENU = [
