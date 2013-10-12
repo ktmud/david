@@ -14,7 +14,7 @@ perpage = 10
 
 def list_data(mod, page):
     cls = Magazine if 'magazine' == mod else Photos
-    pagination = cls.query.order_by(cls.id.desc()).paginate(page, perpage)
+    pagination = cls.query.order_by(cls.create_at.desc()).paginate(page, perpage)
     items = [x.serialize() for x in pagination.items]
     return dict(r=0,
             total=pagination.total,
