@@ -17,7 +17,10 @@
   Do.urls({{ urlmap('modules/gallery/magazine')|json|safe }})
   Do('lodash', 'modules/gallery/magazine', function(){
     var magazine = require('modules/gallery/magazine');
-    magazine('#magazine-list', '#magazine-showcase', {{ data|json|safe }});
+    magazine(
+      '#magazine-list', '#magazine-showcase',
+      {{ data|json|safe }}
+    ).bindKeyboard();
   });
 </script>
 {% endblock %}

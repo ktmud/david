@@ -12,6 +12,7 @@ from ..view import bp
 @bp.route('/')
 def home():
     articles, captions = get_homepage_articles()
+    articles = [x.extended_self() for x in articles]
     carousel_items = [dict(img=x.picture_url('large'), link=x.url(),
                                 caption=captions[i])
                       for i,x in enumerate(articles) if x]

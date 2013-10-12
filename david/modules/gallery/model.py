@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import url_for
+from flask import url_for, current_app
 from david.lib.mixins.props import PropsMixin, PropsItem
 from david.core.article import Article, add_cat
 from david.ext.views.static import lazy_static_url
@@ -45,6 +45,8 @@ class Magazine(Photos):
     def thumb_url(self):
         return self.picture_url('cover')
 
+    def url(self):
+        return '%smagazine/#%s' % (current_app.config['SITE_ROOT'], self.id)
 
 add_cat(C_PHOTOS, Photos)
 add_cat(C_MAGAZINE, Magazine)

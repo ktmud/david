@@ -62,6 +62,9 @@ class Article(db.Model, UidMixin, PictureMixin, SerializeMixin):
         """ get an article, but return with subclassed """
         pass
 
+    def extended_self(self):
+        return CATS[str(self.cat_id)].get(self.id)
+
 
 # article cats, will be extended later
 CATS = {

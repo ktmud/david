@@ -28,20 +28,21 @@ class PropsMixin(object):
         return '%s/props' % self.get_uuid()
 
     def _get_props(self):
-        lc_name = self._props_name
-        props = lc.get(lc_name)
-        if props is None:
-            props = db.get(self._props_db_key) or {}
-            lc.set(lc_name, props)
-        return props
+        return db.get(self._props_db_key) or {}
+        #lc_name = self._props_name
+        #props = lc.get(lc_name)
+        #if props is None:
+            #props = db.get(self._props_db_key) or {}
+            #lc.set(lc_name, props)
+        #return props
 
     def _set_props(self, props):
         db.set(self._props_db_key, props)
-        lc.delete(self._props_name)
+        #lc.delete(self._props_name)
 
     def _destory_props(self):
         db.delete(self._props_db_key)
-        lc.delete(self._props_name)
+        #lc.delete(self._props_name)
 
     get_props = _get_props
     set_props = _set_props

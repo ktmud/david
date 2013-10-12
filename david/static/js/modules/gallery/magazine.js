@@ -35,10 +35,16 @@ Magazine.prototype.init = function(data, active) {
   }).on('slid.bs.carousel', function() {
     self.active = self.container.find('.carousel-inner .active').index();
   }).hammer().on('swipeleft', function(e) {
-    $(this).carousel('next');
+    self.next();
   }).on('swiperight', function() {
-    $(this).carousel('prev');
+    self.prev();
   });
+};
+Magazine.prototype.next = function() {
+  this.container.carousel('next');
+};
+Magazine.prototype.prev = function() {
+  this.container.carousel('prev');
 };
 Magazine.prototype.switchTo = function(n) {
   var self = this;
@@ -103,6 +109,16 @@ MagazineSwitcher.prototype.init = function(data) {
   });
 
   self.render(data);
+
+  var current = (location.hash || '').split('#')[1];
+  if (current) {
+    var node = self.switchTo(current);
+    if (!node) {
+      location.href = '/magazine/' + current;
+    }
+    return;
+  }
+
   // show the active, or the first one
   self.show(data.items[data.active || 0]);
 };
@@ -134,6 +150,8 @@ MagazineSwitcher.prototype.switchTo = function(id) {
   self.showcase.stop().fadeTo(200, 0.01, function() {
     self.show(item);
   });
+
+  return item;
 };
 
 MagazineSwitcher.prototype.show = function(item) {
@@ -173,6 +191,38 @@ MagazineSwitcher.prototype.centerize = function(elem) {
   }, 300);
 };
 
+var ARROW = {
+  left: 37,
+  up: 38,
+  right: 39,
+  down: 40
+};
+
+MagazineSwitcher.prototype.bindKeyboard = function() {
+  var self = this;
+  $(window).keydown(function(e) {
+    var do_prevent = true;
+    switch(e.which) {
+      case ARROW.up:
+        self.prev();
+        break;
+      case ARROW.down:
+        self.next();
+        break;
+      case ARROW.left:
+        self.magazine.prev();
+        break;
+      case ARROW.right:
+        self.magazine.next();
+        break;
+      default:
+        do_prevent = false;
+    }
+    if (do_prevent) {
+      return false;
+    }
+  });
+};
 
 
 
