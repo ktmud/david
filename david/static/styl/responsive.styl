@@ -59,6 +59,16 @@
     margin-right: 0
 
 @media below_xs
+  .pure-menu.pure-menu-open a
+    padding-left: 0
+    padding-right: 0
+    font-size: 14px
+  .header-nav
+    margin-top: 0
+    .pure-menu.pure-menu-open li:nth-child(4n)
+      border-right-width: 0
+    .pure-menu.pure-menu-open > li
+      width: 72px
   .hidden-xs
     display: none
   .news-list .pic img
@@ -73,6 +83,15 @@
     font-size: 0
     a, span, strong
       font-size: 14px
+  #footer
+    font-size: 10px
+    .pure-menu.pure-menu-open
+      li, a
+        line-height: 11px
+        font-size: 11px
+  .footer-more
+    font-size: 9px
+    margin-top: 20px
 
 //@media only screen and (orientation: portrait) and (device-width: 320px), (device-width: 768px) {
 //.body-bg {
