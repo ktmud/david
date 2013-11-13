@@ -1,4 +1,5 @@
 # coding: utf-8
+import sys
 from david.core.db import db
 from app import app
 

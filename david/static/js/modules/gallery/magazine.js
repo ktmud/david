@@ -32,7 +32,7 @@ Magazine.prototype.init = function(data, active) {
   self.container.find('.carousel').carousel({
     interval: false,
     wrap: false
-  }).on('slid.bs.carousel', function() {
+  }).on('slide.bs.carousel', function() {
     self.active = self.container.find('.carousel-inner .active').index();
   }).hammer().on('swipeleft', function(e) {
     self.next();
