@@ -4,8 +4,13 @@ var $ = require('/jquery');
 
 
 exports.init_datepicker = function init_datepicker() {
-  $('[data-role=datepicker]').datepicker();
-  $('[data-role=datetimepicker]').datepicker({displayTime: true});
+  $('[data-role=datepicker]').datetimepicker({ minView: 'month' });
+  $('[data-role=datetimepicker]').datetimepicker();
+  $('[data-role=timepicker]').datetimepicker({
+    startView: 'day',
+    maxView: 'day',
+    formatViewType: 'time'
+  });
 };
 
 exports.init = function() {

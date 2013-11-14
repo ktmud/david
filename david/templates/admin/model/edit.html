@@ -8,7 +8,7 @@
 
 {% block article %}
     {% call lib.form_tag(form) %}
-        {{ lib.render_form_fields(form, widget_args=form_widget_args) }}
+        {{ lib.render_form_fields(form, form_opts=form_opts, form_rules=form_rules) }}
         {% if admin_view.has_attachments() %}
           {{ qiniu.uploader_inline(model) }}
         {% endif %}

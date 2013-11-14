@@ -8,7 +8,7 @@
 {% block head %}
     {{ super() }}
     <link href="{{ url_for('admin.static', filename='select2/select2.css') }}" rel="stylesheet">
-    <link href="{{ url_for('admin.static', filename='datepicker/bootstrap-datepicker.css') }}" rel="stylesheet">
+    <link href="{{ url_for('admin.static', filename='datetimepicker/bootstrap-datetimepicker.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block navtabs %}
@@ -25,7 +25,7 @@
 
 {% block article %}
   {% call lib.form_tag(form) %}
-      {{ lib.render_form_fields(form, widget_args=form_widget_args) }}
+      {{ lib.render_form_fields(form, form_opts=form_opts, form_rules=form_rules) }}
       {% if admin_view.has_attachments() %}
       <div class="row">
         <div class="col-lg-2"></div>

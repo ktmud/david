@@ -92,7 +92,10 @@ InlineUploader.prototype.init_events = function() {
     }
     this._oldval = val;
 
-    var node = $(this).closest('.uploaded-item')
+    var node = $(this).closest('.uploaded-item');
+    if (!node.length) {
+      return;
+    }
     var data = node.data();
     var saved = $(this).siblings('.saved');
 
