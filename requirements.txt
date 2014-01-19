@@ -3,7 +3,8 @@ Flask-Security==1.6.9
 Flask-SQLAlchemy
 MarkupSafe
 Werkzeug
-MySQL-python
+#MySQL-python
+psycopg2
 alembic
 redis
 raven

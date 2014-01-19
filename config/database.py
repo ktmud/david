@@ -7,6 +7,5 @@ REDIS_SERVER = dict(
 )
 REDIS_KEY_PREFIX = 'david:'
 
-SQLALCHEMY_DATABASE_URI = 'mysql://root@localhost/test_david'
-
+SQLALCHEMY_DATABASE_URI = 'postgres://david@localhost/david'
 

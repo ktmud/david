@@ -10,8 +10,8 @@ tags_table = db.Table('article_tags',
 
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    slug = db.Column(db.String(40), unique=True)
-    name = db.Column(db.Text(80))
-    desc = db.Column(db.Text(255))
+    slug = db.Column(db.String, unique=True)
+    name = db.Column(db.String)
+    desc = db.Column(db.Text)
     create_at = db.Column(db.DateTime, default=func.now())
 
