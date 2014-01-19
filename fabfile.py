@@ -5,7 +5,7 @@ import config
 import david
 
 # Example usage
-env.hosts = ['david@david:19848']
+env.hosts = ['david@david']
 
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__)) + '/david'
